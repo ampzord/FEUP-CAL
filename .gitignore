@@ -31,3 +31,5 @@
 #Files of CLion - ADDED BY ME
 *.xml
 *.iml
+.idea/
+cmake-build-debug/
