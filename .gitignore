@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+#Files of CLion - ADDED BY ME
+*.xml
+*.iml
