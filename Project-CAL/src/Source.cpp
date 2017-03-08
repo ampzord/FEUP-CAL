@@ -1,12 +1,34 @@
 
 #include <iostream>
+#include <sstream>
+#include <fstream>
 
 #include "Client.h"
-#include "Supermarket.h
+#include "Supermarket.h"
+
+/* Load Clients from clients.txt */
+void loadClients() {
+    std::ifstream input_file("input/clients.txt");
+
+    if (!input_file) {
+        std::cerr << "Unable to open file clients.txt";
+        //return 1;
+    }
+
+    std::string line;
+
+    while (!input_file.eof()) {
+        getline(input_file, line);
+        std::stringstream input_stream(line);
+
+        /* handle information */
+    }
+    input_file.close();
+}
 
 int main() {
     Client cli = Client("Antonio","Porto");
-    printf("Name : %s , Address : %s", cli.getName(), cli.getAddress());
+    std::cout << "Name : " << cli.getName() << " Address : " << cli.getAddress();
 
     return 0;
 }

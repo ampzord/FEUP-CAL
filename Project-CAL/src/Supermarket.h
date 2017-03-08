@@ -10,5 +10,4 @@ public :
     Supermarket(std::string name);
 };
 
-
 #endif

@@ -5,10 +5,10 @@ Client::Client(std::string name, std::string address) {
     this->address = address;
 }
 
-Client::getName() {
+std::string Client::getName() {
     return name;
 }
 
-Client::getAddress() {
+std::string Client::getAddress() {
     return address;
 }
