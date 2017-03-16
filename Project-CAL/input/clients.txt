@@ -1,1 +1,1 @@
-Antonio;?;?;?;?
+user_name;number_of_items;date

@@ -3,6 +3,7 @@
 
 class Truck {
 private :
+    int max_weight;
 
 public :
 

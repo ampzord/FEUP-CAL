@@ -8,6 +8,7 @@ private :
     std::string date;
 public :
     Purchase();
+    ~Purchase() {};
 };
 
 #endif

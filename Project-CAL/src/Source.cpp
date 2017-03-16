@@ -6,7 +6,7 @@
 #include "Client.h"
 #include "Supermarket.h"
 
-/* Load Clients from clients.txt */
+/** @brief Load clients from clients.txt to program */
 void loadClients() {
     std::ifstream input_file("input/clients.txt");
 

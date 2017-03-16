@@ -3,6 +3,8 @@
 
 class Item {
 private :
+    int number;
+    double weight;
 
 public:
 
