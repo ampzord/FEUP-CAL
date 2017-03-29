@@ -8,6 +8,7 @@ private :
     std::string name;
 public :
     Supermarket(std::string name);
+    bool operator ==(const Supermarket &b) const;
 };
 
 #endif

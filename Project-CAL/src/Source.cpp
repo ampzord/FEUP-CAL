@@ -4,7 +4,7 @@
 #include <fstream>
 
 #include "Client.h"
-#include "Supermarket.h"
+#include "SupermarketNetwork.h"
 
 /** @brief Load clients from clients.txt to program */
 void loadClients() {
@@ -27,8 +27,15 @@ void loadClients() {
 }
 
 int main() {
-    Client cli = Client("Antonio","Porto");
-    std::cout << "Name : " << cli.getName() << " Address : " << cli.getAddress();
+
+    /*Client cli = Client("Antonio","Porto");
+    std::cout << "Name : " << cli.getName() << " Address : " << cli.getAddress();*/
+
+	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
+
+	sn->manage();
+
+	delete sn;
 
     return 0;
 }
