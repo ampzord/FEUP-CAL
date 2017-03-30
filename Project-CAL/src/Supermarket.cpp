@@ -4,25 +4,40 @@
 using namespace std;
 
 Supermarket::Supermarket(std::string name) {
-    this->name = name;
+	this->name = name;
+}
+
+Supermarket::Supermarket(int id, int x, int y) {
+	this->id = id;
+	this->x = x;
+	this->y = y;
 }
 
 Supermarket::Supermarket(std::string name, std::vector<Item*> items) {
-    this->name = name;
-    this->items = items;
+	this->name = name;
+	this->items = items;
 }
 
-bool Supermarket::operator ==(const Supermarket & b) const
-{
+bool Supermarket::operator ==(const Supermarket & b) const {
 	return name == b.name;
 }
 
-std::vector<Item*> Supermarket::getItems() const
-{
+std::vector<Item*> Supermarket::getItems() const {
 	return items;
 }
 
-bool Supermarket::hasItem(Item* item)
-{
+bool Supermarket::hasItem(Item* item) {
 	return find(items.begin(), items.end(), item) != items.end();
+}
+
+int Supermarket::getId() const {
+	return id;
+}
+
+int Supermarket::getX() const {
+	return x;
+}
+
+int Supermarket::getY() const {
+	return y;
 }

@@ -18,12 +18,14 @@ private :
     GraphViewer* gv;
     Graph<Supermarket> graph;
     int marketId;
+    std::vector<Supermarket> markets;
 public:
 	SupermarketNetwork(std::string name);
 	void manage();
 	void addSupermarket(std::string name);
 	bool handleRequest();
 	void performOperation(std::string operation);
+	void loadMarkets();
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */
