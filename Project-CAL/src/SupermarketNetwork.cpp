@@ -47,7 +47,7 @@ bool SupermarketNetwork::handleRequest()
 	cout << "Choose a task" << endl << endl;
 
 	cout << "Add" << endl;
-	cout << "Exit" << endl << endl;;
+	cout << "Exit" << endl << endl;
 
 	cout << "Task: ";
 
