@@ -26,6 +26,9 @@ public:
 	bool handleRequest();
 	void performOperation(std::string operation);
 	void loadMarkets();
+	void loadNodeInformation();
+	void loadStreetInformation();
+	void loadEdgeInformation();
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */

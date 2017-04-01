@@ -116,3 +116,120 @@ void SupermarketNetwork::loadMarkets() {
 	}
 	inFile.close();
 }
+
+
+/** @brief Load nodes from nodes.txt to program */
+void SupermarketNetwork::loadNodeInformation() {
+
+	std::ifstream input_file("Project-CAL/input/nodes.txt");
+
+	if (!input_file) {
+		std::cerr << "Unable to open file nodes.txt";
+		//return 1;
+	}
+
+	while (!input_file.eof()) {
+		unsigned long long nodeID;
+		double latitude, longitude;
+		std::string line;
+		std::string data;
+
+		getline(input_file, line);
+		std::stringstream input_stream(line);
+
+		input_stream >> nodeID;
+		getline(input_stream, data, ';');
+		input_stream >> latitude;
+		getline(input_stream, data, ';');
+		input_stream >> longitude;
+
+		/* Needs to be added to the database later */
+
+		cout << "nodeID : " << nodeID << endl;
+		cout << "latitude : " << latitude << endl;
+		cout << "longitude : " << longitude << endl;
+
+	}
+
+	input_file.close();
+}
+
+
+
+void SupermarketNetwork::loadStreetInformation() {
+
+	std::ifstream input_file("Project-CAL/input/streets.txt");
+
+
+	if (!input_file) {
+		std::cerr << "Unable to open file streets.txt";
+		//return 1;
+	}
+
+	while (!input_file.eof()) {
+		unsigned long long roadID;
+		std::string roadName;
+		bool isTwoWays;
+
+		std::string line;
+		std::string data;
+
+		getline(input_file, line);
+		std::stringstream input_stream(line);
+
+		input_stream >> roadID;
+		getline(input_stream, data, ';');
+		getline(input_stream, data, ';');
+		roadName = data;
+		getline(input_stream, data, ';');
+
+		if (data == "True")
+			isTwoWays = true;
+		else
+			isTwoWays = false;
+
+		/* Add to Street.cpp later to be added */
+
+		cout << "roadID : " << roadID << endl;
+		cout << "roadName : " << roadName << endl;
+		cout << "isTwoWays : " << isTwoWays << endl << endl;
+
+	}
+
+	input_file.close();
+}
+
+void SupermarketNetwork::loadEdgeInformation() {
+	std::ifstream input_file("Project-CAL/input/asd.txt");
+
+	if (!input_file) {
+		std::cerr << "Unable to open file edges.txt";
+		//return 1;
+	}
+
+	while (!input_file.eof()) {
+		unsigned long long roadID;
+		unsigned long long nodeStartID;
+		unsigned long long nodeEndID;
+		std::string line;
+		std::string data;
+
+		getline(input_file, line);
+		std::stringstream input_stream(line);
+
+		input_stream >> roadID;
+		getline(input_stream, data, ';');
+		input_stream >> nodeStartID;
+		getline(input_stream, data, ';');
+		input_stream >> nodeEndID;
+
+		/* Data needs to be saved */
+
+		cout << "roadID : " << roadID << endl;
+		cout << "nodeStartID : " << nodeStartID << endl;
+		cout << "nodeEndID : " << nodeEndID << endl << endl;
+
+	}
+
+	input_file.close();
+}
