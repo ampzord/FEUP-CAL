@@ -20,10 +20,10 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 
 	gv->createWindow(600, 600);
 
-	gv->defineVertexColor("blue");
+	/*gv->defineVertexColor("blue");
 
 	gv->defineEdgeColor("black");
-
+*/
 	loadMarkets();
 
 	for (size_t i = 0; i < markets.size(); i++) {
@@ -39,11 +39,11 @@ void SupermarketNetwork::manage() {
 }
 
 void SupermarketNetwork::addSupermarket(std::string name) {
-	graph.addVertex(Supermarket(name));
+	graph.addVertex(Supermarket(name), "Supermarket");
 
 	gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, name);
+	//gv->setVertexLabel(marketId, name);
 
 	gv->rearrange();
 

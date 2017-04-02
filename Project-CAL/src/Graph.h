@@ -686,7 +686,7 @@ int Graph<T>::edgeCost(int vOrigIndex, int vDestIndex)
 }
 
 
-void printSquareArray(int ** arr, unsigned int size)
+/*void printSquareArray(int ** arr, unsigned int size)
 {
 	for(unsigned int k = 0; k < size; k++)
 	{
@@ -711,7 +711,7 @@ void printSquareArray(int ** arr, unsigned int size)
 
 		cout << endl;
 	}
-}
+}*/
 
 
 template<class T>
@@ -752,35 +752,30 @@ void Graph<T>::floydWarshallShortestPath() {
 template<class T>
 void Graph<T>::sortPaths() {
 
-	map<int, Vertex*> supermarkets;
-	map<int, Vertex*> clients;
+	map<int, Vertex<T>*> supermarkets;
+	map<int, Vertex<T>*> clients;
 
 	for(int i = 0; i < vertexSet.size(); i++)
 	{
 		if(vertexSet[i]->type == "Supermarket")
 		{
-			supermarkets.insert(std::map<int, Vertex*>::value_type(i, vertexSet[i]));
+			supermarkets.insert(std::map<int, Vertex<T>*>::value_type(i, vertexSet[i]));
 		}
 		else if(vertexSet[i]->type == "Client")
 		{
-			clients.insert(std::map<int, Vertex*>::value_type(i, vertexSet[i]));
+			clients.insert(std::map<int, Vertex<T>*>::value_type(i, vertexSet[i]));
 		}
 	}
 
-	map<int, vector<Vertex*> > clientMarkets;
+	map<int, vector<Vertex<T>*> > clientMarkets;
 
-	for (map<int , Vertex*>::iterator it = clients.begin(); it != clients.end(); it++)
+	for (typename map<int, Vertex<T>*>::iterator it = clients.begin(); it != clients.end(); it++)
 	{
-
-	}
-
-	for (map<int , Vertex*>::iterator it = clients.begin(); it != clients.end(); it++)
-	{
-		vector<Vertex*> tmp;
+		vector<Vertex<T>*> tmp;
 
 		int i = it->first;
 
-		for (map<int , Vertex*>::iterator it2 = supermarkets.begin(); it2 != supermarkets.end(); it2++)
+		for (typename map<int, Vertex<T>*>::iterator it2 = supermarkets.begin(); it2 != supermarkets.end(); it2++)
 		{
 			int j = it2->first;
 
@@ -792,7 +787,7 @@ void Graph<T>::sortPaths() {
 			}
 		}
 
-		clientMarkets.insert(std::map<int, vector<Vertex*> >::value_type(i, tmp));
+		clientMarkets.insert(std::map<int, vector<Vertex<T>*> >::value_type(i, tmp));
 	}
 }
 
