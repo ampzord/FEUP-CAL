@@ -35,6 +35,7 @@ class Vertex {
 	double dist;
 	string type;
 	int clients;
+	vector<int> clientsPossible;
 
 public:
 
@@ -77,6 +78,11 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 		else it++;
 	}
 	return false;
+}
+
+template <class T>
+bool Vertex<T>::operator<(const Vertex<T> vertex) {
+	return clients > vertex.clients;
 }
 
 //atualizado pelo exercício 5
@@ -186,6 +192,7 @@ public:
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 	void sortPaths();
+	vector<int> canDeliverInTime(int supermarket, vector<int> clients);
 };
 
 
@@ -752,43 +759,131 @@ void Graph<T>::floydWarshallShortestPath() {
 template<class T>
 void Graph<T>::sortPaths() {
 
-	map<int, Vertex<T>*> supermarkets;
-	map<int, Vertex<T>*> clients;
+	map<Vertex<T>*, int> supermarkets;
+	map<Vertex<T>*, int> clients;
 
 	for(int i = 0; i < vertexSet.size(); i++)
 	{
 		if(vertexSet[i]->type == "Supermarket")
 		{
-			supermarkets.insert(std::map<int, Vertex<T>*>::value_type(i, vertexSet[i]));
+			supermarkets.insert(typename std::map<Vertex<T>*, int>::value_type(vertexSet[i], i));
 		}
 		else if(vertexSet[i]->type == "Client")
 		{
-			clients.insert(std::map<int, Vertex<T>*>::value_type(i, vertexSet[i]));
+			clients.insert(typename std::map<Vertex<T>*, int>::value_type(vertexSet[i], i));
 		}
 	}
 
-	map<int, vector<Vertex<T>*> > clientMarkets;
+	map<int, vector<int> > clientMarkets;
 
-	for (typename map<int, Vertex<T>*>::iterator it = clients.begin(); it != clients.end(); it++)
+	for (typename map<Vertex<T>*, int>::iterator it = clients.begin(); it != clients.end(); it++)
 	{
-		vector<Vertex<T>*> tmp;
+		vector<int> tmp;
 
-		int i = it->first;
+		int i = it->second;
 
-		for (typename map<int, Vertex<T>*>::iterator it2 = supermarkets.begin(); it2 != supermarkets.end(); it2++)
+		for (typename map<Vertex<T>*, int>::iterator it2 = supermarkets.begin(); it2 != supermarkets.end(); it2++)
 		{
-			int j = it2->first;
+			int j = it2->second;
 
-			it->second->clients++;
-
-			if(W[i][j] != INT_INFINITY)
+			if(W[j][i] != INT_INFINITY)
 			{
+				it2->first->clients++;
+				it2->first->clientsPossible.push_back(i);
 				tmp.push_back(it2->second);
 			}
 		}
 
-		clientMarkets.insert(std::map<int, vector<Vertex<T>*> >::value_type(i, tmp));
+		if(tmp.size() != 0)
+		{
+			clientMarkets.insert(typename std::map<int, vector<int> >::value_type(i, tmp));
+		}
 	}
+
+	for (typename map<Vertex<T>*, int>::iterator it = supermarkets.begin(); it != supermarkets.end(); it++)
+	{
+		vector<int> tmp = it->first->clientsPossible;
+
+		for(int i = 0; i < tmp.size(); i++)
+		{
+			cout << tmp[i] << " ";
+		}
+
+		cout << "END" << endl;
+
+		vector<int> asd = canDeliverInTime(it->second, it->first->clientsPossible);
+
+		for(int i = 0; i < asd.size(); i++)
+		{
+			cout << asd[i] << " ";
+		}
+
+		cout << endl;
+	}
+}
+
+template <class T>
+vector<int> Graph<T>::canDeliverInTime(int supermarket, vector<int> clients) {
+
+	int maximum = 0;
+	int src = -1;
+	int dst = -1;
+
+	vector<int> res;
+
+	if(clients.size() == 1)
+	{
+		res.push_back(clients[0]);
+		return res;
+	}
+
+	for(int i = 0; i < clients.size(); i++)
+	{
+		//cout << clients[i] << endl;
+
+		int x = clients[i];
+
+		for(int j = 0; j < clients.size(); j++)
+		{
+			//cout << "asda " << clients[j] << endl;
+
+			int y = clients[j];
+
+			if(W[x][y] > maximum)
+			{
+				maximum = W[x][y];
+				src = i;
+				dst = j;
+			}
+			else if(W[y][x] > maximum)
+			{
+				maximum = W[y][x];
+				src = j;
+				dst = i;
+			}
+		}
+	}
+
+	if(src == -1 || dst == -1)
+	{
+		return res;
+	}
+
+	res.push_back(clients[src]);
+
+	clients.erase(clients.begin() + src);
+	clients.erase(clients.begin() + dst - 1);
+
+	vector<int> tmp = canDeliverInTime(supermarket, clients);
+
+	for(int i = 0; i < tmp.size(); i++)
+	{
+		res.push_back(tmp[i]);
+	}
+
+	res.push_back(clients[dst]);
+
+	return res;
 }
 
 #endif /* GRAPH_H_ */

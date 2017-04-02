@@ -16,26 +16,135 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 	// TODO Auto-generated constructor stub
 
 	this->name = name;
-	this->gv = new GraphViewer(600, 600, false);
+	this->gv = new GraphViewer(600, 600, true);
 
 	gv->createWindow(600, 600);
 
-	/*gv->defineVertexColor("blue");
+	gv->defineVertexColor("blue");
 
 	gv->defineEdgeColor("black");
-*/
-	loadMarkets();
 
-	for (size_t i = 0; i < markets.size(); i++) {
+	//loadMarkets();
+
+	/*for (size_t i = 0; i < markets.size(); i++) {
 		gv->addNode(markets[i].getId(), markets[i].getX(), markets[i].getY());
-	}
+	}*/
 
 	marketId = 0;
 }
 
 void SupermarketNetwork::manage() {
-	while (handleRequest()) {
-	}
+
+	Supermarket x(name);
+	Supermarket y("asd");
+	Supermarket z("asdadas");
+	Supermarket w("asdasdasdasdsa");
+	Supermarket u("sadsadasdsadasdas");
+	Supermarket i("sadsadasdsadasdas23");
+	Supermarket a("sadsadasdsadasdasasds23");
+
+	graph.addVertex(x, "Supermarket");
+
+	graph.addVertex(y, "Client");
+	graph.addVertex(z, "Client");
+
+	graph.addVertex(w, "Nothing");
+	graph.addVertex(u, "Nothing");
+	graph.addVertex(i, "Supermarket");
+	graph.addVertex(a, "Client");
+
+	graph.addEdge(x, w, 5);
+	graph.addEdge(w, x, 5);
+
+	graph.addEdge(x, u, 8);
+	graph.addEdge(u, x, 8);
+
+	graph.addEdge(w, y, 2);
+	graph.addEdge(y, w, 2);
+
+	graph.addEdge(u, z, 3);
+	graph.addEdge(z, u, 3);
+
+	graph.addEdge(z, y, 4);
+	graph.addEdge(y, z, 4);
+
+	graph.addEdge(i, y, 10);
+	graph.addEdge(y, i, 10);
+
+	graph.addEdge(a, x, 2);
+	graph.addEdge(x, a, 2);
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "0");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "1");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "2");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "3");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "4");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "5");
+
+	marketId++;
+
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "6");
+
+	marketId++;
+
+	gv->setVertexColor(0, "green");
+	gv->setVertexColor(5, "green");
+
+	gv->setVertexColor(1, "yellow");
+	gv->setVertexColor(2, "yellow");
+	gv->setVertexColor(6, "yellow");
+
+	gv->addEdge(0, 0, 3, 0);
+	gv->addEdge(1, 0, 4, 0);
+	gv->addEdge(2, 3, 1, 0);
+	gv->addEdge(3, 4, 2, 0);
+	gv->addEdge(4, 2, 1, 0);
+	gv->addEdge(5, 5, 1, 0);
+	gv->addEdge(6, 6, 0, 0);
+
+	gv->setEdgeLabel(0, "5");
+	gv->setEdgeLabel(1, "8");
+	gv->setEdgeLabel(2, "2");
+	gv->setEdgeLabel(3, "3");
+	gv->setEdgeLabel(4, "4");
+	gv->setEdgeLabel(5, "10");
+	gv->setEdgeLabel(6, "2");
+
+	gv->rearrange();
+
+	graph.floydWarshallShortestPath();
+	graph.sortPaths();
+
+	getchar();
 }
 
 void SupermarketNetwork::addSupermarket(std::string name) {

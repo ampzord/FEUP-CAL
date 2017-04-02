@@ -10,7 +10,7 @@
 int main() {
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
 
-	sn->loadEdgeInformation();
+	//sn->loadEdgeInformation();
 
 	sn->manage();
 
