@@ -33,3 +33,10 @@ void Truck::removeItem(Item* item)
 {
 	items.erase(remove(items.begin(), items.end(), item), items.end());
 }
+
+double Truck::getFreeWeight() const {
+	double truckWeight = 0;
+	for (unsigned int i = 0;i<=items.size();i++)
+		truckWeight += items[i]->getWeight();
+	return max_weight - truckWeight;
+}

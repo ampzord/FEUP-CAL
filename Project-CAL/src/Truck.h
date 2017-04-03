@@ -17,6 +17,7 @@ public :
     void addItem(Item* item);
     void addItems(std::vector<Item*> items);
     void removeItem(Item* item);
+    double getFreeWeight() const;
 };
 
 #endif
