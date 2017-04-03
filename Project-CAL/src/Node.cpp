@@ -14,7 +14,7 @@ Node::Node() {
 
 }
 
-Node::Node(int node_id, string type, float latitude_in_degrees, float longitude_in_degrees,
+Node::Node(unsigned long long node_id, string type, float latitude_in_degrees, float longitude_in_degrees,
 		float longitude_in_radians, float latitude_in_radians) {
 	this->node_id = node_id;
 	this->type = type;

@@ -12,14 +12,14 @@
 
 class Node {
 private:
-	int node_id;
+	unsigned long long node_id;
 	float latitude_in_degrees, longitude_in_degrees, longitude_in_radians,
 			latitude_in_radians;
 	std::string type;
 
 public:
 	Node();
-	Node(int node_id, std::string type, float latitude_in_degrees, float longitude_in_degrees,
+	Node(unsigned long long node_id, std::string type, float latitude_in_degrees, float longitude_in_degrees,
 			float longitude_in_radians, float latitude_in_radians);
 	virtual ~Node();
 
@@ -41,7 +41,7 @@ public:
 		return longitude_in_radians;
 	}
 
-	int getNodeId() const {
+	unsigned long long getNodeId() const {
 		return node_id;
 	}
 

@@ -10,6 +10,8 @@
 #include <climits>
 #include <cmath>
 #include <map>
+#include <set>
+#include <algorithm>
 using namespace std;
 
 template <class T> class Edge;
@@ -19,6 +21,21 @@ const int NOT_VISITED = 0;
 const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
+
+const double SPEED_TRUCK = 50;
+const double CLIENT_TIME = 1.0/12.0;
+
+template <class T>
+struct SortSet {
+
+    SortSet(int & supermarket, Graph<T>* graph) { this->supermarket = supermarket; this->graph = graph;}
+    bool operator () (int i, int j) {
+    	return graph->W[supermarket][i] < graph->W[supermarket][j];
+    }
+
+    int supermarket;
+    Graph<T>* graph;
+};
 
 /*
  * ================================================================================================
@@ -36,10 +53,12 @@ class Vertex {
 	string type;
 	int clients;
 	vector<int> clientsPossible;
+	unsigned long long id;
+	double time;
 
 public:
 
-	Vertex(T in, string typ);
+	Vertex(T in, string typ, unsigned long long nodeId);
 	friend class Graph<T>;
 
 	void addEdge(Vertex<T> *dest, double w);
@@ -87,8 +106,13 @@ bool Vertex<T>::operator<(const Vertex<T> vertex) {
 
 //atualizado pelo exercício 5
 template <class T>
-Vertex<T>::Vertex(T in, string typ): info(in), visited(false), processing(false), indegree(0), dist(0), type(typ), clients(0) {
+Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId): info(in), visited(false), processing(false), indegree(0), dist(0), type(typ), clients(0), id(nodeId) {
 	path = NULL;
+	time = 0;
+	if(typ == "Client")
+	{
+		time = CLIENT_TIME;
+	}
 }
 
 
@@ -131,6 +155,8 @@ template <class T>
 class Edge {
 	Vertex<T> * dest;
 	double weight;
+	double speed;
+	double time;
 public:
 	Edge(Vertex<T> *d, double w);
 	friend class Graph<T>;
@@ -138,7 +164,9 @@ public:
 };
 
 template <class T>
-Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w){}
+Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w), speed(SPEED_TRUCK){
+	time = weight/speed;
+}
 
 
 
@@ -163,9 +191,12 @@ class Graph {
 	int ** W;   //weight
 	int ** P;   //path
 
+	friend struct SortSet<T>;
+
 public:
-	bool addVertex(const T &in, string type);
+	bool addVertex(const T &in, string type, unsigned long long nodeId);
 	bool addEdge(const T &sourc, const T &dest, double w);
+	bool addEdge(const int src, const int dst, double w);
 	bool removeVertex(const T &in);
 	bool removeEdge(const T &sourc, const T &dest);
 	vector<T> dfs() const;
@@ -191,10 +222,19 @@ public:
 	int edgeCost(int vOrigIndex, int vDestIndex);
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
-	void sortPaths();
-	vector<int> canDeliverInTime(int supermarket, vector<int> clients);
-};
 
+	void sortPaths();
+	vector<int> getPossiblePath(vector<int> clients);
+	Edge<T> getEdge(int src, int dst);
+	double pathTime(vector<int> clients);
+	vector<int> getFullPath(int suprmarket, vector<int> nodes);
+	vector<int> getfloydWarshallPathInt(int origin, int destination);
+	void getfloydWarshallPathIntAux(int index1, int index2, vector<int> & res);
+	void clearClientsServed(vector<int> clients);
+	void removeMostDistantClient(int supermarket, vector<int> & clients, typename map<Vertex<T>*, int>::iterator it, typename map<Vertex<T>*, int>::iterator ite);
+	bool rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vertex<T>*, int>::iterator it);
+	bool firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2);
+};
 
 template <class T>
 int Graph<T>::getNumVertex() const {
@@ -218,12 +258,12 @@ bool Graph<T>::isDAG() {
 }
 
 template <class T>
-bool Graph<T>::addVertex(const T &in, string type) {
+bool Graph<T>::addVertex(const T &in, string type, unsigned long long nodeId) {
 	typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
 	for (; it!=ite; it++)
 		if ((*it)->info == in) return false;
-	Vertex<T> *v1 = new Vertex<T>(in, type);
+	Vertex<T> *v1 = new Vertex<T>(in, type, nodeId);
 	vertexSet.push_back(v1);
 	return true;
 }
@@ -264,6 +304,27 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 		if ( (*it)->info == sourc )
 			{ vS=*it; found++;}
 		if ( (*it)->info == dest )
+			{ vD=*it; found++;}
+		it ++;
+	}
+	if (found!=2) return false;
+	vD->indegree++;
+	vS->addEdge(vD,w);
+
+	return true;
+}
+
+template <class T>
+bool Graph<T>::addEdge(const int src, const int dst, double w) {
+
+	typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
+	typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
+	int found=0;
+	Vertex<T> *vS, *vD;
+	while (found!=2 && it!=ite ) {
+		if ( (*it)->id == src )
+			{ vS=*it; found++;}
+		if ( (*it)->id == dst )
 			{ vD=*it; found++;}
 		it ++;
 	}
@@ -762,13 +823,13 @@ void Graph<T>::sortPaths() {
 	map<Vertex<T>*, int> supermarkets;
 	map<Vertex<T>*, int> clients;
 
-	for(int i = 0; i < vertexSet.size(); i++)
+	for(unsigned int i = 0; i < vertexSet.size(); i++)
 	{
-		if(vertexSet[i]->type == "Supermarket")
+		if(vertexSet[i]->type == "Market")
 		{
 			supermarkets.insert(typename std::map<Vertex<T>*, int>::value_type(vertexSet[i], i));
 		}
-		else if(vertexSet[i]->type == "Client")
+		else if(vertexSet[i]->type == "User")
 		{
 			clients.insert(typename std::map<Vertex<T>*, int>::value_type(vertexSet[i], i));
 		}
@@ -786,7 +847,7 @@ void Graph<T>::sortPaths() {
 		{
 			int j = it2->second;
 
-			if(W[j][i] != INT_INFINITY)
+			if(W[j][i] != INT_INFINITY && W[j][i] != INT_INFINITY)
 			{
 				it2->first->clients++;
 				it2->first->clientsPossible.push_back(i);
@@ -802,28 +863,233 @@ void Graph<T>::sortPaths() {
 
 	for (typename map<Vertex<T>*, int>::iterator it = supermarkets.begin(); it != supermarkets.end(); it++)
 	{
-		vector<int> tmp = it->first->clientsPossible;
+		bool tried = false;
 
-		for(int i = 0; i < tmp.size(); i++)
+		double time = 24;
+
+		while(time >= 24 && it->first->clientsPossible.size() > 0)
 		{
-			cout << tmp[i] << " ";
+			cout << "NODE ID: " << it->first->id << endl;
+
+			vector<int> tmp = it->first->clientsPossible;
+
+			for(unsigned int i = 0; i < tmp.size(); i++)
+			{
+				cout << vertexSet[tmp[i]]->id << " ";
+			}
+
+			cout << "END" << endl;
+
+			vector<int> asd = getPossiblePath(it->first->clientsPossible);
+
+			vector<int> full = getFullPath(it->second, asd);
+
+			time = pathTime(full);
+
+			for(unsigned int i = 0; i < asd.size(); i++)
+			{
+				cout << vertexSet[asd[i]]->id << " ";
+			}
+
+			cout << endl << time << endl;
+
+			if(time >= 24 && it->first->clientsPossible.size() > 0)
+			{
+				if(tried)
+				{
+					typename map<Vertex<T>*, int>::iterator it2 = it;
+					it2++;
+					removeMostDistantClient(it->second, it->first->clientsPossible, it2, supermarkets.end());
+				}
+				else
+				{
+					tried = rearrangeMap(supermarkets, it);
+				}
+			}
 		}
 
-		cout << "END" << endl;
-
-		vector<int> asd = canDeliverInTime(it->second, it->first->clientsPossible);
-
-		for(int i = 0; i < asd.size(); i++)
-		{
-			cout << asd[i] << " ";
-		}
-
-		cout << endl;
+		clearClientsServed(it->first->clientsPossible);
 	}
 }
 
 template <class T>
-vector<int> Graph<T>::canDeliverInTime(int supermarket, vector<int> clients) {
+bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vertex<T>*, int>::iterator it)
+{
+	typename map<Vertex<T>*, int>::iterator it2 = it++;
+
+	cout << "IT 1: " << it->second << endl;
+	cout << "IT 2: " << it2->second << endl;
+
+	typename map<Vertex<T>*, int>::iterator ite = supermarkets.end();
+
+	if(it == ite)
+	{
+		return false;
+	}
+
+	vector<int> clients;
+	vector<int> clients2;
+
+	vector<int> client1;
+	vector<int> client2;
+
+	int min1 = INT_INFINITY;
+	int min2 = INT_INFINITY;
+
+	int count = 0;
+
+	for(unsigned int i = 0; i < it2->first->clientsPossible.size(); i++)
+	{
+		clients.push_back(it2->first->clientsPossible[i]);
+	}
+
+	sort(clients.begin(), clients.end(), SortSet<T>(it2->second, this));
+
+	for(unsigned int i = 0; i < it->first->clientsPossible.size(); i++)
+	{
+		clients2.push_back(it->first->clientsPossible[i]);
+	}
+
+	sort(clients2.begin(), clients2.end(), SortSet<T>(it->second, this));
+
+	int size = clients.size() + clients2.size();
+
+	while(count < size)
+	{
+		if(clients.size() == 0)
+		{
+			for(int i = 0; i < clients2.size(); i++)
+			{
+				client2.push_back(clients2[i]);
+			}
+
+			break;
+		}
+
+		if(clients2.size() == 0)
+		{
+			for(int i = 0; i < clients.size(); i++)
+			{
+				client1.push_back(clients[i]);
+			}
+
+			break;
+		}
+
+		min1 = W[it2->second][*(clients.begin())];
+		min2 = W[it->second][*(clients2.begin())];
+
+		cout << "MIN1: " << min1 << " " << *clients.begin() << endl;
+		cout << "MIN2: " << min2 << " " << *clients2.begin() << endl;
+
+		if(min1 < min2)
+		{
+			client1.push_back(*clients.begin());
+			clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
+			clients.erase(clients.begin());
+		}
+		else if(min2 < min1)
+		{
+			client2.push_back(*clients2.begin());
+			clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
+			clients2.erase(clients2.begin());
+		}
+		else
+		{
+			vector<int>::iterator start = clients.begin();
+			vector<int>::iterator start2 = clients2.begin();
+			start++;
+			start2++;
+			if(firstShortDist(it2->second, start, clients.end(), it->second, start2, clients2.end()))
+			{
+				client1.push_back(*clients.begin());
+				clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
+				clients.erase(clients.begin());
+			}
+			else
+			{
+				client2.push_back(*clients2.begin());
+				clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
+				clients2.erase(clients2.begin());
+			}
+		}
+
+		count++;
+	}
+
+	it2->first->clientsPossible.empty();
+	it->first->clientsPossible.empty();
+
+	it2->first->clientsPossible = client1;
+	it->first->clientsPossible = client2;
+
+	it = it2;
+
+	return true;
+}
+
+template <class T>
+bool Graph<T>::firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2)
+{
+	cout << "dsasd" << endl;
+	if(it == ite)
+	{
+		return false;
+	}
+
+	if(it2 == ite2)
+	{
+		return true;
+	}
+
+	int min1 = W[supermarket1][*it];
+	int min2 = W[supermarket2][*it2];
+
+	if(min1 > min2)
+	{
+		return true;
+	}
+	else if(min1 < min2)
+	{
+		return false;
+	}
+	else
+	{
+		firstShortDist(supermarket1, ++it, ite, supermarket2, ++it2, ite2);
+	}
+}
+
+template <class T>
+void Graph<T>::removeMostDistantClient(int supermarket, vector<int> & clients, typename map<Vertex<T>*, int>::iterator it, typename map<Vertex<T>*, int>::iterator ite)
+{
+	int maximum = 0;
+
+	int index = -1;
+
+	for(unsigned int i = 0; i < clients.size(); i++)
+	{
+		if(W[supermarket][clients[i]] != INT_INFINITY && W[supermarket][clients[i]] > maximum)
+		{
+			maximum = W[supermarket][clients[i]];
+			index = i;
+		}
+	}
+
+	if(index == -1)
+	{
+		return;
+	}
+
+	if(it != ite)
+	{
+		it->first->clientsPossible.push_back(*(clients.begin() + index));
+	}
+
+	clients.erase(clients.begin() + index);
+}
+
+template <class T>
+vector<int> Graph<T>::getPossiblePath(vector<int> clients) {
 
 	int maximum = 0;
 	int src = -1;
@@ -837,13 +1103,13 @@ vector<int> Graph<T>::canDeliverInTime(int supermarket, vector<int> clients) {
 		return res;
 	}
 
-	for(int i = 0; i < clients.size(); i++)
+	for(unsigned int i = 0; i < clients.size(); i++)
 	{
 		//cout << clients[i] << endl;
 
 		int x = clients[i];
 
-		for(int j = 0; j < clients.size(); j++)
+		for(unsigned int j = 0; j < clients.size(); j++)
 		{
 			//cout << "asda " << clients[j] << endl;
 
@@ -874,9 +1140,9 @@ vector<int> Graph<T>::canDeliverInTime(int supermarket, vector<int> clients) {
 	clients.erase(clients.begin() + src);
 	clients.erase(clients.begin() + dst - 1);
 
-	vector<int> tmp = canDeliverInTime(supermarket, clients);
+	vector<int> tmp = getPossiblePath(clients);
 
-	for(int i = 0; i < tmp.size(); i++)
+	for(unsigned int i = 0; i < tmp.size(); i++)
 	{
 		res.push_back(tmp[i]);
 	}
@@ -884,6 +1150,130 @@ vector<int> Graph<T>::canDeliverInTime(int supermarket, vector<int> clients) {
 	res.push_back(clients[dst]);
 
 	return res;
+}
+
+template <class T>
+double Graph<T>::pathTime(vector<int> nodes) {
+
+	double time = 0;
+
+	for(unsigned int i = 1; i < nodes.size(); i++)
+	{
+		Edge<T> adj = getEdge(nodes[i-1], nodes[i]);
+		time += vertexSet[nodes[i-1]]->time + adj.time;
+	}
+
+	return time;
+}
+
+template <class T>
+Edge<T> Graph<T>::getEdge(int src, int dst)
+{
+	for(unsigned int i = 0; i < vertexSet[src]->adj.size(); i++)
+	{
+		if(vertexSet[src]->adj[i].dest->id == vertexSet[dst]->id)
+		{
+			return vertexSet[src]->adj[i];
+		}
+	}
+
+	return Edge<T>(NULL, 0);
+}
+
+template <class T>
+vector<int> Graph<T>::getFullPath(int supermarket, vector<int> nodes)
+{
+	vector<int> res;
+
+	vector<int> temp = getfloydWarshallPathInt(supermarket, nodes[0]);
+
+	for(unsigned int i = 0; i < temp.size(); i++)
+	{
+		res.push_back(temp[i]);
+	}
+
+	for(unsigned int i = 1; i < nodes.size(); i++)
+	{
+		vector<int> temp2 = getfloydWarshallPathInt(nodes[i-1], nodes[i]);
+
+		for(unsigned int i = 1; i < temp2.size(); i++)
+		{
+			res.push_back(temp2[i]);
+		}
+	}
+
+	vector<int> temp3 = getfloydWarshallPathInt(nodes[nodes.size()-1], supermarket);
+
+	for(unsigned int i = 0; i < temp3.size(); i++)
+	{
+		res.push_back(temp3[i]);
+	}
+
+	return res;
+}
+
+template<class T>
+vector<int> Graph<T>::getfloydWarshallPathInt(int origin, int destination){
+
+	vector<int> res;
+
+	//se nao foi encontrada solucao possivel, retorna lista vazia
+	if(W[origin][destination] == INT_INFINITY)
+		return res;
+
+	res.push_back(origin);
+
+	//se houver pontos intermedios...
+	if(P[origin][destination] != -1)
+	{
+		int intermedIndex = P[origin][destination];
+
+		getfloydWarshallPathIntAux(origin, intermedIndex, res);
+
+		res.push_back(intermedIndex);
+
+		getfloydWarshallPathIntAux(intermedIndex,destination, res);
+	}
+
+	res.push_back(destination);
+
+
+	return res;
+}
+
+template<class T>
+void Graph<T>::getfloydWarshallPathIntAux(int index1, int index2, vector<int> & res)
+{
+	if(P[index1][index2] != -1)
+	{
+		getfloydWarshallPathIntAux(index1, P[index1][index2], res);
+
+		res.push_back(P[index1][index2]);
+
+		getfloydWarshallPathIntAux(P[index1][index2],index2, res);
+	}
+}
+
+template <class T>
+void Graph<T>::clearClientsServed(vector<int> clients)
+{
+	typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
+	typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
+
+	for (; it!=ite; it++)
+	{
+		for(unsigned int i = 0; i < (*it)->clientsPossible.size(); i++)
+		{
+			for(unsigned int j = 0; j < clients.size(); j++)
+			{
+				if((*it)->clientsPossible[i] == clients[j])
+				{
+					(*it)->clientsPossible.erase((*it)->clientsPossible.begin() + i);
+					i--;
+				}
+			}
+		}
+	}
 }
 
 #endif /* GRAPH_H_ */

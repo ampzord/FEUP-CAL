@@ -62,7 +62,7 @@ void SupermarketNetwork::manage() {
 	Supermarket i("sadsadasdsadasdas23");
 	Supermarket a("sadsadasdsadasdasasds23");
 
-	graph.addVertex(x, "Supermarket");
+	/*graph.addVertex(x, "Supermarket");
 
 	graph.addVertex(y, "Client");
 	graph.addVertex(z, "Client");
@@ -70,7 +70,7 @@ void SupermarketNetwork::manage() {
 	graph.addVertex(w, "Nothing");
 	graph.addVertex(u, "Nothing");
 	graph.addVertex(i, "Supermarket");
-	graph.addVertex(a, "Client");
+	graph.addVertex(a, "Client");*/
 
 	graph.addEdge(x, w, 5);
 	graph.addEdge(w, x, 5);
@@ -167,33 +167,46 @@ void SupermarketNetwork::manage() {
 }
 
 void SupermarketNetwork::paintLoaded() {
+
 	for (size_t i = 0; i < nodes.size(); i++) {
-		fake_graph.addVertex(nodes[i], nodes[i].getType());
+		fake_graph.addVertex(nodes[i], nodes[i].getType(), nodes[i].getNodeId());
 		gv->addNode(nodes[i].getNodeId());
 		if (nodes[i].getType() == "User"){
+
 			gv->setVertexColor(nodes[i].getNodeId(), "yellow");
-			gv->setVertexLabel(nodes[i].getNodeId(), "User");
+
+			stringstream str;
+
+			str << nodes[i].getNodeId();
+
+			gv->setVertexLabel(nodes[i].getNodeId(), str.str());
 		}
 		if (nodes[i].getType() == "Market"){
 			gv->setVertexColor(nodes[i].getNodeId(), "green");
-			gv->setVertexLabel(nodes[i].getNodeId(), "Market");
+
+			stringstream str;
+
+			str << nodes[i].getNodeId();
+
+			gv->setVertexLabel(nodes[i].getNodeId(), str.str());
 		}
 	}
 
 	for (size_t i = 0; i < edges.size(); i++) {
-		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId()
-				&& edges[i].getV1Id() != edges[i].getV2Id())
-			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
-					edges[i].getV2Id(), 0);
+		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
+		{
+			fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), 300.0);
+			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
+		}
 	}
 
+	fake_graph.floydWarshallShortestPath();
 
-	graph.floydWarshallShortestPath();
-	graph.sortPaths();
+	fake_graph.sortPaths();
 }
 
 void SupermarketNetwork::addSupermarket(std::string name) {
-	graph.addVertex(Supermarket(name), "Supermarket");
+	/*graph.addVertex(Supermarket(name), "Supermarket");
 
 	gv->addNode(marketId);
 
@@ -201,7 +214,7 @@ void SupermarketNetwork::addSupermarket(std::string name) {
 
 	gv->rearrange();
 
-	marketId++;
+	marketId++;*/
 }
 
 bool SupermarketNetwork::handleRequest() {
@@ -406,7 +419,7 @@ void SupermarketNetwork::loadNodesRandom() {
 		default:
 			type = "Node";
 		}
-		int node_id;
+		long node_id;
 		float lat_deg, long_deg, lat_rad, long_rad;
 		std::string line;
 		std::string data;
