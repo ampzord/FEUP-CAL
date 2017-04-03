@@ -11,14 +11,19 @@
 #include "Supermarket.h"
 #include "graphviewer.h"
 #include "Graph.h"
+#include "Node.h"
+#include "FakeEdge.h"
 
 class SupermarketNetwork {
 private :
     std::string name;
     GraphViewer* gv;
     Graph<Supermarket> graph;
+    Graph<Node> fake_graph;
     int marketId;
     std::vector<Supermarket> markets;
+    std::vector<Node> nodes;
+    std::vector<FakeEdge> edges;
 public:
 	SupermarketNetwork(std::string name);
 	void manage();
@@ -26,9 +31,12 @@ public:
 	bool handleRequest();
 	void performOperation(std::string operation);
 	void loadMarkets();
+	void loadNodesRandom();
 	void loadNodeInformation();
 	void loadStreetInformation();
 	void loadEdgeInformation();
+	void loadFakeEdges();
+	void paintLoaded();
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */

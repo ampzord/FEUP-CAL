@@ -7,6 +7,7 @@
 
 #include "SupermarketNetwork.h"
 #include "Supermarket.h"
+#include "Node.h"
 #include <fstream>
 #include <sstream>
 
@@ -16,19 +17,37 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 	// TODO Auto-generated constructor stub
 
 	this->name = name;
-	this->gv = new GraphViewer(600, 600, true);
+	this->gv = new GraphViewer(1000, 600, true);
 
-	gv->createWindow(600, 600);
+	gv->createWindow(1000, 600);
 
 	gv->defineVertexColor("blue");
 
 	gv->defineEdgeColor("black");
 
+	loadNodesRandom();
+	loadFakeEdges();
 	//loadMarkets();
 
 	/*for (size_t i = 0; i < markets.size(); i++) {
-		gv->addNode(markets[i].getId(), markets[i].getX(), markets[i].getY());
-	}*/
+	 gv->addNode(markets[i].getId());
+	 }*/
+
+	/*
+	 for (size_t i = 0; i < nodes.size(); i++) {
+	 gv->addNode(nodes[i].getNodeId());
+	 if (nodes[i].getType() == 0)
+	 gv->setVertexColor(nodes[i].getNodeId(), "yellow");
+	 if (nodes[i].getType() == 1)
+	 gv->setVertexColor(nodes[i].getNodeId(), "green");
+	 }
+
+	 for (size_t i = 0; i < edges.size(); i++) {
+	 if(edges[i].getEdgeId() != edges[i-1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
+	 gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
+	 edges[i].getV2Id(), 0);
+	 }
+	 */
 
 	marketId = 0;
 }
@@ -147,6 +166,32 @@ void SupermarketNetwork::manage() {
 	getchar();
 }
 
+void SupermarketNetwork::paintLoaded() {
+	for (size_t i = 0; i < nodes.size(); i++) {
+		fake_graph.addVertex(nodes[i], nodes[i].getType());
+		gv->addNode(nodes[i].getNodeId());
+		if (nodes[i].getType() == "User"){
+			gv->setVertexColor(nodes[i].getNodeId(), "yellow");
+			gv->setVertexLabel(nodes[i].getNodeId(), "User");
+		}
+		if (nodes[i].getType() == "Market"){
+			gv->setVertexColor(nodes[i].getNodeId(), "green");
+			gv->setVertexLabel(nodes[i].getNodeId(), "Market");
+		}
+	}
+
+	for (size_t i = 0; i < edges.size(); i++) {
+		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId()
+				&& edges[i].getV1Id() != edges[i].getV2Id())
+			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
+					edges[i].getV2Id(), 0);
+	}
+
+
+	graph.floydWarshallShortestPath();
+	graph.sortPaths();
+}
+
 void SupermarketNetwork::addSupermarket(std::string name) {
 	graph.addVertex(Supermarket(name), "Supermarket");
 
@@ -226,7 +271,6 @@ void SupermarketNetwork::loadMarkets() {
 	inFile.close();
 }
 
-
 /** @brief Load nodes from nodes.txt to program */
 void SupermarketNetwork::loadNodeInformation() {
 
@@ -263,12 +307,9 @@ void SupermarketNetwork::loadNodeInformation() {
 	input_file.close();
 }
 
-
-
 void SupermarketNetwork::loadStreetInformation() {
 
 	std::ifstream input_file("Project-CAL/input/streets.txt");
-
 
 	if (!input_file) {
 		std::cerr << "Unable to open file streets.txt";
@@ -337,6 +378,88 @@ void SupermarketNetwork::loadEdgeInformation() {
 		cout << "roadID : " << roadID << endl;
 		cout << "nodeStartID : " << nodeStartID << endl;
 		cout << "nodeEndID : " << nodeEndID << endl << endl;
+
+	}
+
+	input_file.close();
+}
+
+void SupermarketNetwork::loadNodesRandom() {
+	std::ifstream input_file("Project-CAL/input/nodes_sandbox.txt");
+	int rand_type;
+
+	if (!input_file) {
+		std::cerr << "Unable to open file nodes_sandbox.txt";
+		//return 1;
+	}
+
+	while (!input_file.eof()) {
+		rand_type = rand() % 3;
+		string type;
+		switch (rand_type) {
+		case 0:
+			type = "User";
+			break;
+		case 1:
+			type = "Market";
+			break;
+		default:
+			type = "Node";
+		}
+		int node_id;
+		float lat_deg, long_deg, lat_rad, long_rad;
+		std::string line;
+		std::string data;
+
+		getline(input_file, line);
+		std::stringstream input_stream(line);
+
+		input_stream >> node_id;
+		getline(input_stream, data, ';');
+		input_stream >> lat_deg;
+		getline(input_stream, data, ';');
+		input_stream >> long_deg;
+		getline(input_stream, data, ';');
+		input_stream >> long_rad;
+		getline(input_stream, data, ' ');
+		input_stream >> lat_deg;
+
+		Node n1(node_id, type, lat_deg, long_deg, long_rad, lat_rad);
+		nodes.push_back(n1);
+		/* Data needs to be saved */
+
+	}
+
+	input_file.close();
+}
+
+void SupermarketNetwork::loadFakeEdges() {
+	std::ifstream input_file("Project-CAL/input/edges_sandbox.txt");
+
+	if (!input_file) {
+		std::cerr << "Unable to open file edges_sandbox.txt";
+		//return 1;
+	}
+
+	while (!input_file.eof()) {
+		int edgeId, v1Id, v2Id;
+
+		std::string line;
+		std::string data;
+
+		getline(input_file, line);
+		std::stringstream input_stream(line);
+
+		input_stream >> edgeId;
+		getline(input_stream, data, ';');
+		input_stream >> v1Id;
+		getline(input_stream, data, ';');
+		input_stream >> v2Id;
+
+		/* Data needs to be saved */
+
+		FakeEdge f1(edgeId, v1Id, v2Id);
+		edges.push_back(f1);
 
 	}
 
