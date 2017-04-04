@@ -109,7 +109,7 @@ template <class T>
 Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId): info(in), visited(false), processing(false), indegree(0), dist(0), type(typ), clients(0), id(nodeId) {
 	path = NULL;
 	time = 0;
-	if(typ == "Client")
+	if(typ == "User")
 	{
 		time = CLIENT_TIME;
 	}
@@ -820,6 +820,8 @@ void Graph<T>::floydWarshallShortestPath() {
 template<class T>
 void Graph<T>::sortPaths() {
 
+	cout << vertexSet.size() << endl;
+
 	map<Vertex<T>*, int> supermarkets;
 	map<Vertex<T>*, int> clients;
 
@@ -1082,7 +1084,10 @@ void Graph<T>::removeMostDistantClient(int supermarket, vector<int> & clients, t
 
 	if(it != ite)
 	{
-		it->first->clientsPossible.push_back(*(clients.begin() + index));
+		if(W[it->second][*(clients.begin() + index)] != INT_INFINITY)
+		{
+			it->first->clientsPossible.push_back(*(clients.begin() + index));
+		}
 	}
 
 	clients.erase(clients.begin() + index);

@@ -9,9 +9,9 @@ int main() {
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
 
 	//sn->loadEdgeInformation();
-	//sn->manage();
+	sn->manage();
 	//sn->loadNodesRandom();
-	sn->paintLoaded();
+	//sn->paintLoaded();
 	//delete sn;
 	getchar();
 

@@ -55,115 +55,130 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 void SupermarketNetwork::manage() {
 
 	Supermarket x(name);
-	Supermarket y("asd");
-	Supermarket z("asdadas");
-	Supermarket w("asdasdasdasdsa");
-	Supermarket u("sadsadasdsadasdas");
-	Supermarket i("sadsadasdsadasdas23");
-	Supermarket a("sadsadasdsadasdasasds23");
+		Supermarket y("asd");
+		Supermarket z("asdadas");
+		Supermarket w("asdasdasdasdsa");
+		Supermarket u("sadsadasdsadasdas");
+		Supermarket i("sadsadasdsadasdas23");
+		Supermarket a("sadsadasdsadasdasasds23");
 
-	/*graph.addVertex(x, "Supermarket");
+		graph.addVertex(x, "Market", 0);
 
-	graph.addVertex(y, "Client");
-	graph.addVertex(z, "Client");
+		graph.addVertex(y, "User", 1);
+		graph.addVertex(z, "User", 2);
 
-	graph.addVertex(w, "Nothing");
-	graph.addVertex(u, "Nothing");
-	graph.addVertex(i, "Supermarket");
-	graph.addVertex(a, "Client");*/
+		graph.addVertex(w, "Nothing", 3);
+		graph.addVertex(u, "Nothing", 4);
+		graph.addVertex(i, "Market", 5);
+		graph.addVertex(a, "User", 6);
 
-	graph.addEdge(x, w, 5);
-	graph.addEdge(w, x, 5);
+		graph.addEdge(x, w, 100);
+		graph.addEdge(w, x, 100);
 
-	graph.addEdge(x, u, 8);
-	graph.addEdge(u, x, 8);
+		graph.addEdge(x, u, 200);
+		graph.addEdge(u, x, 200);
 
-	graph.addEdge(w, y, 2);
-	graph.addEdge(y, w, 2);
+		graph.addEdge(w, y, 100);
+		graph.addEdge(y, w, 100);
 
-	graph.addEdge(u, z, 3);
-	graph.addEdge(z, u, 3);
+		graph.addEdge(u, z, 200);
+		graph.addEdge(z, u, 200);
 
-	graph.addEdge(z, y, 4);
-	graph.addEdge(y, z, 4);
+		graph.addEdge(z, y, 400);
+		graph.addEdge(y, z, 400);
 
-	graph.addEdge(i, y, 10);
-	graph.addEdge(y, i, 10);
+		graph.addEdge(i, y, 200);
+		graph.addEdge(y, i, 200);
 
-	graph.addEdge(a, x, 2);
-	graph.addEdge(x, a, 2);
+		graph.addEdge(a, x, 300);
+		graph.addEdge(x, a, 300);
 
-	gv->addNode(marketId);
+		graph.addEdge(w, u, 200);
+		graph.addEdge(u, w, 200);
 
-	gv->setVertexLabel(marketId, "0");
+		graph.addEdge(y, u, 100);
+		graph.addEdge(u, y, 100);
 
-	marketId++;
+		graph.addEdge(w, z, 250);
+		graph.addEdge(z, w, 250);
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "1");
+		gv->setVertexLabel(marketId, "0");
 
-	marketId++;
+		marketId++;
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "2");
+		gv->setVertexLabel(marketId, "1");
 
-	marketId++;
+		marketId++;
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "3");
+		gv->setVertexLabel(marketId, "2");
 
-	marketId++;
+		marketId++;
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "4");
+		gv->setVertexLabel(marketId, "3");
 
-	marketId++;
+		marketId++;
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "5");
+		gv->setVertexLabel(marketId, "4");
 
-	marketId++;
+		marketId++;
 
-	gv->addNode(marketId);
+		gv->addNode(marketId);
 
-	gv->setVertexLabel(marketId, "6");
+		gv->setVertexLabel(marketId, "5");
 
-	marketId++;
+		marketId++;
 
-	gv->setVertexColor(0, "green");
-	gv->setVertexColor(5, "green");
+		gv->addNode(marketId);
 
-	gv->setVertexColor(1, "yellow");
-	gv->setVertexColor(2, "yellow");
-	gv->setVertexColor(6, "yellow");
+		gv->setVertexLabel(marketId, "6");
 
-	gv->addEdge(0, 0, 3, 0);
-	gv->addEdge(1, 0, 4, 0);
-	gv->addEdge(2, 3, 1, 0);
-	gv->addEdge(3, 4, 2, 0);
-	gv->addEdge(4, 2, 1, 0);
-	gv->addEdge(5, 5, 1, 0);
-	gv->addEdge(6, 6, 0, 0);
+		marketId++;
 
-	gv->setEdgeLabel(0, "5");
-	gv->setEdgeLabel(1, "8");
-	gv->setEdgeLabel(2, "2");
-	gv->setEdgeLabel(3, "3");
-	gv->setEdgeLabel(4, "4");
-	gv->setEdgeLabel(5, "10");
-	gv->setEdgeLabel(6, "2");
+		gv->setVertexColor(0, "green");
+		gv->setVertexColor(5, "green");
 
-	gv->rearrange();
+		gv->setVertexColor(1, "yellow");
+		gv->setVertexColor(2, "yellow");
+		gv->setVertexColor(6, "yellow");
 
-	graph.floydWarshallShortestPath();
-	graph.sortPaths();
+		gv->addEdge(0, 0, 3, 0);
+		gv->addEdge(1, 0, 4, 0);
+		gv->addEdge(2, 3, 1, 0);
+		gv->addEdge(3, 4, 2, 0);
+		gv->addEdge(4, 2, 1, 0);
+		gv->addEdge(5, 5, 1, 0);
+		gv->addEdge(6, 6, 0, 0);
+		gv->addEdge(7, 3, 4, 0);
+		gv->addEdge(8, 1, 4, 0);
+		gv->addEdge(9, 2, 3, 0);
 
-	getchar();
+		gv->setEdgeLabel(0, "100");
+		gv->setEdgeLabel(1, "200");
+		gv->setEdgeLabel(2, "100");
+		gv->setEdgeLabel(3, "200");
+		gv->setEdgeLabel(4, "400");
+		gv->setEdgeLabel(5, "200");
+		gv->setEdgeLabel(6, "300");
+		gv->setEdgeLabel(7, "200");
+		gv->setEdgeLabel(8, "100");
+		gv->setEdgeLabel(9, "250");
+
+		gv->rearrange();
+
+		graph.floydWarshallShortestPath();
+		graph.sortPaths();
+
+		getchar();
 }
 
 void SupermarketNetwork::paintLoaded() {
