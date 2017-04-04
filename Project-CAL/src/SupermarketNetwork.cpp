@@ -212,6 +212,10 @@ void SupermarketNetwork::paintLoaded() {
 	for (size_t i = 0; i < edges.size(); i++) {
 		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
 		{
+//			for (size_t j = 0; j < nodes.size();j++) {
+//				if (nodes[i].getNodeId() == edges[i].getV1Id())
+//			}
+
 			fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), 300.0);
 			fake_graph.addEdge(edges[i].getV2Id(), edges[i].getV1Id(), 300.0);
 			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
@@ -231,7 +235,7 @@ void SupermarketNetwork::printResults(map<int, vector<int> > res)
 	{
 		cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
 		cout << "PATH";
-		for(int i = 0; i < it->second.size(); i++)
+		for(unsigned int i = 0; i < it->second.size(); i++)
 		{
 			cout << " " << fake_graph.getVertexId(it->second[i]);
 		}
@@ -513,4 +517,20 @@ void SupermarketNetwork::loadFakeEdges() {
 	}
 
 	input_file.close();
+}
+
+/* source : http://www.movable-type.co.uk/scripts/latlong.html */
+double SupermarketNetwork::calculateDistance(double lat1, double lat2, double long1, double long2) {
+	double R = 6371000;
+
+	double lat1_rad = lat1*PI / 180;
+	double lat2_rad = lat2*PI / 180;
+
+	double deltaLat = (lat2 - lat1) * PI / 180;
+	double deltaLong = (long2 - long1) * PI / 180;
+
+	double a = sin(deltaLat/2) * sin(deltaLat/2) + cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong/2) * sin(deltaLong/2);
+	double c = 2 * atan2(sqrt(a), sqrt(1-a));
+
+	return R * c;
 }

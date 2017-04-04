@@ -5,6 +5,7 @@
 #include "Client.h"
 #include "SupermarketNetwork.h"
 
+
 int main() {
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
 

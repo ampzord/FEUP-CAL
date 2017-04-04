@@ -14,6 +14,8 @@
 #include "Node.h"
 #include "FakeEdge.h"
 
+#define PI 3.14159265358979323846
+
 class SupermarketNetwork {
 private :
     std::string name;
@@ -38,6 +40,7 @@ public:
 	void loadFakeEdges();
 	void paintLoaded();
 	void printResults(map<int, vector<int> > res);
+	double calculateDistance(double lat1, double lat2, double long1, double long2);
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */
