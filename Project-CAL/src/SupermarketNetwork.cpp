@@ -29,6 +29,7 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 
 	loadNodesRandom();
 	loadFakeEdges();
+	loadStreetInformation();
 	//loadMarkets();
 
 	/*for (size_t i = 0; i < markets.size(); i++) {
@@ -184,13 +185,14 @@ void SupermarketNetwork::manage() {
 void SupermarketNetwork::paintLoaded() {
 
 	for (size_t i = 0; i < nodes.size(); i++) {
-		bool res = fake_graph.addVertex(nodes[i], nodes[i].getType(), nodes[i].getNodeId());
-		if(res)
+		bool res = fake_graph.addVertex(nodes[i], nodes[i].getType(),
+				nodes[i].getNodeId());
+		if (res)
 			gv->addNode(nodes[i].getNodeId());
-		else{
+		else {
 			continue;
 		}
-		if (nodes[i].getType() == "User"){
+		if (nodes[i].getType() == "User") {
 
 			gv->setVertexColor(nodes[i].getNodeId(), "yellow");
 
@@ -200,7 +202,7 @@ void SupermarketNetwork::paintLoaded() {
 
 			gv->setVertexLabel(nodes[i].getNodeId(), str.str());
 		}
-		if (nodes[i].getType() == "Market"){
+		if (nodes[i].getType() == "Market") {
 			gv->setVertexColor(nodes[i].getNodeId(), "green");
 
 			stringstream str;
@@ -212,10 +214,10 @@ void SupermarketNetwork::paintLoaded() {
 	}
 
 	for (size_t i = 0; i < edges.size(); i++) {
-		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
-		{
+		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId()
+				&& edges[i].getV1Id() != edges[i].getV2Id()) {
 			double lat1, lat2, long1, long2, distance;
-			for (size_t j = 0; j < nodes.size();j++) {
+			for (size_t j = 0; j < nodes.size(); j++) {
 				if (nodes[j].getNodeId() == edges[i].getV1Id()) {
 					lat1 = nodes[j].getLatitudeInDegrees();
 					long1 = nodes[j].getLongitudeInDegrees();
@@ -226,12 +228,22 @@ void SupermarketNetwork::paintLoaded() {
 				}
 			}
 
-			distance = distanceBetween2Nodes(lat1,lat2,long1,long2);
-			bool res1 = fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), distance);
-			bool res2 = fake_graph.addEdge(edges[i].getV2Id(), edges[i].getV1Id(), distance);
-			if(res1 && res2)
-			{
-				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
+			distance = distanceBetween2Nodes(lat1, lat2, long1, long2);
+			bool res1, res2;
+
+			if (edges[i].isTwoWay()) {
+				res1 = fake_graph.addEdge(edges[i].getV1Id(),
+						edges[i].getV2Id(), distance);
+				res2 = fake_graph.addEdge(edges[i].getV2Id(),
+						edges[i].getV1Id(), distance);
+			} else {
+				res1 = fake_graph.addEdge(edges[i].getV1Id(),
+						edges[i].getV2Id(), distance);
+				res2 = false;
+			}
+			if (res1 && res2) {
+				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
+						edges[i].getV2Id(), 0);
 			}
 		}
 	}
@@ -244,14 +256,12 @@ void SupermarketNetwork::paintLoaded() {
 	printResults(res);
 }
 
-void SupermarketNetwork::printResults(map<int, vector<int> > res)
-{
-	for(map<int, vector<int> >::iterator it = res.begin(); it != res.end(); it++)
-	{
+void SupermarketNetwork::printResults(map<int, vector<int> > res) {
+	for (map<int, vector<int> >::iterator it = res.begin(); it != res.end();
+			it++) {
 		cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
 		cout << "PATH";
-		for(unsigned int i = 0; i < it->second.size(); i++)
-		{
+		for (unsigned int i = 0; i < it->second.size(); i++) {
 			cout << " " << fake_graph.getVertexId(it->second[i]);
 		}
 
@@ -262,13 +272,13 @@ void SupermarketNetwork::printResults(map<int, vector<int> > res)
 void SupermarketNetwork::addSupermarket(std::string name) {
 	/*graph.addVertex(Supermarket(name), "Supermarket");
 
-	gv->addNode(marketId);
+	 gv->addNode(marketId);
 
-	//gv->setVertexLabel(marketId, name);
+	 //gv->setVertexLabel(marketId, name);
 
-	gv->rearrange();
+	 gv->rearrange();
 
-	marketId++;*/
+	 marketId++;*/
 }
 
 bool SupermarketNetwork::handleRequest() {
@@ -385,6 +395,9 @@ void SupermarketNetwork::loadStreetInformation() {
 
 	while (!input_file.eof()) {
 		unsigned long long roadID;
+		FakeEdge * f1;
+		int pos;
+
 		std::string roadName;
 		bool isTwoWays;
 
@@ -407,9 +420,10 @@ void SupermarketNetwork::loadStreetInformation() {
 
 		/* Add to Street.cpp later to be added */
 
-		cout << "roadID : " << roadID << endl;
-		cout << "roadName : " << roadName << endl;
-		cout << "isTwoWays : " << isTwoWays << endl << endl;
+		if(isEdgePosById(roadID)){
+		pos = getEdgePosById(roadID);
+		edges[pos].setTwoWay(isTwoWays);
+		}
 
 	}
 
@@ -535,17 +549,37 @@ void SupermarketNetwork::loadFakeEdges() {
 }
 
 /* source : http://www.movable-type.co.uk/scripts/latlong.html */
-double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2, double long1, double long2) {
+double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
+		double long1, double long2) {
 	double R = 6371000;
 
-	double lat1_rad = lat1*PI / 180;
-	double lat2_rad = lat2*PI / 180;
+	double lat1_rad = lat1 * PI / 180;
+	double lat2_rad = lat2 * PI / 180;
 
 	double deltaLat = (lat2 - lat1) * PI / 180;
 	double deltaLong = (long2 - long1) * PI / 180;
 
-	double a = sin(deltaLat/2) * sin(deltaLat/2) + cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong/2) * sin(deltaLong/2);
-	double c = 2 * atan2(sqrt(a), sqrt(1-a));
+	double a = sin(deltaLat / 2) * sin(deltaLat / 2)
+			+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
+					* sin(deltaLong / 2);
+	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
 	return R * c;
+}
+
+int SupermarketNetwork::getEdgePosById(unsigned long long id) {
+	int pos = 0;
+
+	for (size_t i = 0; i < edges.size(); i++) {
+		if (edges[i].getEdgeId() == id)
+			return i;
+	}
+}
+
+bool SupermarketNetwork::isEdgePosById(unsigned long long id) {
+	for (size_t i = 0; i < edges.size(); i++) {
+		if (edges[i].getEdgeId() == id)
+			return true;
+	}
+	return false;
 }

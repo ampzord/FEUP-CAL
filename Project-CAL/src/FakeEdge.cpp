@@ -18,6 +18,7 @@ FakeEdge::FakeEdge(unsigned long long id, unsigned long long v1, unsigned long l
 	this->edgeId = id;
 	this->v1Id = v1;
 	this->v2Id = v2;
+	this->twoWay = false;
 }
 
 FakeEdge::~FakeEdge() {

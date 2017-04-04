@@ -13,6 +13,8 @@ namespace std {
 class FakeEdge {
 private:
 	unsigned long long edgeId, v1Id, v2Id;
+	bool twoWay;
+
 public:
 	FakeEdge();
 	FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2);
@@ -28,6 +30,14 @@ public:
 
 	unsigned long long getV2Id() const {
 		return v2Id;
+	}
+
+	bool isTwoWay() const {
+		return twoWay;
+	}
+
+	void setTwoWay(bool twoWay) {
+		this->twoWay = twoWay;
 	}
 };
 

@@ -39,6 +39,8 @@ public:
 	void loadEdgeInformation();
 	void loadFakeEdges();
 	void paintLoaded();
+	int getEdgePosById(unsigned long long id);
+	bool isEdgePosById(unsigned long long id);
 	void printResults(map<int, vector<int> > res);
 	double distanceBetween2Nodes(double lat1, double lat2, double long1, double long2);
 };
