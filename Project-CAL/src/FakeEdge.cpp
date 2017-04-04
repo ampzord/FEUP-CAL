@@ -11,7 +11,6 @@ namespace std {
 
 FakeEdge::FakeEdge() {
 	// TODO Auto-generated constructor stub
-
 }
 
 FakeEdge::FakeEdge(int id, int v1, int v2){

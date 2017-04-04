@@ -19,6 +19,7 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 
 	this->name = name;
 	this->gv = new GraphViewer(1000, 600, true);
+	//gv->setBackground("input/map_image.png");
 
 	gv->createWindow(1000, 600);
 
