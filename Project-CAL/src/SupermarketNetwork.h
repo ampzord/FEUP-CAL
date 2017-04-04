@@ -37,6 +37,7 @@ public:
 	void loadEdgeInformation();
 	void loadFakeEdges();
 	void paintLoaded();
+	void printResults(map<int, vector<int> > res);
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */

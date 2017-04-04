@@ -219,7 +219,24 @@ void SupermarketNetwork::paintLoaded() {
 
 	fake_graph.floydWarshallShortestPath();
 
-	fake_graph.sortPaths();
+	map<int, vector<int> > res = fake_graph.sortPaths();
+
+	printResults(res);
+}
+
+void SupermarketNetwork::printResults(map<int, vector<int> > res)
+{
+	for(map<int, vector<int> >::iterator it = res.begin(); it != res.end(); it++)
+	{
+		cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
+		cout << "PATH";
+		for(int i = 0; i < it->second.size(); i++)
+		{
+			cout << " " << fake_graph.getVertexId(it->second[i]);
+		}
+
+		cout << endl << endl;
+	}
 }
 
 void SupermarketNetwork::addSupermarket(std::string name) {

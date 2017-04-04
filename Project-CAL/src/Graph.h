@@ -216,6 +216,7 @@ public:
 
 	//exercicio 5
 	Vertex<T>* getVertex(const T &v) const;
+	unsigned long long getVertexId(const int index) const;
 	void resetIndegrees();
 	vector<Vertex<T>*> getSources() const;
 	int getNumCycles();
@@ -232,7 +233,7 @@ public:
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
-	void sortPaths();
+	map <int, vector<int> > sortPaths();
 	vector<int> getPossiblePath(vector<int> clients);
 	Edge<T> getEdge(int src, int dst);
 	double pathTime(vector<int> clients, double & weight, int noClients);
@@ -461,6 +462,17 @@ Vertex<T>* Graph<T>::getVertex(const T &v) const {
 	for(unsigned int i = 0; i < vertexSet.size(); i++)
 		if (vertexSet[i]->info == v) return vertexSet[i];
 	return NULL;
+}
+
+template <class T>
+unsigned long long Graph<T>::getVertexId(const int index) const {
+
+	if(index >= vertexSet.size() || index < 0)
+	{
+		return -1;
+	}
+
+	return vertexSet[index]->id;
 }
 
 template<class T>
@@ -828,9 +840,7 @@ void Graph<T>::floydWarshallShortestPath() {
 }
 
 template<class T>
-void Graph<T>::sortPaths() {
-
-	cout << vertexSet.size() << endl;
+map <int, vector<int> > Graph<T>::sortPaths() {
 
 	map<Vertex<T>*, int> supermarkets;
 	map<Vertex<T>*, int> clients;
@@ -873,6 +883,8 @@ void Graph<T>::sortPaths() {
 		}
 	}
 
+	map<int, vector<int> > res;
+
 	for (typename map<Vertex<T>*, int>::iterator it = supermarkets.begin(); it != supermarkets.end(); it++)
 	{
 		bool tried = false;
@@ -883,29 +895,13 @@ void Graph<T>::sortPaths() {
 
 		while((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 		{
-			cout << "NODE ID: " << it->first->id << endl;
-
 			vector<int> tmp = it->first->clientsPossible;
-
-			for(unsigned int i = 0; i < tmp.size(); i++)
-			{
-				cout << vertexSet[tmp[i]]->id << " ";
-			}
-
-			cout << "END" << endl;
 
 			vector<int> asd = getPossiblePath(it->first->clientsPossible);
 
 			vector<int> full = getFullPath(it->second, asd);
 
 			time = pathTime(full, weight, it->first->clientsPossible.size());
-
-			for(unsigned int i = 0; i < asd.size(); i++)
-			{
-				cout << vertexSet[asd[i]]->id << " ";
-			}
-
-			cout << endl << time << endl;
 
 			if((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 			{
@@ -921,19 +917,22 @@ void Graph<T>::sortPaths() {
 					tried = rearrangeMap(supermarkets, it);
 				}
 			}
+			else
+			{
+				res.insert(typename std::map<int, vector<int> >::value_type(it->second, full));
+			}
 		}
 
 		clearClientsServed(it->first->clientsPossible);
 	}
+
+	return res;
 }
 
 template <class T>
 bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vertex<T>*, int>::iterator it)
 {
 	typename map<Vertex<T>*, int>::iterator it2 = it++;
-
-	cout << "IT 1: " << it->second << endl;
-	cout << "IT 2: " << it2->second << endl;
 
 	typename map<Vertex<T>*, int>::iterator ite = supermarkets.end();
 
@@ -994,9 +993,6 @@ bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vert
 		min1 = W[it2->second][*(clients.begin())];
 		min2 = W[it->second][*(clients2.begin())];
 
-		cout << "MIN1: " << min1 << " " << *clients.begin() << endl;
-		cout << "MIN2: " << min2 << " " << *clients2.begin() << endl;
-
 		if(min1 < min2)
 		{
 			client1.push_back(*clients.begin());
@@ -1046,7 +1042,6 @@ bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vert
 template <class T>
 bool Graph<T>::firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2)
 {
-	cout << "dsasd" << endl;
 	if(it == ite)
 	{
 		return false;
@@ -1123,14 +1118,10 @@ vector<int> Graph<T>::getPossiblePath(vector<int> clients) {
 
 	for(unsigned int i = 0; i < clients.size(); i++)
 	{
-		//cout << clients[i] << endl;
-
 		int x = clients[i];
 
 		for(unsigned int j = 0; j < clients.size(); j++)
 		{
-			//cout << "asda " << clients[j] << endl;
-
 			int y = clients[j];
 
 			if(W[x][y] > maximum)
