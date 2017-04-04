@@ -250,6 +250,12 @@ void SupermarketNetwork::paintLoaded() {
 				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
 										edges[i].getV2Id(), EdgeType::DIRECTED);
 			}
+
+			stringstream str;
+
+			str << distance;
+
+			gv->setEdgeLabel(edges[i].getEdgeId(), str.str());
 		}
 	}
 
