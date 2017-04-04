@@ -13,7 +13,7 @@ FakeEdge::FakeEdge() {
 	// TODO Auto-generated constructor stub
 }
 
-FakeEdge::FakeEdge(int id, int v1, int v2){
+FakeEdge::FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2){
 
 	this->edgeId = id;
 	this->v1Id = v1;

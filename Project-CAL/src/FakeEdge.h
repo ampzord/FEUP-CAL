@@ -12,21 +12,21 @@ namespace std {
 
 class FakeEdge {
 private:
-	int edgeId, v1Id, v2Id;
+	unsigned long long edgeId, v1Id, v2Id;
 public:
 	FakeEdge();
-	FakeEdge(int id, int v1, int v2);
+	FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2);
 	virtual ~FakeEdge();
 
-	int getEdgeId() const {
+	unsigned long long getEdgeId() const {
 		return edgeId;
 	}
 
-	int getV1Id() const {
+	unsigned long long getV1Id() const {
 		return v1Id;
 	}
 
-	int getV2Id() const {
+	unsigned long long getV2Id() const {
 		return v2Id;
 	}
 };

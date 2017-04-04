@@ -245,6 +245,7 @@ public:
 	bool rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vertex<T>*, int>::iterator it);
 	bool firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2);
 	void clearServed(vector<int> nodes);
+	void cutNodes(GraphViewer* gv);
 };
 
 template <class T>
@@ -895,6 +896,7 @@ map <int, vector<int> > Graph<T>::sortPaths() {
 
 		while((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 		{
+
 			vector<int> tmp = it->first->clientsPossible;
 
 			vector<int> asd = getPossiblePath(it->first->clientsPossible);
@@ -990,17 +992,23 @@ bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vert
 			break;
 		}
 
+		cout << "C3" << endl;
+
 		min1 = W[it2->second][*(clients.begin())];
 		min2 = W[it->second][*(clients2.begin())];
 
+		cout << "C4" << endl;
+
 		if(min1 < min2)
 		{
+			cout << "C5" << endl;
 			client1.push_back(*clients.begin());
 			clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
 			clients.erase(clients.begin());
 		}
 		else if(min2 < min1)
 		{
+			cout << "C6" << endl;
 			client2.push_back(*clients2.begin());
 			clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
 			clients2.erase(clients2.begin());
@@ -1013,17 +1021,27 @@ bool Graph<T>::rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vert
 			start2++;
 			if(firstShortDist(it2->second, start, clients.end(), it->second, start2, clients2.end()))
 			{
+				cout << "D5" << endl;
 				client1.push_back(*clients.begin());
+				cout << "D6" << endl;
 				clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
+				cout << "D7" << endl;
 				clients.erase(clients.begin());
+				cout << "D8" << endl;
 			}
 			else
 			{
+				cout << "D1" << endl;
 				client2.push_back(*clients2.begin());
+				cout << "D2" << endl;
 				clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
+				cout << "D3" << endl;
 				clients2.erase(clients2.begin());
+				cout << "D4" << endl;
 			}
 		}
+
+		cout << "D10" << endl;
 
 		count++;
 	}
@@ -1306,6 +1324,33 @@ void Graph<T>::clearClientsServed(vector<int> clients)
 				}
 			}
 		}
+	}
+}
+
+template <class T>
+void Graph<T>::cutNodes(GraphViewer* gv)
+{
+	bool changed = true;
+	while(changed)
+	{
+		changed = false;
+		for(unsigned int i = 0; i < vertexSet.size(); i++)
+		{
+			//cout << vertexSet[i]->indegree << endl;
+			//cout << vertexSet[i]->adj.size() << endl;
+			if (vertexSet[i]->indegree == 2 && vertexSet[i]->adj.size() == 2)
+			{
+				//cout << "D1" << endl;
+				gv->removeNode(vertexSet[i]->id);
+				addEdge(vertexSet[i]->adj[0].dest->info, vertexSet[i]->adj[1].dest->info, vertexSet[i]->adj[0].weight + vertexSet[i]->adj[1].weight);
+				removeVertex(vertexSet[i]->info);
+				i--;
+				changed = true;
+				continue;
+			}
+		}
+
+		cout << "ENDL" << endl;
 	}
 }
 

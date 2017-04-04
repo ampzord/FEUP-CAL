@@ -186,8 +186,12 @@ void SupermarketNetwork::manage() {
 void SupermarketNetwork::paintLoaded() {
 
 	for (size_t i = 0; i < nodes.size(); i++) {
-		fake_graph.addVertex(nodes[i], nodes[i].getType(), nodes[i].getNodeId());
-		gv->addNode(nodes[i].getNodeId());
+		bool res = fake_graph.addVertex(nodes[i], nodes[i].getType(), nodes[i].getNodeId());
+		if(res)
+			gv->addNode(nodes[i].getNodeId());
+		else{
+			continue;
+		}
 		if (nodes[i].getType() == "User"){
 
 			gv->setVertexColor(nodes[i].getNodeId(), "yellow");
@@ -216,12 +220,16 @@ void SupermarketNetwork::paintLoaded() {
 //				if (nodes[i].getNodeId() == edges[i].getV1Id())
 //			}
 
-			fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), 300.0);
-			fake_graph.addEdge(edges[i].getV2Id(), edges[i].getV1Id(), 300.0);
-			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
+			bool res1 = fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), 300.0);
+			bool res2 = fake_graph.addEdge(edges[i].getV2Id(), edges[i].getV1Id(), 300.0);
+			if(res1 && res2)
+			{
+				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
+			}
 		}
 	}
 
+	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
 	map<int, vector<int> > res = fake_graph.sortPaths();
@@ -300,7 +308,7 @@ void SupermarketNetwork::loadMarkets() {
 	}
 
 	string line;
-	int id, x, y;
+	unsigned long long id, x, y;
 
 	while (!inFile.eof()) {
 		getline(inFile, line);
@@ -459,7 +467,7 @@ void SupermarketNetwork::loadNodesRandom() {
 		default:
 			type = "Node";
 		}
-		long node_id;
+		unsigned long long node_id;
 		float lat_deg, long_deg, lat_rad, long_rad;
 		std::string line;
 		std::string data;
@@ -495,7 +503,7 @@ void SupermarketNetwork::loadFakeEdges() {
 	}
 
 	while (!input_file.eof()) {
-		int edgeId, v1Id, v2Id;
+		unsigned long long edgeId, v1Id, v2Id;
 
 		std::string line;
 		std::string data;
