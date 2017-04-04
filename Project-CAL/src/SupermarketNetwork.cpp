@@ -243,7 +243,12 @@ void SupermarketNetwork::paintLoaded() {
 			}
 			if (res1 && res2) {
 				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
-						edges[i].getV2Id(), 0);
+						edges[i].getV2Id(), EdgeType::UNDIRECTED);
+			}
+			else if(res1)
+			{
+				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
+										edges[i].getV2Id(), EdgeType::DIRECTED);
 			}
 		}
 	}
