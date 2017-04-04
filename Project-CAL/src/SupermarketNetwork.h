@@ -40,7 +40,7 @@ public:
 	void loadFakeEdges();
 	void paintLoaded();
 	void printResults(map<int, vector<int> > res);
-	double calculateDistance(double lat1, double lat2, double long1, double long2);
+	double distanceBetween2Nodes(double lat1, double lat2, double long1, double long2);
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */
