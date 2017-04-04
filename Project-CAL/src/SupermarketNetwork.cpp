@@ -178,9 +178,7 @@ void SupermarketNetwork::manage() {
 	gv->rearrange();
 
 	graph.floydWarshallShortestPath();
-	graph.sortPaths();
-
-	getchar();
+	graph.sortPaths(false);
 }
 
 void SupermarketNetwork::paintLoaded() {
@@ -241,7 +239,7 @@ void SupermarketNetwork::paintLoaded() {
 	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
-	map<int, vector<int> > res = fake_graph.sortPaths();
+	map<int, vector<int> > res = fake_graph.sortPaths(false);
 
 	printResults(res);
 }

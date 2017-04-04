@@ -233,8 +233,9 @@ public:
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
-	map <int, vector<int> > sortPaths();
+	map <int, vector<int> > sortPaths(bool normal);
 	vector<int> getPossiblePath(vector<int> clients);
+	vector<int> getPossiblePath(int supermarket, vector<int> clients);
 	Edge<T> getEdge(int src, int dst);
 	double pathTime(vector<int> clients, double & weight, int noClients);
 	vector<int> getFullPath(int suprmarket, vector<int> nodes);
@@ -841,7 +842,7 @@ void Graph<T>::floydWarshallShortestPath() {
 }
 
 template<class T>
-map <int, vector<int> > Graph<T>::sortPaths() {
+map <int, vector<int> > Graph<T>::sortPaths(bool normal) {
 
 	map<Vertex<T>*, int> supermarkets;
 	map<Vertex<T>*, int> clients;
@@ -899,9 +900,18 @@ map <int, vector<int> > Graph<T>::sortPaths() {
 
 			vector<int> tmp = it->first->clientsPossible;
 
-			vector<int> asd = getPossiblePath(it->first->clientsPossible);
+			vector<int> full;
 
-			vector<int> full = getFullPath(it->second, asd);
+			if(normal)
+			{
+				vector<int> asd = getPossiblePath(it->first->clientsPossible);
+
+				full = getFullPath(it->second, asd);
+			}
+			else
+			{
+				full = getPossiblePath(it->second, it->first->clientsPossible);
+			}
 
 			time = pathTime(full, weight, it->first->clientsPossible.size());
 
@@ -1175,6 +1185,53 @@ vector<int> Graph<T>::getPossiblePath(vector<int> clients) {
 	}
 
 	res.push_back(clients[dst]);
+
+	return res;
+}
+
+template <class T>
+vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
+
+	int minimum = INT_MAX;
+	int dst = -1;
+	int source = -1;
+
+	for(int i = 0; i < clients.size(); i++)
+	{
+		if(W[supermarket][clients[i]] < minimum)
+		{
+			minimum = W[supermarket][clients[i]];
+			dst = i;
+			source = clients[i];
+		}
+	}
+
+	vector<int> res;
+
+	res.push_back(supermarket);
+
+	minimum = INT_MAX;
+
+	while(clients.size() > 1)
+	{
+		res.push_back(source);
+
+		for(int i = 0; i < clients.size(); i++)
+		{
+			if(W[source][clients[i]] < minimum)
+			{
+				minimum = W[dst][clients[i]];
+				dst = i;
+				source = clients[i];
+			}
+		}
+
+		minimum = INT_MAX;
+
+		clients.erase(clients.begin() + dst);
+	}
+
+	res.push_back(*clients.begin());
 
 	return res;
 }
