@@ -55,6 +55,8 @@ class Vertex {
 	vector<int> clientsPossible;
 	unsigned long long id;
 	double time;
+	double weight;
+	bool served;
 
 public:
 
@@ -106,12 +108,19 @@ bool Vertex<T>::operator<(const Vertex<T> vertex) {
 
 //atualizado pelo exercício 5
 template <class T>
-Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId): info(in), visited(false), processing(false), indegree(0), dist(0), type(typ), clients(0), id(nodeId) {
+Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId): info(in), visited(false), processing(false), indegree(0), dist(0), type(typ), clients(0), id(nodeId), served(false) {
 	path = NULL;
 	time = 0;
+	weight = 0;
 	if(typ == "User")
 	{
 		time = CLIENT_TIME;
+		weight = rand() % 10 + 1;
+	}
+
+	if(typ == "Market")
+	{
+		weight = rand() % 20 + 11;
 	}
 }
 
@@ -226,7 +235,7 @@ public:
 	void sortPaths();
 	vector<int> getPossiblePath(vector<int> clients);
 	Edge<T> getEdge(int src, int dst);
-	double pathTime(vector<int> clients);
+	double pathTime(vector<int> clients, double & weight, int noClients);
 	vector<int> getFullPath(int suprmarket, vector<int> nodes);
 	vector<int> getfloydWarshallPathInt(int origin, int destination);
 	void getfloydWarshallPathIntAux(int index1, int index2, vector<int> & res);
@@ -234,6 +243,7 @@ public:
 	void removeMostDistantClient(int supermarket, vector<int> & clients, typename map<Vertex<T>*, int>::iterator it, typename map<Vertex<T>*, int>::iterator ite);
 	bool rearrangeMap(map<Vertex<T>*, int> supermarkets, typename map<Vertex<T>*, int>::iterator it);
 	bool firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2);
+	void clearServed(vector<int> nodes);
 };
 
 template <class T>
@@ -869,7 +879,9 @@ void Graph<T>::sortPaths() {
 
 		double time = 24;
 
-		while(time >= 24 && it->first->clientsPossible.size() > 0)
+		double weight = it->first->weight + 1;
+
+		while((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 		{
 			cout << "NODE ID: " << it->first->id << endl;
 
@@ -886,7 +898,7 @@ void Graph<T>::sortPaths() {
 
 			vector<int> full = getFullPath(it->second, asd);
 
-			time = pathTime(full);
+			time = pathTime(full, weight, it->first->clientsPossible.size());
 
 			for(unsigned int i = 0; i < asd.size(); i++)
 			{
@@ -895,8 +907,9 @@ void Graph<T>::sortPaths() {
 
 			cout << endl << time << endl;
 
-			if(time >= 24 && it->first->clientsPossible.size() > 0)
+			if((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 			{
+				clearServed(full);
 				if(tried)
 				{
 					typename map<Vertex<T>*, int>::iterator it2 = it;
@@ -1158,17 +1171,41 @@ vector<int> Graph<T>::getPossiblePath(vector<int> clients) {
 }
 
 template <class T>
-double Graph<T>::pathTime(vector<int> nodes) {
+double Graph<T>::pathTime(vector<int> nodes, double & weight, int noClients) {
 
 	double time = 0;
 
+	weight = 0;
+
+	int noC = 0;
+
 	for(unsigned int i = 1; i < nodes.size(); i++)
 	{
+		if(noC >= noClients)
+		{
+			break;
+		}
+
 		Edge<T> adj = getEdge(nodes[i-1], nodes[i]);
 		time += vertexSet[nodes[i-1]]->time + adj.time;
+		if(vertexSet[nodes[i]]->type == "User" && !(vertexSet[nodes[i]]->served))
+		{
+			noC++;
+			weight += vertexSet[nodes[i]]->weight;
+			vertexSet[nodes[i]]->served = true;
+		}
 	}
 
 	return time;
+}
+
+template <class T>
+void Graph<T>::clearServed(vector<int> nodes) {
+
+	for(unsigned int i = 0; i < nodes.size(); i++)
+	{
+		vertexSet[nodes[i]]->served = false;
+	}
 }
 
 template <class T>

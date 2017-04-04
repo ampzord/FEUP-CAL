@@ -211,6 +211,7 @@ void SupermarketNetwork::paintLoaded() {
 		if (edges[i].getEdgeId() != edges[i - 1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
 		{
 			fake_graph.addEdge(edges[i].getV1Id(), edges[i].getV2Id(), 300.0);
+			fake_graph.addEdge(edges[i].getV2Id(), edges[i].getV1Id(), 300.0);
 			gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(), edges[i].getV2Id(), 0);
 		}
 	}
