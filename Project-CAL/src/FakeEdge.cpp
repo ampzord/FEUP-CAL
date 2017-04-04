@@ -13,6 +13,12 @@ FakeEdge::FakeEdge() {
 	// TODO Auto-generated constructor stub
 }
 
+/**
+ * \brief Construtor da classe FakeEdge com argumentos.
+ * \param id Id da edge.
+ * \param v1 Id do node de origem.
+ * \param v2 Id do node de destino.
+ */
 FakeEdge::FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2){
 
 	this->edgeId = id;

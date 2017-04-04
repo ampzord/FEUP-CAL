@@ -5,7 +5,11 @@
 #include "Client.h"
 #include "SupermarketNetwork.h"
 
-
+/**
+ * \brief Cria uma SupermarketNetwork.
+ * \details Aplica os algoritmos pretendidos,
+ * \details Gera a vizualizacao do Grafo.
+ */
 int main() {
 
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");

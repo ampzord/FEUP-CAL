@@ -16,6 +16,7 @@
 
 #define PI 3.14159265358979323846
 
+/* A dummy class */
 class SupermarketNetwork {
 private :
     std::string name;

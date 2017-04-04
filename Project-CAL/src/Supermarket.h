@@ -6,6 +6,7 @@
 
 #include "Item.h"
 
+/* A dummy class */
 class Supermarket {
 private :
     std::string name;

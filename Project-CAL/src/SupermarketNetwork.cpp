@@ -14,6 +14,10 @@
 
 using namespace std;
 
+/**
+ * \brief Construtor da classe SupermarketNetwork
+ * \param name nome do objeto SupermarketNetwork
+ */
 SupermarketNetwork::SupermarketNetwork(std::string name) {
 	// TODO Auto-generated constructor stub
 
@@ -182,6 +186,10 @@ void SupermarketNetwork::manage() {
 	graph.sortPaths(false);
 }
 
+/**
+ * \brief Insere no Grafo os nós e edges e pinta-os tambem no GraphViewr.
+ * \details Os nos e edges encontram-se nos vectores atributo nodes[] e edges[].
+ */
 void SupermarketNetwork::paintLoaded() {
 
 	for (size_t i = 0; i < nodes.size(); i++) {
@@ -265,6 +273,10 @@ void SupermarketNetwork::paintLoaded() {
 	printResults(res);
 }
 
+/**
+ * \brief Escreve no ficheiro os resultado da aplicacao dos algoritmos.
+ * \details results.txt
+ */
 void SupermarketNetwork::printResults(map<int, vector<int> > res) {
 	ofstream myfile("Project-CAL/input/results.txt");
 	if (myfile.is_open()) {
@@ -282,7 +294,7 @@ void SupermarketNetwork::printResults(map<int, vector<int> > res) {
 			}
 
 			cout << endl << endl;
-			myfile << endl <<  "<----------------------->" << endl;
+			myfile << endl << "<----------------------->" << endl;
 		}
 
 		myfile.close();
@@ -404,6 +416,12 @@ void SupermarketNetwork::loadNodeInformation() {
 	input_file.close();
 }
 
+/**
+ * \brief Faz load das Ruas em txt atualizando o atributo TwoWays de cada uma.
+ * \details Para cada Rua em txt,"True" ou "False" definem o atributo de cada objeto.
+ * \details True torna possivel a Rua ter 2 sentidos.
+ * \details False garante que a Rua so tem um sentido.
+ */
 void SupermarketNetwork::loadStreetInformation() {
 
 	std::ifstream input_file("Project-CAL/input/streets.txt");
@@ -485,6 +503,11 @@ void SupermarketNetwork::loadEdgeInformation() {
 	input_file.close();
 }
 
+/**
+ * \brief Faz load dos nodes em txt, adicionando-lhes um Random Type.
+ * \details Para cada node em txt é criado um objeto Node e inserido em nodes[].
+ * \details O Random Type usado serve para criar Markets, Users e Default Points.
+ */
 void SupermarketNetwork::loadNodesRandom() {
 	std::ifstream input_file("Project-CAL/input/nodes_sandbox.txt");
 	srand(time(NULL));
@@ -535,6 +558,11 @@ void SupermarketNetwork::loadNodesRandom() {
 	input_file.close();
 }
 
+/**
+ * \brief Faz load das edges em txt e adiciona-as ao vector de edges.
+ * \details Para cada edge em txt cria objeto FakeEdge com parametros lidos.
+ * \details edges.txt
+ */
 void SupermarketNetwork::loadFakeEdges() {
 	std::ifstream input_file("Project-CAL/input/edges_sandbox.txt");
 
@@ -568,7 +596,13 @@ void SupermarketNetwork::loadFakeEdges() {
 	input_file.close();
 }
 
-/* source : http://www.movable-type.co.uk/scripts/latlong.html */
+/**
+ * \brief Calcula a distância entre dois nos.
+ * \param lat1 Latitude do no de origem.
+ * \param lat2 Latitude do no de destino.
+ * \param long1 Longitude do no de origem.
+ * \param long2 Longitude do no de destino.
+ */
 double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 		double long1, double long2) {
 	double R = 6371000;
@@ -587,6 +621,11 @@ double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 	return R * c;
 }
 
+/**
+ * \brief Retorna a posicao de uma edge no vector atraves do seu Id.
+ * \details Usado para localizar Ruas lidas e sincronizadas com edges.
+ * \param id Id da Rua a encontrar.
+ */
 int SupermarketNetwork::getEdgePosById(unsigned long long id) {
 	int pos = 0;
 
@@ -596,6 +635,11 @@ int SupermarketNetwork::getEdgePosById(unsigned long long id) {
 	}
 }
 
+/**
+ * \brief Verifica se existe alguma edge com o Id forncido.
+ * \details Usado para verificar a existencia de Ruas lidas no vector edges.
+ * \param id Id da Rua a verificar
+ */
 bool SupermarketNetwork::isEdgePosById(unsigned long long id) {
 	for (size_t i = 0; i < edges.size(); i++) {
 		if (edges[i].getEdgeId() == id)

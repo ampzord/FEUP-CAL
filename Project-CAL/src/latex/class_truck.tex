@@ -1,0 +1,94 @@
+\hypertarget{class_truck}{}\section{Truck Class Reference}
+\label{class_truck}\index{Truck@{Truck}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_truck_a2acdd2ee57218880d698eb672492bacf}{Truck} (double max\+\_\+weight)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \hyperlink{class_truck}{Truck} com argumentos. \end{DoxyCompactList}\item 
+\hypertarget{class_truck_a01468485bc9c1b8bec475bca0828b109}{}\label{class_truck_a01468485bc9c1b8bec475bca0828b109} 
+double \hyperlink{class_truck_a01468485bc9c1b8bec475bca0828b109}{get\+Max\+Weight} () const
+\begin{DoxyCompactList}\small\item\em Retorna o peso maximo suportado pelo camiao. \end{DoxyCompactList}\item 
+\hypertarget{class_truck_a356107b7e2cc09768e8da3f05e7a378e}{}\label{class_truck_a356107b7e2cc09768e8da3f05e7a378e} 
+std\+::vector$<$ \hyperlink{class_item}{Item} $\ast$ $>$ \hyperlink{class_truck_a356107b7e2cc09768e8da3f05e7a378e}{get\+Items} () const
+\begin{DoxyCompactList}\small\item\em Retorna o vector de Items do camiao. \end{DoxyCompactList}\item 
+void \hyperlink{class_truck_aabd304715b197a343be89514f490dd55}{add\+Item} (\hyperlink{class_item}{Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Adiciona um \hyperlink{class_item}{Item} ao camiao. \end{DoxyCompactList}\item 
+void \hyperlink{class_truck_a117a009f58f73401e923df180433d558}{add\+Items} (std\+::vector$<$ \hyperlink{class_item}{Item} $\ast$$>$ items)
+\begin{DoxyCompactList}\small\item\em Torna os Items do camiao os Items passados como argumento. \end{DoxyCompactList}\item 
+void \hyperlink{class_truck_a1bd94e89c4240f5b32b6356a1ce0e66d}{remove\+Item} (\hyperlink{class_item}{Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Remove o \hyperlink{class_item}{Item} passado como argumento do camiao. \end{DoxyCompactList}\item 
+\hypertarget{class_truck_ab66f8fd87d69d51949f706927012ed9a}{}\label{class_truck_ab66f8fd87d69d51949f706927012ed9a} 
+double \hyperlink{class_truck_ab66f8fd87d69d51949f706927012ed9a}{get\+Free\+Weight} () const
+\begin{DoxyCompactList}\small\item\em Retorna o peso restante suportado pelo camiao. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_truck_a2acdd2ee57218880d698eb672492bacf}{}\label{class_truck_a2acdd2ee57218880d698eb672492bacf} 
+\index{Truck@{Truck}!Truck@{Truck}}
+\index{Truck@{Truck}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{Truck()}{Truck()}}
+{\footnotesize\ttfamily Truck\+::\+Truck (\begin{DoxyParamCaption}\item[{double}]{max\+\_\+weight }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \hyperlink{class_truck}{Truck} com argumentos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+weight} & Peso maximo suportado pelo camiao. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_truck_aabd304715b197a343be89514f490dd55}{}\label{class_truck_aabd304715b197a343be89514f490dd55} 
+\index{Truck@{Truck}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{add\+Item()}{addItem()}}
+{\footnotesize\ttfamily void Truck\+::add\+Item (\begin{DoxyParamCaption}\item[{\hyperlink{class_item}{Item} $\ast$}]{item }\end{DoxyParamCaption})}
+
+
+
+Adiciona um \hyperlink{class_item}{Item} ao camiao. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Item$\ast$} & item \hyperlink{class_item}{Item} a ser adicionado ao vector items\mbox{[}\mbox{]}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_truck_a117a009f58f73401e923df180433d558}{}\label{class_truck_a117a009f58f73401e923df180433d558} 
+\index{Truck@{Truck}!add\+Items@{add\+Items}}
+\index{add\+Items@{add\+Items}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{add\+Items()}{addItems()}}
+{\footnotesize\ttfamily void Truck\+::add\+Items (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{class_item}{Item} $\ast$$>$}]{items }\end{DoxyParamCaption})}
+
+
+
+Torna os Items do camiao os Items passados como argumento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector$<$\+Item} & $\ast$$>$items Items a ser guardados no vetor items\mbox{[}\mbox{]} do camiao. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_truck_a1bd94e89c4240f5b32b6356a1ce0e66d}{}\label{class_truck_a1bd94e89c4240f5b32b6356a1ce0e66d} 
+\index{Truck@{Truck}!remove\+Item@{remove\+Item}}
+\index{remove\+Item@{remove\+Item}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{remove\+Item()}{removeItem()}}
+{\footnotesize\ttfamily void Truck\+::remove\+Item (\begin{DoxyParamCaption}\item[{\hyperlink{class_item}{Item} $\ast$}]{item }\end{DoxyParamCaption})}
+
+
+
+Remove o \hyperlink{class_item}{Item} passado como argumento do camiao. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Item$\ast$} & item \hyperlink{class_item}{Item} a ser removido do vector items\mbox{[}\mbox{]}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Truck.\+h\item 
+Truck.\+cpp\end{DoxyCompactItemize}
