@@ -244,11 +244,9 @@ void SupermarketNetwork::paintLoaded() {
 			if (res1 && res2) {
 				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
 						edges[i].getV2Id(), EdgeType::UNDIRECTED);
-			}
-			else if(res1)
-			{
+			} else if (res1) {
 				gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
-										edges[i].getV2Id(), EdgeType::DIRECTED);
+						edges[i].getV2Id(), EdgeType::DIRECTED);
 			}
 
 			stringstream str;
@@ -268,15 +266,26 @@ void SupermarketNetwork::paintLoaded() {
 }
 
 void SupermarketNetwork::printResults(map<int, vector<int> > res) {
-	for (map<int, vector<int> >::iterator it = res.begin(); it != res.end();
-			it++) {
-		cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
-		cout << "PATH";
-		for (unsigned int i = 0; i < it->second.size(); i++) {
-			cout << " " << fake_graph.getVertexId(it->second[i]);
+	ofstream myfile("Project-CAL/input/results.txt");
+	if (myfile.is_open()) {
+		for (map<int, vector<int> >::iterator it = res.begin(); it != res.end();
+				it++) {
+			myfile << "MARKET " << fake_graph.getVertexId(it->first) << endl;
+			myfile << "PATH";
+			cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
+			cout << "PATH";
+			for (unsigned int i = 0; i < it->second.size(); i++) {
+				myfile << " " << fake_graph.getVertexId(it->second[i]);
+			}
+			for (unsigned int i = 0; i < it->second.size(); i++) {
+				cout << " " << fake_graph.getVertexId(it->second[i]);
+			}
+
+			cout << endl << endl;
+			myfile << endl <<  "<----------------------->" << endl;
 		}
 
-		cout << endl << endl;
+		myfile.close();
 	}
 }
 
@@ -431,9 +440,9 @@ void SupermarketNetwork::loadStreetInformation() {
 
 		/* Add to Street.cpp later to be added */
 
-		if(isEdgePosById(roadID)){
-		pos = getEdgePosById(roadID);
-		edges[pos].setTwoWay(isTwoWays);
+		if (isEdgePosById(roadID)) {
+			pos = getEdgePosById(roadID);
+			edges[pos].setTwoWay(isTwoWays);
 		}
 
 	}
