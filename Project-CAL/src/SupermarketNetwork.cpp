@@ -10,6 +10,7 @@
 #include "Node.h"
 #include <fstream>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
@@ -415,6 +416,7 @@ void SupermarketNetwork::loadEdgeInformation() {
 
 void SupermarketNetwork::loadNodesRandom() {
 	std::ifstream input_file("Project-CAL/input/nodes_sandbox.txt");
+	srand(time(NULL));
 	int rand_type;
 
 	if (!input_file) {
