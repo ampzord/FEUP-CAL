@@ -268,7 +268,7 @@ void SupermarketNetwork::paintLoaded() {
 	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
-	map<int, vector<int> > res = fake_graph.sortPaths(false);
+	map<int, vector<int> > res = fake_graph.sortPathsSingle(true);
 
 	printResults(res);
 }
