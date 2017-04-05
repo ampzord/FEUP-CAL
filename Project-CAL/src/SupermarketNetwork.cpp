@@ -68,6 +68,7 @@ void SupermarketNetwork::manage() {
 	Supermarket u("sadsadasdsadasdas");
 	Supermarket i("sadsadasdsadasdas23");
 	Supermarket a("sadsadasdsadasdasasds23");
+	Supermarket b("sadsadasdsadasdasasds23dsf");
 
 	graph.addVertex(x, "Market", 0);
 
@@ -78,6 +79,7 @@ void SupermarketNetwork::manage() {
 	graph.addVertex(u, "Nothing", 4);
 	graph.addVertex(i, "Market", 5);
 	graph.addVertex(a, "User", 6);
+	graph.addVertex(b, "User", 7);
 
 	graph.addEdge(x, w, 100);
 	graph.addEdge(w, x, 100);
@@ -108,6 +110,9 @@ void SupermarketNetwork::manage() {
 
 	graph.addEdge(w, z, 250);
 	graph.addEdge(z, w, 250);
+
+	graph.addEdge(x, b, 500);
+	graph.addEdge(b, x, 500);
 
 	gv->addNode(marketId);
 
@@ -151,12 +156,19 @@ void SupermarketNetwork::manage() {
 
 	marketId++;
 
+	gv->addNode(marketId);
+
+	gv->setVertexLabel(marketId, "7");
+
+	marketId++;
+
 	gv->setVertexColor(0, "green");
 	gv->setVertexColor(5, "green");
 
 	gv->setVertexColor(1, "yellow");
 	gv->setVertexColor(2, "yellow");
 	gv->setVertexColor(6, "yellow");
+	gv->setVertexColor(7, "yellow");
 
 	gv->addEdge(0, 0, 3, 0);
 	gv->addEdge(1, 0, 4, 0);
@@ -168,6 +180,7 @@ void SupermarketNetwork::manage() {
 	gv->addEdge(7, 3, 4, 0);
 	gv->addEdge(8, 1, 4, 0);
 	gv->addEdge(9, 2, 3, 0);
+	gv->addEdge(10, 0, 7, 0);
 
 	gv->setEdgeLabel(0, "100");
 	gv->setEdgeLabel(1, "200");
@@ -179,11 +192,14 @@ void SupermarketNetwork::manage() {
 	gv->setEdgeLabel(7, "200");
 	gv->setEdgeLabel(8, "100");
 	gv->setEdgeLabel(9, "250");
+	gv->setEdgeLabel(10, "500");
 
 	gv->rearrange();
 
 	graph.floydWarshallShortestPath();
-	graph.sortPaths(false);
+	vector<pair<int, vector<int> > > res = graph.sortPathsSingle(true);
+
+	printResults(res);
 }
 
 /**
@@ -268,9 +284,19 @@ void SupermarketNetwork::paintLoaded() {
 	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
-	map<int, vector<int> > res = fake_graph.sortPathsSingle(true);
+	bool first = false;
+	bool normal = true;
 
-	printResults(res);
+	if(first)
+	{
+		vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(normal);
+		printResults(res);
+	}
+	else
+	{
+		map<int, vector<int> > res = fake_graph.sortPaths(normal);
+		printResults(res);
+	}
 }
 
 /**
@@ -281,6 +307,30 @@ void SupermarketNetwork::printResults(map<int, vector<int> > res) {
 	ofstream myfile("Project-CAL/input/results.txt");
 	if (myfile.is_open()) {
 		for (map<int, vector<int> >::iterator it = res.begin(); it != res.end();
+				it++) {
+			myfile << "MARKET " << fake_graph.getVertexId(it->first) << endl;
+			myfile << "PATH";
+			cout << "MARKET " << fake_graph.getVertexId(it->first) << endl;
+			cout << "PATH";
+			for (unsigned int i = 0; i < it->second.size(); i++) {
+				myfile << " " << fake_graph.getVertexId(it->second[i]);
+			}
+			for (unsigned int i = 0; i < it->second.size(); i++) {
+				cout << " " << fake_graph.getVertexId(it->second[i]);
+			}
+
+			cout << endl << endl;
+			myfile << endl << "<----------------------->" << endl;
+		}
+
+		myfile.close();
+	}
+}
+
+void SupermarketNetwork::printResults(vector<pair<int, vector<int> > > res) {
+	ofstream myfile("Project-CAL/input/results.txt");
+	if (myfile.is_open()) {
+		for (vector<pair<int, vector<int> > >::iterator it = res.begin(); it != res.end();
 				it++) {
 			myfile << "MARKET " << fake_graph.getVertexId(it->first) << endl;
 			myfile << "PATH";

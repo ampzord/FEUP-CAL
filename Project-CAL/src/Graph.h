@@ -234,7 +234,7 @@ public:
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
 	map <int, vector<int> > sortPaths(bool normal);
-	map <int, vector<int> > sortPathsSingle(bool normal);
+	vector< pair <int, vector<int> > > sortPathsSingle(bool normal);
 	vector<int> getPossiblePath(vector<int> clients);
 	vector<int> getPossiblePath(int supermarket, vector<int> clients);
 	Edge<T> getEdge(int src, int dst);
@@ -244,6 +244,7 @@ public:
 	void getfloydWarshallPathIntAux(int index1, int index2, vector<int> & res);
 	void clearClientsServed(vector<int> clients);
 	void removeMostDistantClient(int supermarket, vector<int> & clients, typename vector<pair<Vertex<T>*, int> >::iterator it, typename vector<pair<Vertex<T>*, int> >::iterator ite);
+	int removeMostDistantClient2(int supermarket, vector<int> & clients);
 	bool rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets, typename vector<pair<Vertex<T>*, int> >::iterator it);
 	bool firstShortDist(int supermarket1, vector<int>::iterator it, vector<int>::iterator ite, int supermarket2, vector<int>::iterator it2, vector<int>::iterator ite2);
 	void clearServed(vector<int> nodes);
@@ -849,7 +850,7 @@ bool sortFunc(pair<Vertex<T>*, int> a, pair<Vertex<T>*, int> b)
 }
 
 template<class T>
-map <int, vector<int> > Graph<T>::sortPathsSingle(bool normal) {
+vector< pair<int, vector<int> > > Graph<T>::sortPathsSingle(bool normal) {
 
 	vector<pair<Vertex<T>*, int> > supermarkets;
 	map<Vertex<T>*, int> clients;
@@ -892,7 +893,7 @@ map <int, vector<int> > Graph<T>::sortPathsSingle(bool normal) {
 		}
 	}
 
-	map<int, vector<int> > res;
+	vector<pair<int, vector<int> > > res;
 
 	bool finish = false;
 
@@ -905,6 +906,8 @@ map <int, vector<int> > Graph<T>::sortPathsSingle(bool normal) {
 		double time = 24;
 
 		double weight = it->first->weight + 1;
+
+		vector<int> removed;
 
 		while((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 		{
@@ -927,17 +930,20 @@ map <int, vector<int> > Graph<T>::sortPathsSingle(bool normal) {
 
 			if((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 			{
-				typename vector<pair<Vertex<T>*, int> >::iterator it2 = it;
-				it2++;
-				removeMostDistantClient(it->second, it->first->clientsPossible, it2, supermarkets.end());
+				removed.push_back(removeMostDistantClient2(it->second, it->first->clientsPossible));
 			}
 			else
 			{
-				res.insert(typename std::map<int, vector<int> >::value_type(it->second, full));
+				res.push_back(pair<int, vector<int> >(it->second, full));
 			}
 		}
 
 		clearClientsServed(it->first->clientsPossible);
+
+		for(int i = 0; i < removed.size(); i++)
+		{
+			it->first->clientsPossible.push_back(removed[i]);
+		}
 	}
 
 	return res;
@@ -1001,7 +1007,6 @@ map <int, vector<int> > Graph<T>::sortPaths(bool normal) {
 
 		while((time >= 24 || weight > it->first->weight) && it->first->clientsPossible.size() > 0)
 		{
-
 			vector<int> tmp = it->first->clientsPossible;
 
 			vector<int> full;
@@ -1106,23 +1111,17 @@ bool Graph<T>::rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets, typenam
 			break;
 		}
 
-		cout << "C3" << endl;
-
 		min1 = W[it2->second][*(clients.begin())];
 		min2 = W[it->second][*(clients2.begin())];
 
-		cout << "C4" << endl;
-
 		if(min1 < min2)
 		{
-			cout << "C5" << endl;
 			client1.push_back(*clients.begin());
 			clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
 			clients.erase(clients.begin());
 		}
 		else if(min2 < min1)
 		{
-			cout << "C6" << endl;
 			client2.push_back(*clients2.begin());
 			clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
 			clients2.erase(clients2.begin());
@@ -1135,23 +1134,15 @@ bool Graph<T>::rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets, typenam
 			start2++;
 			if(firstShortDist(it2->second, start, clients.end(), it->second, start2, clients2.end()))
 			{
-				cout << "D5" << endl;
 				client1.push_back(*clients.begin());
-				cout << "D6" << endl;
 				clients2.erase(find(clients2.begin(), clients2.end(), *clients.begin()));
-				cout << "D7" << endl;
 				clients.erase(clients.begin());
-				cout << "D8" << endl;
 			}
 			else
 			{
-				cout << "D1" << endl;
 				client2.push_back(*clients2.begin());
-				cout << "D2" << endl;
 				clients.erase(find(clients.begin(), clients.end(), *clients2.begin()));
-				cout << "D3" << endl;
 				clients2.erase(clients2.begin());
-				cout << "D4" << endl;
 			}
 		}
 
@@ -1234,6 +1225,35 @@ void Graph<T>::removeMostDistantClient(int supermarket, vector<int> & clients, t
 }
 
 template <class T>
+int Graph<T>::removeMostDistantClient2(int supermarket, vector<int> & clients)
+{
+	int maximum = 0;
+
+	int index = -1;
+
+	for(unsigned int i = 0; i < clients.size(); i++)
+	{
+		vertexSet[clients[i]]->served = false;
+		if(W[supermarket][clients[i]] != INT_INFINITY && W[supermarket][clients[i]] > maximum)
+		{
+			maximum = W[supermarket][clients[i]];
+			index = i;
+		}
+	}
+
+	if(index == -1)
+	{
+		return -1;
+	}
+
+	int res = *(clients.begin() + index);
+
+	clients.erase(clients.begin() + index);
+
+	return res;
+}
+
+template <class T>
 vector<int> Graph<T>::getPossiblePath(vector<int> clients) {
 
 	int maximum = 0;
@@ -1312,8 +1332,6 @@ vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
 
 	vector<int> res;
 
-	res.push_back(supermarket);
-
 	minimum = INT_MAX;
 
 	while(clients.size() > 1)
@@ -1322,7 +1340,7 @@ vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
 
 		for(int i = 0; i < clients.size(); i++)
 		{
-			if(W[source][clients[i]] < minimum)
+			if(W[source][clients[i]] > 0 && W[source][clients[i]] < minimum)
 			{
 				minimum = W[dst][clients[i]];
 				dst = i;
@@ -1337,7 +1355,7 @@ vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
 
 	res.push_back(*clients.begin());
 
-	return res;
+	return getFullPath(supermarket, res);
 }
 
 template <class T>
@@ -1416,7 +1434,7 @@ vector<int> Graph<T>::getFullPath(int supermarket, vector<int> nodes)
 
 	vector<int> temp3 = getfloydWarshallPathInt(nodes[nodes.size()-1], supermarket);
 
-	for(unsigned int i = 0; i < temp3.size(); i++)
+	for(unsigned int i = 1; i < temp3.size(); i++)
 	{
 		res.push_back(temp3[i]);
 	}
