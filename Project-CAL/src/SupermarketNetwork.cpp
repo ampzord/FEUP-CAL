@@ -1,10 +1,3 @@
-/*
- * SupermarketNetwork.cpp
- *
- *  Created on: 29/03/2017
- *      Author: furys
- */
-
 #include "SupermarketNetwork.h"
 #include "Supermarket.h"
 #include "Node.h"

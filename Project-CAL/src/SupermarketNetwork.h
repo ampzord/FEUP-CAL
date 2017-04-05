@@ -1,10 +1,3 @@
-/*
- * SupermarketNetwork.h
- *
- *  Created on: 29/03/2017
- *      Author: furys
- */
-
 #ifndef PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_
 #define PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_
 

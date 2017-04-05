@@ -7,28 +7,34 @@
 
 #include "FakeEdge.h"
 
-namespace std {
+using namespace std;
 
-FakeEdge::FakeEdge() {
-	// TODO Auto-generated constructor stub
-}
+FakeEdge::FakeEdge(unsigned long long edgeId, unsigned long long v1Id, unsigned long long v2Id){
 
-/**
- * \brief Construtor da classe FakeEdge com argumentos.
- * \param id Id da edge.
- * \param v1 Id do node de origem.
- * \param v2 Id do node de destino.
- */
-FakeEdge::FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2){
-
-	this->edgeId = id;
-	this->v1Id = v1;
-	this->v2Id = v2;
+	this->edgeId = edgeId;
+	this->v1Id = v1Id;
+	this->v2Id = v2Id;
 	this->twoWay = false;
 }
 
-FakeEdge::~FakeEdge() {
-	// TODO Auto-generated destructor stub
+FakeEdge::~FakeEdge() {}
+
+unsigned long long FakeEdge::getEdgeId() const {
+	return edgeId;
 }
 
-} /* namespace std */
+unsigned long long FakeEdge::getV1Id() const {
+	return v1Id;
+}
+
+unsigned long long FakeEdge::getV2Id() const {
+	return v2Id;
+}
+
+bool FakeEdge::isTwoWay() const {
+	return twoWay;
+}
+
+void FakeEdge::setTwoWay(bool twoWay) {
+	this->twoWay = twoWay;
+}

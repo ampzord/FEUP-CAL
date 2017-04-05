@@ -4,7 +4,7 @@ using namespace std;
 
 Purchase::Purchase(string date, vector<Item*> items)
 {
-	this->date;
+	this->date = date;
 	this->items = items;
 	this->finished = false;
 }

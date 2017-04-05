@@ -1,53 +1,55 @@
-/*
- * Node.h
- *
- *  Created on: 03/04/2017
- *      Author: Morango
- */
-
 #ifndef PROJECT_CAL_SRC_NODE_H_
 #define PROJECT_CAL_SRC_NODE_H_
 
 #include <string>
 
+/** \brief class Node that stores nodeID, latitude and longitude in degrees and radians. */
+
 class Node {
 private:
 	unsigned long long node_id;
-	float latitude_in_degrees, longitude_in_degrees, longitude_in_radians,
-			latitude_in_radians;
+	float latitude_in_degrees, longitude_in_degrees,
+		longitude_in_radians, latitude_in_radians;
 	std::string type;
 
 public:
-	Node();
+
+	/**
+	 * \brief Constructor of class Node.
+	 * \param node_id ID of node.
+	 * \param type Type of node ("Market", "User", "Default").
+	 * \param latitude_in_degrees Latitude of node in degrees.
+	 * \param longitude_in_degrees Longitude of node in degrees.
+	 * \param longitude_in_radians Longitude of node in radians.
+	 * \param latitude_in_radians Latitude of node in radians. */
 	Node(unsigned long long node_id, std::string type, float latitude_in_degrees, float longitude_in_degrees,
 			float longitude_in_radians, float latitude_in_radians);
+
+	/** \brief Destructor for class Node. */
 	virtual ~Node();
 
+	/**
+	 * \brief Compare two nodes.
+	 * \details Two nodes can't have same ID. */
 	bool operator ==(const Node & b) const;
 
-	float getLatitudeInDegrees() const {
-		return latitude_in_degrees;
-	}
+	/** \brief Returns latitude in degrees. */
+	float getLatitudeInDegrees() const;
 
-	float getLatitudeInRadians() const {
-		return latitude_in_radians;
-	}
+	/** \brief Returns latitude in radians. */
+	float getLatitudeInRadians() const;
 
-	float getLongitudeInDegrees() const {
-		return longitude_in_degrees;
-	}
+	/** \brief Returns longitude in degrees. */
+	float getLongitudeInDegrees() const;
 
-	float getLongitudeInRadians() const {
-		return longitude_in_radians;
-	}
+	/** \brief Returns longitude in radians. */
+	float getLongitudeInRadians() const;
 
-	unsigned long long getNodeId() const {
-		return node_id;
-	}
+	/** \brief Returns node ID. */
+	unsigned long long getNodeId() const;
 
-	const std::string& getType() const {
-		return type;
-	}
+	/** \brief Returns type of node ("Market", "User", "Default"). */
+	const std::string& getType() const;
 };
 
 #endif /* PROJECT_CAL_SRC_NODE_H_ */

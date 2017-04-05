@@ -7,13 +7,16 @@ Client::Client(std::string name, std::string address) {
     this->address = address;
 }
 
+
 std::string Client::getName() {
     return name;
 }
 
+
 std::string Client::getAddress() {
     return address;
 }
+
 
 vector<Purchase*> Client::getPurchases() const
 {

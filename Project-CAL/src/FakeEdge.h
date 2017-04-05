@@ -1,46 +1,40 @@
-/*
- * FakeEdge.h
- *
- *  Created on: 03/04/2017
- *      Author: Morango
- */
-
 #ifndef PROJECT_CAL_SRC_FAKEEDGE_H_
 #define PROJECT_CAL_SRC_FAKEEDGE_H_
 
-namespace std {
+/** \brief a class to hold edge information such as it's ID, start node and end node. */
 
 class FakeEdge {
 private:
 	unsigned long long edgeId, v1Id, v2Id;
 	bool twoWay;
-
 public:
-	FakeEdge();
-	FakeEdge(unsigned long long id, unsigned long long v1, unsigned long long v2);
+
+	/** \brief Builds an edge.
+	 * \param id ID of edge.
+	 * \param v1 ID of source node.
+	 * \param v2 ID of destiny node. */
+	FakeEdge(unsigned long long edgeId, unsigned long long v1Id, unsigned long long v2Id);
+
+	/** \brief Destroys a FakeEdge. */
 	virtual ~FakeEdge();
 
-	unsigned long long getEdgeId() const {
-		return edgeId;
-	}
+	/** \brief Returns edge ID. */
+	unsigned long long getEdgeId() const;
 
-	unsigned long long getV1Id() const {
-		return v1Id;
-	}
+	/** \brief Returns ID of origin source node. */
+	unsigned long long getV1Id() const;
 
-	unsigned long long getV2Id() const {
-		return v2Id;
-	}
+	/** \brief Returns ID of destiny node. */
+	unsigned long long getV2Id() const;
 
-	bool isTwoWay() const {
-		return twoWay;
-	}
+	/** \brief Returns information about the street.
+	 *  \return True if road is a two way street.
+	 *  \return False if road is only one way street. */
+	bool isTwoWay() const;
 
-	void setTwoWay(bool twoWay) {
-		this->twoWay = twoWay;
-	}
+	/** \brief Method to change a roads way.  */
+	void setTwoWay(bool twoWay);
+
 };
-
-} /* namespace std */
 
 #endif /* PROJECT_CAL_SRC_FAKEEDGE_H_ */
