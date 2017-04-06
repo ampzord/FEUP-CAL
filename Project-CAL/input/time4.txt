@@ -1,0 +1,12 @@
+Single Market Approach with extremities
+3 milliseconds
+
+Multiple Markets Approach with extremities
+7 milliseconds
+
+Single Market Approach.
+3 milliseconds
+
+Multiple Markets Approach.
+7 milliseconds
+

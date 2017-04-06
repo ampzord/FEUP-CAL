@@ -238,7 +238,6 @@ void SupermarketNetwork::loadStreetInformation() {
 
 	while (!input_file.eof()) {
 		unsigned long long roadID;
-		FakeEdge * f1;
 		int pos;
 
 		std::string roadName;
@@ -361,16 +360,14 @@ double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 	double deltaLong = (long2 - long1) * PI / 180;
 
 	double a = sin(deltaLat / 2) * sin(deltaLat / 2)
-															+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
-															* sin(deltaLong / 2);
+																															+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
+																															* sin(deltaLong / 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
 	return R * c;
 }
 
 int SupermarketNetwork::getEdgePosById(unsigned long long id) {
-	int pos = 0;
-
 	for (size_t i = 0; i < edges.size(); i++) {
 		if (edges[i].getEdgeId() == id)
 			return i;
@@ -405,11 +402,13 @@ void SupermarketNetwork::mainMenu() {
 
 		switch (opt) {
 		case 1:
+			system("CLS");
 			loadInformationOpenStreetMapsGraph();
 			chooseAlgorithmFromOpenStreetMapsGraph();
 			paintLoaded();
 			break;
 		case 2:
+			system("CLS");
 			chooseAlgorithmFromSimpleGraph();
 			break;
 		case 0:
@@ -445,39 +444,40 @@ void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
 		cout << opt << endl;
 
 		switch (opt) {
-			case 1:
-			{
-				vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(true);
-				printResults(res);
-				break;
-			}
-			case 2:
-			{
-				map<int, vector<int> > res2 = fake_graph.sortPaths(true);
-				printResults(res2);
-				break;
-			}
-			case 3:
-			{
-				vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
-				printResults(res3);
-				break;
-			}
-			case 4 :
-			{
-				map<int, vector<int> > res4 = fake_graph.sortPaths(false);
-				printResults(res4);
-				break;
-			}
-			case 0:
-			{
-				mainMenu();
-				break;
-			}
-			default:
-			{
-				break;
-			}
+		case 1:
+		{
+			vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(true);
+			printResults(res);
+			break;
+		}
+		case 2:
+		{
+			map<int, vector<int> > res2 = fake_graph.sortPaths(true);
+			printResults(res2);
+			break;
+		}
+		case 3:
+		{
+			vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
+			printResults(res3);
+			break;
+		}
+		case 4 :
+		{
+			map<int, vector<int> > res4 = fake_graph.sortPaths(false);
+			printResults(res4);
+			break;
+		}
+		case 0:
+		{
+			system("CLS");
+			mainMenu();
+			break;
+		}
+		default:
+		{
+			break;
+		}
 		}
 	}
 }
@@ -529,4 +529,60 @@ void SupermarketNetwork::loadInformationOpenStreetMapsGraph() {
 	loadNodesRandom();
 	loadEdgeInformation();
 	loadStreetInformation();
+}
+
+int GetMilliCount()
+{
+	timeb tb;
+	ftime( &tb );
+	int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
+	return nCount;
+}
+
+int GetMilliSpan(int nTimeStart)
+{
+	int nSpan = GetMilliCount() - nTimeStart;
+	if (nSpan < 0)
+		nSpan += 0x100000 * 1000;
+	return nSpan;
+}
+
+void SupermarketNetwork::runTime() {
+	ofstream myfile("Project-CAL/input/time.txt");
+	if (myfile.is_open()) {
+
+//		myfile << "Single Market Approach with extremities" << endl;
+//
+//		int nTimeStart = GetMilliCount();
+//		vector<pair<int, vector<int> > > res1 = fake_graph.sortPathsSingle(true);
+//		int nTimeElapsed = GetMilliSpan( nTimeStart );
+//		printResults(res1);
+//		myfile << nTimeElapsed << " milliseconds" << endl << endl;
+
+		myfile << "Multiple Markets Approach with extremities" << endl;
+
+		int nTimeStart = GetMilliCount();
+		map<int, vector<int> > res2 = fake_graph.sortPaths(true);
+		int nTimeElapsed = GetMilliSpan( nTimeStart );
+		printResults(res2);
+		myfile << nTimeElapsed << " milliseconds" << endl << endl;
+
+		myfile << "Single Market Approach." << endl;
+
+		nTimeStart = GetMilliCount();
+		vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
+		nTimeElapsed = GetMilliSpan( nTimeStart );
+		printResults(res3);
+		myfile << nTimeElapsed << " milliseconds" << endl << endl;
+
+		myfile << "Multiple Markets Approach." << endl;
+
+		nTimeStart = GetMilliCount();
+		map<int, vector<int> > res4 = fake_graph.sortPaths(false);
+		nTimeElapsed = GetMilliSpan( nTimeStart );
+		printResults(res4);
+		myfile << nTimeElapsed << " milliseconds" << endl << endl;
+
+		myfile.close();
+	}
 }

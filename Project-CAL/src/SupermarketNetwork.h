@@ -5,6 +5,9 @@
 #include "Graph.h"
 #include "Node.h"
 #include "FakeEdge.h"
+#include <stdlib.h>
+#include <time.h>
+#include <sys/timeb.h>
 
 #define PI 3.14159265358979323846
 
@@ -76,6 +79,7 @@ public:
 	void chooseAlgorithmFromOpenStreetMapsGraph();
 	void chooseAlgorithmFromSimpleGraph();
 	void loadInformationOpenStreetMapsGraph();
+	void runTime();
 };
 
 #endif /* PROJECT_CAL_SRC_SUPERMARKETNETWORK_H_ */

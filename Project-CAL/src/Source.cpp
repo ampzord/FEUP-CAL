@@ -7,8 +7,12 @@
 int main() {
 
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
-	sn->mainMenu();
-	//sn->paintLoaded();
+	sn->loadInformationOpenStreetMapsGraph();
+	sn->paintLoaded();
+	//sn->mainMenu();
+	//sn->test();
+	sn->runTime();
+	getchar();
 	return 0;
 }
 
