@@ -1,5 +1,4 @@
 #include "SupermarketNetwork.h"
-#include "Supermarket.h"
 #include "Node.h"
 #include <fstream>
 #include <sstream>
@@ -16,7 +15,6 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 
 	this->name = name;
 	this->gv = new GraphViewer(1000, 600, true);
-	//gv->setBackground("input/map_image.png");
 
 	gv->createWindow(1000, 600);
 
@@ -25,9 +23,8 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 	gv->defineEdgeColor("black");
 
 	loadNodesRandom();
-	loadFakeEdges();
+	loadEdgeInformation();
 	loadStreetInformation();
-	//loadMarkets();
 
 	/*for (size_t i = 0; i < markets.size(); i++) {
 	 gv->addNode(markets[i].getId());
@@ -52,148 +49,7 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 	marketId = 0;
 }
 
-void SupermarketNetwork::manage() {
 
-	Supermarket x(name);
-	Supermarket y("asd");
-	Supermarket z("asdadas");
-	Supermarket w("asdasdasdasdsa");
-	Supermarket u("sadsadasdsadasdas");
-	Supermarket i("sadsadasdsadasdas23");
-	Supermarket a("sadsadasdsadasdasasds23");
-	Supermarket b("sadsadasdsadasdasasds23dsf");
-
-	graph.addVertex(x, "Market", 0);
-
-	graph.addVertex(y, "User", 1);
-	graph.addVertex(z, "User", 2);
-
-	graph.addVertex(w, "Nothing", 3);
-	graph.addVertex(u, "Nothing", 4);
-	graph.addVertex(i, "Market", 5);
-	graph.addVertex(a, "User", 6);
-	graph.addVertex(b, "User", 7);
-
-	graph.addEdge(x, w, 100);
-	graph.addEdge(w, x, 100);
-
-	graph.addEdge(x, u, 200);
-	graph.addEdge(u, x, 200);
-
-	graph.addEdge(w, y, 100);
-	graph.addEdge(y, w, 100);
-
-	graph.addEdge(u, z, 200);
-	graph.addEdge(z, u, 200);
-
-	graph.addEdge(z, y, 400);
-	graph.addEdge(y, z, 400);
-
-	graph.addEdge(i, y, 200);
-	graph.addEdge(y, i, 200);
-
-	graph.addEdge(a, x, 300);
-	graph.addEdge(x, a, 300);
-
-	graph.addEdge(w, u, 200);
-	graph.addEdge(u, w, 200);
-
-	graph.addEdge(y, u, 100);
-	graph.addEdge(u, y, 100);
-
-	graph.addEdge(w, z, 250);
-	graph.addEdge(z, w, 250);
-
-	graph.addEdge(x, b, 500);
-	graph.addEdge(b, x, 500);
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "0");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "1");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "2");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "3");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "4");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "5");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "6");
-
-	marketId++;
-
-	gv->addNode(marketId);
-
-	gv->setVertexLabel(marketId, "7");
-
-	marketId++;
-
-	gv->setVertexColor(0, "green");
-	gv->setVertexColor(5, "green");
-
-	gv->setVertexColor(1, "yellow");
-	gv->setVertexColor(2, "yellow");
-	gv->setVertexColor(6, "yellow");
-	gv->setVertexColor(7, "yellow");
-
-	gv->addEdge(0, 0, 3, 0);
-	gv->addEdge(1, 0, 4, 0);
-	gv->addEdge(2, 3, 1, 0);
-	gv->addEdge(3, 4, 2, 0);
-	gv->addEdge(4, 2, 1, 0);
-	gv->addEdge(5, 5, 1, 0);
-	gv->addEdge(6, 6, 0, 0);
-	gv->addEdge(7, 3, 4, 0);
-	gv->addEdge(8, 1, 4, 0);
-	gv->addEdge(9, 2, 3, 0);
-	gv->addEdge(10, 0, 7, 0);
-
-	gv->setEdgeLabel(0, "100");
-	gv->setEdgeLabel(1, "200");
-	gv->setEdgeLabel(2, "100");
-	gv->setEdgeLabel(3, "200");
-	gv->setEdgeLabel(4, "400");
-	gv->setEdgeLabel(5, "200");
-	gv->setEdgeLabel(6, "300");
-	gv->setEdgeLabel(7, "200");
-	gv->setEdgeLabel(8, "100");
-	gv->setEdgeLabel(9, "250");
-	gv->setEdgeLabel(10, "500");
-
-	gv->rearrange();
-
-	graph.floydWarshallShortestPath();
-	vector<pair<int, vector<int> > > res = graph.sortPathsSingle(true);
-
-	printResults(res);
-}
 
 /**
  * \brief Insere no Grafo os nós e edges e pinta-os tambem no GraphViewr.
@@ -391,74 +247,6 @@ void SupermarketNetwork::performOperation(std::string operation) {
 	}
 }
 
-void SupermarketNetwork::loadMarkets() {
-	ifstream inFile("Project-CAL/input/markets.txt");
-
-	if (!inFile) {
-		cerr << "Unable to open file markets.txt";
-		exit(1);
-	}
-
-	string line;
-	unsigned long long id, x, y;
-
-	while (!inFile.eof()) {
-		getline(inFile, line);
-		if (line == "")
-			continue;
-		stringstream linestream(line);
-		string data;
-
-		getline(linestream, data, ';');
-		id = atoi(data.c_str());
-		linestream >> x;
-		getline(linestream, data, ';');
-		linestream >> y;
-
-		//cout << "Nome " << nome << " Valor " << valor << " Peso " << peso << " numero factura " << numfatura << " id destino" << id << endl;
-
-		Supermarket s1(id, x, y);
-		markets.push_back(s1);
-	}
-	inFile.close();
-}
-
-/** @brief Load nodes from nodes.txt to program */
-void SupermarketNetwork::loadNodeInformation() {
-
-	std::ifstream input_file("Project-CAL/input/nodes.txt");
-
-	if (!input_file) {
-		std::cerr << "Unable to open file nodes.txt";
-		//return 1;
-	}
-
-	while (!input_file.eof()) {
-		unsigned long long nodeID;
-		double latitude, longitude;
-		std::string line;
-		std::string data;
-
-		getline(input_file, line);
-		std::stringstream input_stream(line);
-
-		input_stream >> nodeID;
-		getline(input_stream, data, ';');
-		input_stream >> latitude;
-		getline(input_stream, data, ';');
-		input_stream >> longitude;
-
-		/* Needs to be added to the database later */
-
-		cout << "nodeID : " << nodeID << endl;
-		cout << "latitude : " << latitude << endl;
-		cout << "longitude : " << longitude << endl;
-
-	}
-
-	input_file.close();
-}
-
 /**
  * \brief Faz load das Ruas em txt atualizando o atributo TwoWays de cada uma.
  * \details Para cada Rua em txt,"True" ou "False" definem o atributo de cada objeto.
@@ -499,8 +287,6 @@ void SupermarketNetwork::loadStreetInformation() {
 		else
 			isTwoWays = false;
 
-		/* Add to Street.cpp later to be added */
-
 		if (isEdgePosById(roadID)) {
 			pos = getEdgePosById(roadID);
 			edges[pos].setTwoWay(isTwoWays);
@@ -511,12 +297,17 @@ void SupermarketNetwork::loadStreetInformation() {
 	input_file.close();
 }
 
+/**
+ * \brief Faz load das edges em txt e adiciona-as ao vector de edges.
+ * \details Para cada edge em txt cria objeto FakeEdge com parametros lidos.
+ * \details edges.txt
+ */
 void SupermarketNetwork::loadEdgeInformation() {
-	std::ifstream input_file("Project-CAL/input/asd.txt");
+	std::ifstream input_file("Project-CAL/input/edges.txt");
 
 	if (!input_file) {
 		std::cerr << "Unable to open file edges.txt";
-		//return 1;
+		exit(1);
 	}
 
 	while (!input_file.eof()) {
@@ -535,12 +326,8 @@ void SupermarketNetwork::loadEdgeInformation() {
 		getline(input_stream, data, ';');
 		input_stream >> nodeEndID;
 
-		/* Data needs to be saved */
-
-		cout << "roadID : " << roadID << endl;
-		cout << "nodeStartID : " << nodeStartID << endl;
-		cout << "nodeEndID : " << nodeEndID << endl << endl;
-
+		FakeEdge f1(roadID, nodeStartID, nodeEndID);
+		edges.push_back(f1);
 	}
 
 	input_file.close();
@@ -552,13 +339,13 @@ void SupermarketNetwork::loadEdgeInformation() {
  * \details O Random Type usado serve para criar Markets, Users e Default Points.
  */
 void SupermarketNetwork::loadNodesRandom() {
-	std::ifstream input_file("Project-CAL/input/nodes_sandbox.txt");
+	std::ifstream input_file("Project-CAL/input/nodes.txt");
 	srand(time(NULL));
 	int rand_type;
 
 	if (!input_file) {
-		std::cerr << "Unable to open file nodes_sandbox.txt";
-		//return 1;
+		std::cerr << "Unable to open file nodes.txt";
+		exit(1);
 	}
 
 	while (!input_file.eof()) {
@@ -590,50 +377,10 @@ void SupermarketNetwork::loadNodesRandom() {
 		getline(input_stream, data, ';');
 		input_stream >> long_rad;
 		getline(input_stream, data, ' ');
-		input_stream >> lat_deg;
+		input_stream >> lat_rad;
 
 		Node n1(node_id, type, lat_deg, long_deg, long_rad, lat_rad);
 		nodes.push_back(n1);
-		/* Data needs to be saved */
-
-	}
-
-	input_file.close();
-}
-
-/**
- * \brief Faz load das edges em txt e adiciona-as ao vector de edges.
- * \details Para cada edge em txt cria objeto FakeEdge com parametros lidos.
- * \details edges.txt
- */
-void SupermarketNetwork::loadFakeEdges() {
-	std::ifstream input_file("Project-CAL/input/edges_sandbox.txt");
-
-	if (!input_file) {
-		std::cerr << "Unable to open file edges_sandbox.txt";
-		//return 1;
-	}
-
-	while (!input_file.eof()) {
-		unsigned long long edgeId, v1Id, v2Id;
-
-		std::string line;
-		std::string data;
-
-		getline(input_file, line);
-		std::stringstream input_stream(line);
-
-		input_stream >> edgeId;
-		getline(input_stream, data, ';');
-		input_stream >> v1Id;
-		getline(input_stream, data, ';');
-		input_stream >> v2Id;
-
-		/* Data needs to be saved */
-
-		FakeEdge f1(edgeId, v1Id, v2Id);
-		edges.push_back(f1);
-
 	}
 
 	input_file.close();
@@ -657,8 +404,8 @@ double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 	double deltaLong = (long2 - long1) * PI / 180;
 
 	double a = sin(deltaLat / 2) * sin(deltaLat / 2)
-			+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
-					* sin(deltaLong / 2);
+											+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
+											* sin(deltaLong / 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
 	return R * c;
@@ -689,4 +436,105 @@ bool SupermarketNetwork::isEdgePosById(unsigned long long id) {
 			return true;
 	}
 	return false;
+}
+
+void SupermarketNetwork::mainMenu() {
+	bool run = true;
+
+	while(run)
+	{
+		int opt = -1;
+
+		do {
+			cout << "WELCOME TO SUPERMARKET HOME DELIVERY SYSTEM" << endl << endl;
+			cout << "1 - Graph of openstreetmaps.org" << endl;
+			cout << "2 - Simple Graph" << endl;
+			cout << "0 - Leave" << endl;
+
+			cin.clear();
+			cin >> opt;
+
+		} while (opt < 0 || opt > 2);
+
+		switch (opt) {
+		case 1:
+
+			break;
+		case 2:
+			//do something
+			break;
+		case 0:
+			run = false;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void chooseAlgorithmWithOneSupermarket() {
+	bool run = true;
+
+	while(run)
+	{
+		int opt = -1;
+
+		do {
+			cout << "Choose algorithm you want to use:" << endl << endl;
+			cout << "1 - Single Market Approach with extremities. ->sortPathsSingle(true)" << endl;
+			cout << "2 - Multiple Markets approach. -> sortPaths(true)" << endl;
+			cout << "3 - Single Market Approach sortPathSingle(false)" << endl;
+			cout << "4 - Multiple Markets approach. -> sortPaths(false)" << endl;
+			cin.clear();
+			cin >> opt;
+
+		} while (opt < 0 || opt > 4);
+
+		switch (opt) {
+		case 1:
+			//do something
+			break;
+		case 2:
+			//do something
+			break;
+		case 0:
+			run = false;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void chooseAlgorithmWithSeveralSupermarket() {
+	bool run = true;
+
+	while(run)
+	{
+		int opt = -1;
+
+		do {
+			cout << "Choose algorithm you want to use :" << endl << endl;
+			cout << "1 - Djisktra." << endl;
+			cout << "2 - Floyd-Warshall." << endl;
+			cout << "0 - Leave" << endl;
+			cin.clear();
+			cin >> opt;
+
+		} while (opt < 0 || opt > 4);
+
+		switch (opt) {
+		case 1:
+			//do something
+			break;
+		case 2:
+			//do something
+			break;
+		case 0:
+			run = false;
+			break;
+		default:
+			break;
+		}
+	}
 }

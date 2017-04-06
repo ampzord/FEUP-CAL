@@ -1,4 +1,0 @@
-This information will be useful for drawing the nodes and edges on the window later.
-
-width;height;maxLat;minLat;maxLong;minLong
-1881;937;41.18308;41.17303;-8.593234;-8.606237

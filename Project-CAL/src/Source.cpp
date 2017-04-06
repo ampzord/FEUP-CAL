@@ -2,7 +2,6 @@
 #include <sstream>
 #include <fstream>
 
-#include "Client.h"
 #include "SupermarketNetwork.h"
 
 int main() {

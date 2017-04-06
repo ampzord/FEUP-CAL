@@ -901,7 +901,7 @@ vector< pair<int, vector<int> > > Graph<T>::sortPathsSingle(bool normal) {
 
 	typename vector<pair<Vertex<T>*, int> >::iterator it = supermarkets.begin();
 
-	while(it->first->clientsPossible.size() > 0)
+	while(it->first->clientsPossible.size() > 0 && !finish)
 	{
 		double time = 24;
 
@@ -936,6 +936,11 @@ vector< pair<int, vector<int> > > Graph<T>::sortPathsSingle(bool normal) {
 			{
 				res.push_back(pair<int, vector<int> >(it->second, full));
 			}
+		}
+
+		if(it->first->clientsPossible.size() == 0)
+		{
+			finish = true;
 		}
 
 		clearClientsServed(it->first->clientsPossible);
