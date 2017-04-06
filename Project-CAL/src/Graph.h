@@ -950,7 +950,7 @@ vector< pair<int, vector<int> > > Graph<T>::sortPathsSingle(bool normal) {
 
 		clearClientsServed(it->first->clientsPossible);
 
-		for(int i = 0; i < removed.size(); i++)
+		for(unsigned int i = 0; i < removed.size(); i++)
 		{
 			it->first->clientsPossible.push_back(removed[i]);
 		}
@@ -1103,7 +1103,7 @@ bool Graph<T>::rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets, typenam
 	{
 		if(clients.size() == 0)
 		{
-			for(int i = 0; i < clients2.size(); i++)
+			for(unsigned int i = 0; i < clients2.size(); i++)
 			{
 				client2.push_back(clients2[i]);
 			}
@@ -1113,7 +1113,7 @@ bool Graph<T>::rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets, typenam
 
 		if(clients2.size() == 0)
 		{
-			for(int i = 0; i < clients.size(); i++)
+			for(unsigned int i = 0; i < clients.size(); i++)
 			{
 				client1.push_back(clients[i]);
 			}
@@ -1330,7 +1330,7 @@ vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
 	int dst = -1;
 	int source = -1;
 
-	for(int i = 0; i < clients.size(); i++)
+	for(unsigned int i = 0; i < clients.size(); i++)
 	{
 		if(W[supermarket][clients[i]] < minimum)
 		{
@@ -1348,7 +1348,7 @@ vector<int> Graph<T>::getPossiblePath(int supermarket, vector<int> clients) {
 	{
 		res.push_back(source);
 
-		for(int i = 0; i < clients.size(); i++)
+		for(unsigned int i = 0; i < clients.size(); i++)
 		{
 			if(W[source][clients[i]] > 0 && W[source][clients[i]] < minimum)
 			{

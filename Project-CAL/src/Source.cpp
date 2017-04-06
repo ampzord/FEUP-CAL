@@ -6,13 +6,10 @@
 
 int main() {
 
-	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
+	SupermarketNetwork* sn = new SupermarketNetwork("Home Delivery System");
 	sn->loadInformationOpenStreetMapsGraph();
 	sn->paintLoaded();
-	//sn->mainMenu();
-	//sn->test();
-	sn->runTime();
-	getchar();
+	sn->mainMenu();
 	return 0;
 }
 

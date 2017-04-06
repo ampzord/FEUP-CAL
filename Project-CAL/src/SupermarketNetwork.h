@@ -25,60 +25,54 @@ public:
      * \brief Constructor of class SupermarketNetwork
      * \param name name of the Supermarket */
 	SupermarketNetwork(std::string name);
-	void manage();
-	void addSupermarket(std::string name);
-	bool handleRequest();
-	void performOperation(std::string operation);
 	/**
-	 * \brief Faz load dos nodes em txt, adicionando-lhes um Random Type.
-	 * \details Para cada node em txt é criado um objeto Node e inserido em nodes[].
-	 * \details O Random Type usado serve para criar Markets, Users e Default Points. */
+	 * \brief Loads nodes from text file giving them a random type. */
 	void loadNodesRandom();
 
 	/**
-	 * \brief Faz load das Ruas em txt atualizando o atributo TwoWays de cada uma.
-	 * \details Para cada Rua em txt,"True" ou "False" definem o atributo de cada objeto.
-	 * \details True torna possivel a Rua ter 2 sentidos.
-	 * \details False garante que a Rua so tem um sentido. */
+	 * \brief Loads street information from text file */
 	void loadStreetInformation();
 	/**
-	 * \brief Faz load das edges em txt e adiciona-as ao vector de edges.
-	 * \details Para cada edge em txt cria objeto FakeEdge com parametros lidos.
-	 * \details edges.txt */
+	 * \brief Loads edge information from text file. */
 	void loadEdgeInformation();
 
 	/**
-	 * \brief Insere no Grafo os nós e edges e pinta-os tambem no GraphViewr.
-	 * \details Os nos e edges encontram-se nos vectores atributo nodes[] e edges[]. */
+	 * \brief Inserts on graph the nodes and edges along as
+	 * giving them their current color on graphviewer. */
 	void paintLoaded();
 
 	/**
-	 * \brief Retorna a posicao de uma edge no vector atraves do seu Id.
-	 * \details Usado para localizar Ruas lidas e sincronizadas com edges.
-	 * \param id Id da Rua a encontrar. */
+	 * \brief Returns the position of an edge on a vector by it's ID. */
 	int getEdgePosById(unsigned long long id);
+
 	/**
-	 * \brief Verifica se existe alguma edge com o Id forncido.
-	 * \details Usado para verificar a existencia de Ruas lidas no vector edges.
-	 * \param id Id da Rua a verificar */
+	 * \brief Checks if there exists already any edge with the ID given. */
 	bool isEdgePosById(unsigned long long id);
 
 	/**
-	 * \brief Escreve no ficheiro os resultado da aplicacao dos algoritmos.
-	 * \details results.txt */
+	 * \brief Writes on file the results of application of the algorithms.
+	 * \details argument is map<int, vector<int> >*/
 	void printResults(map<int, vector<int> > res);
-	void printResults(vector<pair<int, vector<int> > > res);
+
 	/**
-	 * \brief Calcula a distância entre dois nos.
-	 * \param lat1 Latitude do no de origem.
-	 * \param lat2 Latitude do no de destino.
-	 * \param long1 Longitude do no de origem.
-	 * \param long2 Longitude do no de destino. */
+	 * \brief Writes on file the results of application of the algorithms.
+	 * \details argument is vector<pair<int, vector<int> > > */
+	void printResults(vector<pair<int, vector<int> > > res);
+
+	/**
+	 * \brief Calculates the distance between 2 nodes. */
 	double distanceBetween2Nodes(double lat1, double lat2, double long1, double long2);
+
+	/** \brief Main Menu with interface. */
 	void mainMenu();
+
+	/**\brief Gives option to user to choose between several algorithms. */
 	void chooseAlgorithmFromOpenStreetMapsGraph();
-	void chooseAlgorithmFromSimpleGraph();
+
+	/** \brief Loads all information from text files simultaneously. */
 	void loadInformationOpenStreetMapsGraph();
+
+	/** \brief Calculates the time each algorithm takes and saves it to a text file. */
 	void runTime();
 };
 

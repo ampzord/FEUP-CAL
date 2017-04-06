@@ -16,26 +16,6 @@ SupermarketNetwork::SupermarketNetwork(std::string name) {
 
 	gv->defineEdgeColor("black");
 
-	/*for (size_t i = 0; i < markets.size(); i++) {
-	 gv->addNode(markets[i].getId());
-	 }*/
-
-	/*
-	 for (size_t i = 0; i < nodes.size(); i++) {
-	 gv->addNode(nodes[i].getNodeId());
-	 if (nodes[i].getType() == 0)
-	 gv->setVertexColor(nodes[i].getNodeId(), "yellow");
-	 if (nodes[i].getType() == 1)
-	 gv->setVertexColor(nodes[i].getNodeId(), "green");
-	 }
-
-	 for (size_t i = 0; i < edges.size(); i++) {
-	 if(edges[i].getEdgeId() != edges[i-1].getEdgeId() && edges[i].getV1Id() != edges[i].getV2Id())
-	 gv->addEdge(edges[i].getEdgeId(), edges[i].getV1Id(),
-	 edges[i].getV2Id(), 0);
-	 }
-	 */
-
 	marketId = 0;
 }
 
@@ -114,22 +94,8 @@ void SupermarketNetwork::paintLoaded() {
 		}
 	}
 
-	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
-	/*bool first = false;
-	bool normal = true;
-
-	if(first)
-	{
-		vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(normal);
-		printResults(res);
-	}
-	else
-	{
-		map<int, vector<int> > res = fake_graph.sortPaths(normal);
-		printResults(res);
-	}*/
 }
 
 void SupermarketNetwork::printResults(map<int, vector<int> > res) {
@@ -180,56 +146,9 @@ void SupermarketNetwork::printResults(vector<pair<int, vector<int> > > res) {
 	}
 }
 
-void SupermarketNetwork::addSupermarket(std::string name) {
-	/*graph.addVertex(Supermarket(name), "Supermarket");
-
-	 gv->addNode(marketId);
-
-	 //gv->setVertexLabel(marketId, name);
-
-	 gv->rearrange();
-
-	 marketId++;*/
-}
-
-bool SupermarketNetwork::handleRequest() {
-	cout << "Choose a task" << endl << endl;
-
-	cout << "Add" << endl;
-	cout << "Exit" << endl << endl;
-
-	cout << "Task: ";
-
-	string operation;
-
-	cin >> operation;
-
-	if (operation == "Exit" || operation == "exit") {
-		return false;
-	}
-
-	performOperation(operation);
-
-	getchar();
-
-	return true;
-}
-
-void SupermarketNetwork::performOperation(std::string operation) {
-	if (operation == "Add") {
-		string name;
-
-		cout << "Name of the supermarket: ";
-
-		cin >> name;
-
-		addSupermarket(name);
-	}
-}
-
 void SupermarketNetwork::loadStreetInformation() {
 
-	std::ifstream input_file("Project-CAL/input/streets5.txt");
+	std::ifstream input_file("Project-CAL/input/streets2.txt");
 
 	if (!input_file) {
 		std::cerr << "Unable to open file streets.txt";
@@ -271,7 +190,7 @@ void SupermarketNetwork::loadStreetInformation() {
 }
 
 void SupermarketNetwork::loadEdgeInformation() {
-	std::ifstream input_file("Project-CAL/input/edges5.txt");
+	std::ifstream input_file("Project-CAL/input/edges2.txt");
 
 	if (!input_file) {
 		std::cerr << "Unable to open file edges.txt";
@@ -302,7 +221,7 @@ void SupermarketNetwork::loadEdgeInformation() {
 }
 
 void SupermarketNetwork::loadNodesRandom() {
-	std::ifstream input_file("Project-CAL/input/nodes5.txt");
+	std::ifstream input_file("Project-CAL/input/nodes2.txt");
 	srand(time(NULL));
 	int rand_type;
 
@@ -360,8 +279,8 @@ double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 	double deltaLong = (long2 - long1) * PI / 180;
 
 	double a = sin(deltaLat / 2) * sin(deltaLat / 2)
-																															+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
-																															* sin(deltaLong / 2);
+																																					+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
+																																					* sin(deltaLong / 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
 	return R * c;
@@ -392,27 +311,21 @@ void SupermarketNetwork::mainMenu() {
 		do {
 			cout << "WELCOME TO SUPERMARKET HOME DELIVERY SYSTEM" << endl << endl;
 			cout << "1 - Graph from openstreetmaps.org text files." << endl;
-			cout << "2 - Simple graph." << endl;
 			cout << "0 - Leave" << endl;
 
 			cin.clear();
 			cin >> opt;
 
-		} while (opt < 0 || opt > 2);
+		} while (opt < 0 || opt > 1);
+
+		run = false;
 
 		switch (opt) {
 		case 1:
-			system("CLS");
-			loadInformationOpenStreetMapsGraph();
 			chooseAlgorithmFromOpenStreetMapsGraph();
-			paintLoaded();
-			break;
-		case 2:
-			system("CLS");
-			chooseAlgorithmFromSimpleGraph();
 			break;
 		case 0:
-			run = false;
+			exit(0);
 			break;
 		default:
 			break;
@@ -421,108 +334,56 @@ void SupermarketNetwork::mainMenu() {
 }
 
 void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
-	bool run = true;
 
-	while(run)
+	int opt = -1;
+
+	do {
+		cout << "Choose algorithm you want to use:" << endl << endl;
+		cout << "1 - Single Market Approach with extremities." << endl;
+		cout << "2 - Multiple Markets Approach with extremities." << endl;
+		cout << "3 - Single Market Approach." << endl;
+		cout << "4 - Multiple Markets Approach." << endl;
+		cout << "0 - Go Back." << endl;
+		cin.clear();
+		cin >> opt;
+
+	} while (opt < 0 || opt > 4);
+
+	switch (opt) {
+	case 1:
 	{
-		int opt = -1;
-
-		do {
-			cout << "Choose algorithm you want to use:" << endl << endl;
-			cout << "1 - Single Market Approach with extremities." << endl;
-			cout << "2 - Multiple Markets Approach with extremities." << endl;
-			cout << "3 - Single Market Approach." << endl;
-			cout << "4 - Multiple Markets Approach." << endl;
-			cout << "0 - Go Back." << endl;
-			cin.clear();
-			cin >> opt;
-
-		} while (opt < 0 || opt > 4);
-
-		run = false;
-
-		cout << opt << endl;
-
-		switch (opt) {
-		case 1:
-		{
-			vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(true);
-			printResults(res);
-			break;
-		}
-		case 2:
-		{
-			map<int, vector<int> > res2 = fake_graph.sortPaths(true);
-			printResults(res2);
-			break;
-		}
-		case 3:
-		{
-			vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
-			printResults(res3);
-			break;
-		}
-		case 4 :
-		{
-			map<int, vector<int> > res4 = fake_graph.sortPaths(false);
-			printResults(res4);
-			break;
-		}
-		case 0:
-		{
-			system("CLS");
-			mainMenu();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-		}
+		vector<pair<int, vector<int> > > res1 = fake_graph.sortPathsSingle(true);
+		printResults(res1);
+		break;
 	}
-}
-
-void SupermarketNetwork::chooseAlgorithmFromSimpleGraph() {
-	bool run = true;
-
-	while(run)
+	case 2:
 	{
-		int opt = -1;
-
-		do {
-			cout << "Choose algorithm you want to use:" << endl << endl;
-			cout << "1 - Single Market Approach with extremities." << endl;
-			cout << "2 - Multiple Markets Approach with extremities." << endl;
-			cout << "3 - Single Market Approach." << endl;
-			cout << "4 - Multiple Markets Approach." << endl;
-			cout << "0 - Go Back." << endl;
-			cin.clear();
-			cin >> opt;
-
-		} while (opt < 0 || opt > 4);
-
-		switch (opt) {
-		case 1:
-			fake_graph.sortPathsSingle(true);
-			break;
-		case 2:
-			fake_graph.sortPaths(true);
-			break;
-		case 3:
-			fake_graph.sortPathsSingle(false);
-			break;
-		case 4 :
-			fake_graph.sortPaths(false);
-			break;
-		case 0:
-			run = false;
-			mainMenu();
-			break;
-		default:
-			break;
-		}
+		map<int, vector<int> > res2 = fake_graph.sortPaths(true);
+		printResults(res2);
+		break;
 	}
-
+	case 3:
+	{
+		vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
+		printResults(res3);
+		break;
+	}
+	case 4 :
+	{
+		map<int, vector<int> > res4 = fake_graph.sortPaths(false);
+		printResults(res4);
+		break;
+	}
+	case 0:
+	{
+		mainMenu();
+		break;
+	}
+	default:
+	{
+		break;
+	}
+	}
 }
 
 void SupermarketNetwork::loadInformationOpenStreetMapsGraph() {
@@ -551,13 +412,13 @@ void SupermarketNetwork::runTime() {
 	ofstream myfile("Project-CAL/input/time.txt");
 	if (myfile.is_open()) {
 
-//		myfile << "Single Market Approach with extremities" << endl;
-//
-//		int nTimeStart = GetMilliCount();
-//		vector<pair<int, vector<int> > > res1 = fake_graph.sortPathsSingle(true);
-//		int nTimeElapsed = GetMilliSpan( nTimeStart );
-//		printResults(res1);
-//		myfile << nTimeElapsed << " milliseconds" << endl << endl;
+		//		myfile << "Single Market Approach with extremities" << endl;
+		//
+		//		int nTimeStart = GetMilliCount();
+		//		vector<pair<int, vector<int> > > res1 = fake_graph.sortPathsSingle(true);
+		//		int nTimeElapsed = GetMilliSpan( nTimeStart );
+		//		printResults(res1);
+		//		myfile << nTimeElapsed << " milliseconds" << endl << endl;
 
 		myfile << "Multiple Markets Approach with extremities" << endl;
 

@@ -1,10 +1,3 @@
-/*
- * FakeEdge.cpp
- *
- *  Created on: 03/04/2017
- *      Author: Morango
- */
-
 #include "FakeEdge.h"
 
 using namespace std;
