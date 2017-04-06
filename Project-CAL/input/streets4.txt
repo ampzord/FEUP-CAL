@@ -1,0 +1,135 @@
+26654673;Avenida Dom Manuel II;False
+26654893;Rua Engenheiro Duarte Pacheco;False
+26679119;Travessa Doutor Carlos Pires Felgueiras;False
+26681608;Rua Augusto Simões;False
+26697157;Travessa Padre António;False
+26697168;Rua Altino Coelho;False
+26697169;Avenida Altino Coelho;False
+26697183;Avenida Dom Manuel II;False
+26697184;Rua Dona Deolínda Duarte dos Santos;False
+26697185;Travessa Dona Deolínda Duarte dos Santos;False
+26753056;Travessa Doutor Augusto Martins;False
+26944761;Rua José Rodrigues da Silva Júnior;False
+26944762;Rua Dom João IV;False
+26944763;Travessa Dom João IV;False
+26944764;Travessa José Rodrigues da Silva Júnior;False
+26944765;Avenida Luís de Camões;True
+56026125;Praceta Doutor Germano da Silva Torres;False
+56026126;Rua dos Altos;False
+56500101;;False
+56500105;Rua Adelino Amaro da Costa;False
+56500109;Rua Armindo Nogueira da Costa;False
+56500113;Rua Pedro Julião;False
+56500120;Rua Francisco Ferreira da Silva;False
+56500123;Rua Padre Luís Campos;False
+56500127;Praceta dos Altos;False
+56500129;Rua Manuel da Silva Barros;False
+56500132;Rua de Currais;False
+56500136;;False
+56500141;;False
+56500143;Rua José Tomé Santos Rebelo;False
+56500147;Rua António Marques;False
+66012055;Rua Nova da Lage;False
+86563298;Travessa Engenheiro Duarte Pacheco;False
+114301308;Rua Padre Arnaldo Rebelo;True
+114302176;Rua Central do Sobreiro;True
+115718280;Rua da Cavada;True
+138657275;Rua São Romão;True
+138657285;Travessa da Quinta Nova;True
+138657305;Rua da Cegonheira;True
+138657322;Travessa Nova Santo Condestável;True
+138657367;Rua Dona Sílvia Alves Teixeira;False
+138657427;Rua Aldeia do Monte;True
+138657459;Rua Amadeu Ferreira Thedim;True
+138657503;Travessa Santo Condestável;True
+138657594;Rua Rodrigo Pedro;True
+138657597;Rua Joaquim Francisco Seabra;True
+138657706;;True
+138657748;;True
+138657772;Rua dos Carvalhos;False
+138657878;Rua da Quinta Nova;False
+138662382;;False
+138662385;Praceta das Figueiras;False
+138662386;Rua do Picoto;False
+138662392;Praceta das Acácias;False
+138662413;Alameda das Tílias;False
+138662415;Praceta das Figueiras;False
+138662416;Praceta das Acácias;False
+138662427;Rua das Mimosas;False
+138662430;Alameda das Tílias;False
+145248507;Rua Padre António;False
+159031642;Rua Carolina de Freitas Soares Carvalho;False
+159031647;Travessa da Cavada;False
+160334184;;False
+160334188;;False
+160334193;;True
+160334194;;True
+160334206;;False
+160335641;;False
+160335642;Avenida Luís de Camões;False
+160335646;;False
+160338187;Avenida Luís de Camões;False
+160341638;;False
+160341649;Rua Engenheiro Duarte Pacheco;False
+175936535;;False
+175936537;;False
+175942854;;False
+175989197;Rua Joaquim Teixeira de Almeida;False
+204623596;Alameda das Tílias;False
+211337560;Rua Augusto Simões (Antiga EN 14);False
+211483916;Avenida Visconde Barreiros;True
+211483918;Rua Augusto Simões;False
+211483920;Rua Padre António;False
+211483924;;False
+211483925;Avenida Visconde Barreiros;False
+211483926;Rua Padre António;False
+212371343;Rua da Lage;False
+212371344;Avenida Dom Manuel II;False
+212701456;Rotunda Portas da Maia;False
+213558969;Avenida Visconde Barreiros;True
+215226394;Avenida Dom Manuel II;True
+215655088;Rua Padre António;False
+215655089;Rua Padre António;False
+215655211;Avenida Visconde Barreiros;True
+216263199;Avenida Dom Manuel II;True
+216489465;Avenida Visconde Barreiros;False
+216489656;Avenida Padre Manuel Alves do Rego;False
+219110049;Rua Padre António;True
+237770779;Rua Clotilde Ferreira da Cruz;False
+285226560;Rua da Cavada;False
+293434961;;False
+293434962;;False
+298992611;Rua de Macau;False
+298992741;Praceta de Macau;False
+306738771;Rua de São Romão;False
+306738772;Travessa Santo Condestável;False
+307058838;Rua Nova dos Altos;False
+307058839;Rua dos Altos;False
+308107172;Avenida Luís de Camões;False
+308107173;Rua Joaquim da Silva Torres;False
+308107174;Rua dos Jacintos;True
+308788912;Rua Santo Condestável;False
+309691651;Praceta das Mimosas;False
+309691652;Praceta do Sobreiro;False
+309691653;Rua dos Plátanos;False
+309691654;;False
+311502832;;False
+311502833;;False
+311502834;;False
+311502835;;False
+317924922;Rua dos Jacintos;False
+343755636;;False
+419968702;;False
+419968704;;False
+419968705;;False
+419968706;;False
+419968708;;False
+419968712;;False
+453566230;;False
+458127414;Avenida Dom Manuel II;False
+458127415;;False
+458127416;Avenida Padre Manuel Alves do Rego;False
+458127417;Avenida Dom Manuel II;False
+468733112;;False
+468733114;;False
+468733115;;False

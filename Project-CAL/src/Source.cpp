@@ -7,15 +7,8 @@
 int main() {
 
 	SupermarketNetwork* sn = new SupermarketNetwork("ASD");
-	sn->paintLoaded();
-
-	//sn->loadEdgeInformation();
-	//sn->manage();
-	//sn->loadNodesRandom();
-
-	//delete sn;
-	getchar();
-
+	sn->mainMenu();
+	//sn->paintLoaded();
 	return 0;
 }
 

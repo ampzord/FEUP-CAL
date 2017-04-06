@@ -1,0 +1,19 @@
+1:
+Nodes : 6050
+EDGES : 1061
+
+2:
+NODES 1852
+EDGES 471
+
+3 :
+Nodes 2368
+Edges 429
+
+4 :
+nodes 5894
+edges 874
+
+5:
+nodes 4724
+edges 1806

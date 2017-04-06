@@ -1,0 +1,64 @@
+26681572;Rua Avelino Santos Leite;False
+26681578;Rua Adélia Ferreira dos Santos Carvalho;False
+26681585;Rua Joaquim Oliveira Júnior;False
+26681586;Avenida de António Santos Leite;False
+26681587;Rua António Oliveira Braga;False
+26681590;Avenida de António Santos Leite;False
+26681605;;False
+26681608;Rua Augusto Simões;False
+26697169;Avenida Altino Coelho;False
+26697170;Rua de São Romão;False
+26697172;Rua Fernando Almeida;False
+26697173;Rua de São Romão;False
+26697174;Rua de Macau;True
+26697175;Rua de São Romão;True
+26944755;Rua Augusto Simões;False
+26944756;Rua de Argentat;True
+26944757;Avenida Vasco da Gama;True
+26944758;Rua da Madeira;True
+26944759;Rua dos Açores;True
+26944761;Rua José Rodrigues da Silva Júnior;True
+26944762;Rua Dom João IV;True
+51230339;;False
+128006483;Rua de São Miguel;False
+128006484;Rua de Cabo Verde;False
+128006485;Rua de São Tomé e Princípe;False
+128006486;Rua da Guiné;False
+128006488;Rua de Santo António;False
+138657434;Rua Fernando Pessoa;False
+138657701;Rua de Moçambique;False
+144973720;Rua de Angola;False
+144973721;Rua da Lage;False
+168970823;Rua Avelino Santos Leite;False
+168970824;Rua Avelino Santos Leite;False
+168970835;Rua Joaquim Oliveira Júnior;False
+168970836;Rua Joaquim Oliveira Júnior;False
+168970977;;False
+168970985;;False
+168971010;;False
+211483921;Rua de São Romão;False
+212371342;Rua Augusto Simões;False
+212371343;Rua da Lage;False
+284321309;Rua Doutor Augusto Martins;False
+298496961;Rua de António Joaquim da Silva;False
+298875920;Rua da Índia;False
+298883022;Avenida Vasco da Gama;False
+298888962;Avenida Vasco da Gama;False
+298888964;Avenida Vasco da Gama;False
+298888969;Avenida Vasco da Gama;False
+298888971;Avenida Vasco da Gama;False
+298888973;Rua de Timor;False
+298992610;Rua de Macau;False
+298992611;Rua de Macau;False
+298992741;Praceta de Macau;False
+298998619;Rua Altino Coelho;False
+298998620;Rua Altino Coelho;False
+298998621;Rua Altino Coelho;False
+298998623;Rua de São Romão;False
+298998624;Rua de São Romão;True
+298998626;Rua de São Romão;False
+298998627;Rua de São Romão;True
+299041061;Rua da Madeira;True
+299041062;Rua da Madeira;True
+304107375;Rua Dom João IV;True
+307599361;;True
