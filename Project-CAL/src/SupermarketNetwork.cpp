@@ -117,7 +117,7 @@ void SupermarketNetwork::paintLoaded() {
 	//fake_graph.cutNodes(gv);
 	fake_graph.floydWarshallShortestPath();
 
-	bool first = false;
+	/*bool first = false;
 	bool normal = true;
 
 	if(first)
@@ -129,7 +129,7 @@ void SupermarketNetwork::paintLoaded() {
 	{
 		map<int, vector<int> > res = fake_graph.sortPaths(normal);
 		printResults(res);
-	}
+	}*/
 }
 
 void SupermarketNetwork::printResults(map<int, vector<int> > res) {
@@ -442,24 +442,42 @@ void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
 
 		run = false;
 
+		cout << opt << endl;
+
 		switch (opt) {
-		case 1:
-			fake_graph.sortPathsSingle(true);
-			break;
-		case 2:
-			fake_graph.sortPaths(true);
-			break;
-		case 3:
-			fake_graph.sortPathsSingle(false);
-			break;
-		case 4 :
-			fake_graph.sortPaths(false);
-			break;
-		case 0:
-			mainMenu();
-			break;
-		default:
-			break;
+			case 1:
+			{
+				vector<pair<int, vector<int> > > res = fake_graph.sortPathsSingle(true);
+				printResults(res);
+				break;
+			}
+			case 2:
+			{
+				map<int, vector<int> > res2 = fake_graph.sortPaths(true);
+				printResults(res2);
+				break;
+			}
+			case 3:
+			{
+				vector<pair<int, vector<int> > > res3 = fake_graph.sortPathsSingle(false);
+				printResults(res3);
+				break;
+			}
+			case 4 :
+			{
+				map<int, vector<int> > res4 = fake_graph.sortPaths(false);
+				printResults(res4);
+				break;
+			}
+			case 0:
+			{
+				mainMenu();
+				break;
+			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

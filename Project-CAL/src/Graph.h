@@ -895,6 +895,11 @@ vector< pair<int, vector<int> > > Graph<T>::sortPathsSingle(bool normal) {
 
 	vector<pair<int, vector<int> > > res;
 
+	if(supermarkets.size() == 0)
+	{
+		return res;
+	}
+
 	bool finish = false;
 
 	sort(supermarkets.begin(), supermarkets.end(), sortFunc<T>);
