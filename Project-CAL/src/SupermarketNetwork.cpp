@@ -322,6 +322,8 @@ void SupermarketNetwork::mainMenu() {
 
 		switch (opt) {
 		case 1:
+			loadInformationOpenStreetMapsGraph();
+			paintLoaded();
 			chooseAlgorithmFromOpenStreetMapsGraph();
 			break;
 		case 0:
@@ -341,8 +343,8 @@ void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
 		cout << "Choose algorithm you want to use:" << endl << endl;
 		cout << "1 - Single Market Approach with extremities." << endl;
 		cout << "2 - Multiple Markets Approach with extremities." << endl;
-		cout << "3 - Single Market Approach." << endl;
-		cout << "4 - Multiple Markets Approach." << endl;
+		cout << "3 - Single Market Approach with shortest path." << endl;
+		cout << "4 - Multiple Markets Approach with shortest path." << endl;
 		cout << "0 - Go Back." << endl;
 		cin.clear();
 		cin >> opt;

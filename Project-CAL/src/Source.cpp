@@ -10,6 +10,8 @@ int main() {
 	sn->loadInformationOpenStreetMapsGraph();
 	sn->paintLoaded();
 	sn->mainMenu();
+	getchar();
+	getchar();
 	return 0;
 }
 
