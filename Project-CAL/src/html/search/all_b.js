@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['rearrange',['rearrange',['../class_graph_viewer.html#a3009a66958686ccb7e78b68e37c3c423',1,'GraphViewer']]],
-  ['removeedge',['removeEdge',['../class_graph_viewer.html#a9a8ee68c7c12b373affbe4069dd95d72',1,'GraphViewer']]],
-  ['removeitem',['removeItem',['../class_truck.html#a1bd94e89c4240f5b32b6356a1ce0e66d',1,'Truck']]],
-  ['removenode',['removeNode',['../class_graph_viewer.html#a0c418639bb911eb827cabf895915f775',1,'GraphViewer']]]
+  ['paintloaded',['paintLoaded',['../class_supermarket_network.html#a81785ce5abea96016bcc06958a2eed8e',1,'SupermarketNetwork']]],
+  ['port',['port',['../class_graph_viewer.html#a89d0abe75f41feededc49497cc514342',1,'GraphViewer']]],
+  ['printresults',['printResults',['../class_supermarket_network.html#a013ba8bf6d961cc2fefa0fa09bf8a2e7',1,'SupermarketNetwork::printResults(map&lt; int, vector&lt; int &gt; &gt; res)'],['../class_supermarket_network.html#adb6dd660ec70427802da4e18f96d725d',1,'SupermarketNetwork::printResults(vector&lt; pair&lt; int, vector&lt; int &gt; &gt; &gt; res)']]]
 ];

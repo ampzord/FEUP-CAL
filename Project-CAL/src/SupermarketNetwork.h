@@ -11,6 +11,7 @@
 
 #define PI 3.14159265358979323846
 
+/** \brief Class to hold information about a Supermarket's Network. */
 class SupermarketNetwork {
 private :
     std::string name;

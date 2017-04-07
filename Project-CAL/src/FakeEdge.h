@@ -10,9 +10,9 @@ private:
 public:
 
 	/** \brief Builds an edge.
-	 * \param id ID of edge.
-	 * \param v1 ID of source node.
-	 * \param v2 ID of destiny node. */
+	 * \param edgeId ID of edge.
+	 * \param v1Id ID of source node.
+	 * \param v2Id ID of destiny node. */
 	FakeEdge(unsigned long long edgeId, unsigned long long v1Id, unsigned long long v2Id);
 
 	/** \brief Destroys a FakeEdge. */

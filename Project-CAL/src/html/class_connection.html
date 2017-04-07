@@ -65,19 +65,78 @@ $(function() {
 <div class="title">Connection Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class used to handle Clienter-Server connection.  
+ <a href="class_connection.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="connection_8h_source.html">connection.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8089476d48ba545f44e691cd4bd0278d"><td class="memItemLeft" align="right" valign="top"><a id="a8089476d48ba545f44e691cd4bd0278d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Connection</b> (short port)</td></tr>
+<tr class="memitem:a8089476d48ba545f44e691cd4bd0278d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_connection.html#a8089476d48ba545f44e691cd4bd0278d">Connection</a> (short port)</td></tr>
 <tr class="separator:a8089476d48ba545f44e691cd4bd0278d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b9f6db1fb42fc9857f829fa0bc52e6e"><td class="memItemLeft" align="right" valign="top"><a id="a4b9f6db1fb42fc9857f829fa0bc52e6e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>sendMsg</b> (string msg)</td></tr>
+<tr class="memitem:a4b9f6db1fb42fc9857f829fa0bc52e6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_connection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e">sendMsg</a> (string msg)</td></tr>
+<tr class="memdesc:a4b9f6db1fb42fc9857f829fa0bc52e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the given socket's port.  <a href="#a4b9f6db1fb42fc9857f829fa0bc52e6e">More...</a><br /></td></tr>
 <tr class="separator:a4b9f6db1fb42fc9857f829fa0bc52e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1df16b436751b686d96c24ca0c498659"><td class="memItemLeft" align="right" valign="top"><a id="a1df16b436751b686d96c24ca0c498659"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>readLine</b> ()</td></tr>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_connection.html#a1df16b436751b686d96c24ca0c498659">readLine</a> ()</td></tr>
+<tr class="memdesc:a1df16b436751b686d96c24ca0c498659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a message from the given Socket's Port. <br /></td></tr>
 <tr class="separator:a1df16b436751b686d96c24ca0c498659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class used to handle Clienter-Server connection. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8089476d48ba545f44e691cd4bd0278d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8089476d48ba545f44e691cd4bd0278d">&sect;&nbsp;</a></span>Connection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Connection::Connection </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>brief Builds a connection, with the given conection port. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Port used for the connection. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4b9f6db1fb42fc9857f829fa0bc52e6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9f6db1fb42fc9857f829fa0bc52e6e">&sect;&nbsp;</a></span>sendMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Connection::sendMsg </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the given socket's port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Socket's Port to send te message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="connection_8h_source.html">connection.h</a></li>
 <li>connection.cpp</li>

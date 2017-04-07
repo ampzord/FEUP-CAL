@@ -13,6 +13,5 @@ var searchData=
   ['setvertexicon',['setVertexIcon',['../class_graph_viewer.html#a02d5f7393eab9a2d1b66719039597a64',1,'GraphViewer']]],
   ['setvertexlabel',['setVertexLabel',['../class_graph_viewer.html#ac25d7d007022fda16799808ba136e909',1,'GraphViewer']]],
   ['setvertexsize',['setVertexSize',['../class_graph_viewer.html#ae930dfdfcdeb7a871eefb6028d74b9f9',1,'GraphViewer']]],
-  ['sortset',['SortSet',['../struct_sort_set.html',1,'']]],
-  ['supermarketnetwork',['SupermarketNetwork',['../class_supermarket_network.html',1,'SupermarketNetwork'],['../class_supermarket_network.html#afb289463b6137986f5ad6c26075c2f54',1,'SupermarketNetwork::SupermarketNetwork()']]]
+  ['supermarketnetwork',['SupermarketNetwork',['../class_supermarket_network.html#afb289463b6137986f5ad6c26075c2f54',1,'SupermarketNetwork']]]
 ];

@@ -1,8 +1,7 @@
 #include "FakeEdge.h"
 
-using namespace std;
-
-FakeEdge::FakeEdge(unsigned long long edgeId, unsigned long long v1Id, unsigned long long v2Id){
+FakeEdge::FakeEdge(unsigned long long edgeId, unsigned long long v1Id,
+		unsigned long long v2Id) {
 
 	this->edgeId = edgeId;
 	this->v1Id = v1Id;
@@ -10,7 +9,8 @@ FakeEdge::FakeEdge(unsigned long long edgeId, unsigned long long v1Id, unsigned 
 	this->twoWay = false;
 }
 
-FakeEdge::~FakeEdge() {}
+FakeEdge::~FakeEdge() {
+}
 
 unsigned long long FakeEdge::getEdgeId() const {
 	return edgeId;

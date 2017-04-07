@@ -67,72 +67,106 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Standard Class to hold the Window generated to vizualize the Network.  
+ <a href="class_graph_viewer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="graphviewer_8h_source.html">graphviewer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8adc614f4fc290a3efcec7d7ceb1c58a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a8adc614f4fc290a3efcec7d7ceb1c58a">GraphViewer</a> (int width, int height, bool dynamic)</td></tr>
+<tr class="memdesc:a8adc614f4fc290a3efcec7d7ceb1c58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor que cria um novo grafo e atribui automaticamente a porta.  <a href="#a8adc614f4fc290a3efcec7d7ceb1c58a">More...</a><br /></td></tr>
 <tr class="separator:a8adc614f4fc290a3efcec7d7ceb1c58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d7b1d8b4ba8ef18517eae0e68568a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ad9d7b1d8b4ba8ef18517eae0e68568a2">GraphViewer</a> (int width, int height, bool dynamic, int port_n)</td></tr>
+<tr class="memdesc:ad9d7b1d8b4ba8ef18517eae0e68568a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação.  <a href="#ad9d7b1d8b4ba8ef18517eae0e68568a2">More...</a><br /></td></tr>
 <tr class="separator:ad9d7b1d8b4ba8ef18517eae0e68568a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5247dc66449dcd21fc5d531bbbaddfa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ae5247dc66449dcd21fc5d531bbbaddfa">createWindow</a> (int width, int height)</td></tr>
+<tr class="memdesc:ae5247dc66449dcd21fc5d531bbbaddfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que cria a janela para visualização.  <a href="#ae5247dc66449dcd21fc5d531bbbaddfa">More...</a><br /></td></tr>
 <tr class="separator:ae5247dc66449dcd21fc5d531bbbaddfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85990c1eaac7feed3950960d4bd2fd4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a85990c1eaac7feed3950960d4bd2fd4c">closeWindow</a> ()</td></tr>
+<tr class="memitem:a85990c1eaac7feed3950960d4bd2fd4c"><td class="memItemLeft" align="right" valign="top"><a id="a85990c1eaac7feed3950960d4bd2fd4c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a85990c1eaac7feed3950960d4bd2fd4c">closeWindow</a> ()</td></tr>
+<tr class="memdesc:a85990c1eaac7feed3950960d4bd2fd4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fecha a janela a ser utilizada para visualização. <br /></td></tr>
 <tr class="separator:a85990c1eaac7feed3950960d4bd2fd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5421e86ac76433876309236ba96e70a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a5421e86ac76433876309236ba96e70a2">addNode</a> (int id, int x, int y)</td></tr>
+<tr class="memdesc:a5421e86ac76433876309236ba96e70a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico.  <a href="#a5421e86ac76433876309236ba96e70a2">More...</a><br /></td></tr>
 <tr class="separator:a5421e86ac76433876309236ba96e70a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9be856eb5f45284719a3bb119ec01ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ab9be856eb5f45284719a3bb119ec01ea">addNode</a> (int id)</td></tr>
+<tr class="memdesc:ab9be856eb5f45284719a3bb119ec01ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta um nó à representação do grafo, numa posição ao critério do programa.  <a href="#ab9be856eb5f45284719a3bb119ec01ea">More...</a><br /></td></tr>
 <tr class="separator:ab9be856eb5f45284719a3bb119ec01ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad0c1448c37f744209ffb671f1bd0015"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#aad0c1448c37f744209ffb671f1bd0015">addEdge</a> (int id, int v1, int v2, int edgeType)</td></tr>
+<tr class="memdesc:aad0c1448c37f744209ffb671f1bd0015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta uma aresta à representação do grafo.  <a href="#aad0c1448c37f744209ffb671f1bd0015">More...</a><br /></td></tr>
 <tr class="separator:aad0c1448c37f744209ffb671f1bd0015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c418639bb911eb827cabf895915f775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a0c418639bb911eb827cabf895915f775">removeNode</a> (int id)</td></tr>
+<tr class="memdesc:a0c418639bb911eb827cabf895915f775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove um nó da representação do grafo e todas as arestas ligadas a este.  <a href="#a0c418639bb911eb827cabf895915f775">More...</a><br /></td></tr>
 <tr class="separator:a0c418639bb911eb827cabf895915f775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a8ee68c7c12b373affbe4069dd95d72"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a9a8ee68c7c12b373affbe4069dd95d72">removeEdge</a> (int id)</td></tr>
+<tr class="memdesc:a9a8ee68c7c12b373affbe4069dd95d72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove uma aresta da representação do grafo.  <a href="#a9a8ee68c7c12b373affbe4069dd95d72">More...</a><br /></td></tr>
 <tr class="separator:a9a8ee68c7c12b373affbe4069dd95d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac25d7d007022fda16799808ba136e909"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ac25d7d007022fda16799808ba136e909">setVertexLabel</a> (int id, string label)</td></tr>
+<tr class="memdesc:ac25d7d007022fda16799808ba136e909"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o texto de um nó.  <a href="#ac25d7d007022fda16799808ba136e909">More...</a><br /></td></tr>
 <tr class="separator:ac25d7d007022fda16799808ba136e909"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a447cca0064e785654c2105602c2961ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a447cca0064e785654c2105602c2961ca">setEdgeLabel</a> (int id, string label)</td></tr>
+<tr class="memdesc:a447cca0064e785654c2105602c2961ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o texto de uma aresta.  <a href="#a447cca0064e785654c2105602c2961ca">More...</a><br /></td></tr>
 <tr class="separator:a447cca0064e785654c2105602c2961ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07ccc96707efae4aa5f3ced3dca015af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a07ccc96707efae4aa5f3ced3dca015af">setEdgeColor</a> (int id, string color)</td></tr>
+<tr class="memdesc:a07ccc96707efae4aa5f3ced3dca015af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define a cor de uma aresta.  <a href="#a07ccc96707efae4aa5f3ced3dca015af">More...</a><br /></td></tr>
 <tr class="separator:a07ccc96707efae4aa5f3ced3dca015af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1698f1c6b3a8e7cabc7b7d7cf42fc7f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a1698f1c6b3a8e7cabc7b7d7cf42fc7f0">setEdgeDashed</a> (int id, bool dashed)</td></tr>
+<tr class="memdesc:a1698f1c6b3a8e7cabc7b7d7cf42fc7f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define se uma aresta é desenhada, ou não, a tracejado.  <a href="#a1698f1c6b3a8e7cabc7b7d7cf42fc7f0">More...</a><br /></td></tr>
 <tr class="separator:a1698f1c6b3a8e7cabc7b7d7cf42fc7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b542d7e09e81a45a74760c19233beb0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a8b542d7e09e81a45a74760c19233beb0">setVertexColor</a> (int id, string color)</td></tr>
+<tr class="memdesc:a8b542d7e09e81a45a74760c19233beb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define a cor de um nó.  <a href="#a8b542d7e09e81a45a74760c19233beb0">More...</a><br /></td></tr>
 <tr class="separator:a8b542d7e09e81a45a74760c19233beb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae930dfdfcdeb7a871eefb6028d74b9f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ae930dfdfcdeb7a871eefb6028d74b9f9">setVertexSize</a> (int id, int size)</td></tr>
+<tr class="memdesc:ae930dfdfcdeb7a871eefb6028d74b9f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o tamanho de um nó.  <a href="#ae930dfdfcdeb7a871eefb6028d74b9f9">More...</a><br /></td></tr>
 <tr class="separator:ae930dfdfcdeb7a871eefb6028d74b9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02d5f7393eab9a2d1b66719039597a64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a02d5f7393eab9a2d1b66719039597a64">setVertexIcon</a> (int id, string filepath)</td></tr>
+<tr class="memdesc:a02d5f7393eab9a2d1b66719039597a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define um ícone para um nó.  <a href="#a02d5f7393eab9a2d1b66719039597a64">More...</a><br /></td></tr>
 <tr class="separator:a02d5f7393eab9a2d1b66719039597a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07f598272fe3515455eab13be749604a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a07f598272fe3515455eab13be749604a">setEdgeThickness</a> (int id, int thickness)</td></tr>
+<tr class="memdesc:a07f598272fe3515455eab13be749604a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define a espessura de uma aresta.  <a href="#a07f598272fe3515455eab13be749604a">More...</a><br /></td></tr>
 <tr class="separator:a07f598272fe3515455eab13be749604a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac211de009a0afe2e6d44f4f8d030a2cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ac211de009a0afe2e6d44f4f8d030a2cc">setEdgeWeight</a> (int id, int weight)</td></tr>
+<tr class="memdesc:ac211de009a0afe2e6d44f4f8d030a2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w: valor_do_peso, seguido de qualquer outro texto associado à aresta.  <a href="#ac211de009a0afe2e6d44f4f8d030a2cc">More...</a><br /></td></tr>
 <tr class="separator:ac211de009a0afe2e6d44f4f8d030a2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69eb065145063e4dea41961e92e35c8e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a69eb065145063e4dea41961e92e35c8e">setEdgeFlow</a> (int id, int flow)</td></tr>
+<tr class="memdesc:a69eb065145063e4dea41961e92e35c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f: valor_do_fluxo, precedido pelo peso e seguido por texto definido pelo utilizador.  <a href="#a69eb065145063e4dea41961e92e35c8e">More...</a><br /></td></tr>
 <tr class="separator:a69eb065145063e4dea41961e92e35c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f362be0e682d91e7506dca8caae1b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a08f362be0e682d91e7506dca8caae1b8">defineEdgeCurved</a> (bool curved)</td></tr>
+<tr class="memdesc:a08f362be0e682d91e7506dca8caae1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define se as arestas do grafo serão desenhadas como curvas ou retas.  <a href="#a08f362be0e682d91e7506dca8caae1b8">More...</a><br /></td></tr>
 <tr class="separator:a08f362be0e682d91e7506dca8caae1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4102580b69826ba83251ef7bb262f8be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a4102580b69826ba83251ef7bb262f8be">defineEdgeColor</a> (string color)</td></tr>
+<tr class="memdesc:a4102580b69826ba83251ef7bb262f8be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define a cor global das arestas.  <a href="#a4102580b69826ba83251ef7bb262f8be">More...</a><br /></td></tr>
 <tr class="separator:a4102580b69826ba83251ef7bb262f8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af785279b5c204df0e274b20c36276fc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#af785279b5c204df0e274b20c36276fc3">defineEdgeDashed</a> (bool dashed)</td></tr>
+<tr class="memdesc:af785279b5c204df0e274b20c36276fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define globalmente se as arestas são desenhadas, ou não, a tracejado.  <a href="#af785279b5c204df0e274b20c36276fc3">More...</a><br /></td></tr>
 <tr class="separator:af785279b5c204df0e274b20c36276fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76de8676b7a93d72af514b84cdaa4d21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a76de8676b7a93d72af514b84cdaa4d21">defineVertexColor</a> (string color)</td></tr>
+<tr class="memdesc:a76de8676b7a93d72af514b84cdaa4d21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define a cor global dos nós.  <a href="#a76de8676b7a93d72af514b84cdaa4d21">More...</a><br /></td></tr>
 <tr class="separator:a76de8676b7a93d72af514b84cdaa4d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4b2a9fec74d38e64088aa79ca4b7d9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#ac4b2a9fec74d38e64088aa79ca4b7d9b">defineVertexSize</a> (int size)</td></tr>
+<tr class="memdesc:ac4b2a9fec74d38e64088aa79ca4b7d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define o tamanho global dos nós.  <a href="#ac4b2a9fec74d38e64088aa79ca4b7d9b">More...</a><br /></td></tr>
 <tr class="separator:ac4b2a9fec74d38e64088aa79ca4b7d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1adb6a361457187a820e01dcf0a34b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#af1adb6a361457187a820e01dcf0a34b7">defineVertexIcon</a> (string filepath)</td></tr>
+<tr class="memdesc:af1adb6a361457187a820e01dcf0a34b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que define um ícone para um nó.  <a href="#af1adb6a361457187a820e01dcf0a34b7">More...</a><br /></td></tr>
 <tr class="separator:af1adb6a361457187a820e01dcf0a34b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02437b5fecd8b90de24436068312d593"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a02437b5fecd8b90de24436068312d593">setBackground</a> (string path)</td></tr>
+<tr class="memdesc:a02437b5fecd8b90de24436068312d593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que altera a imagem de fundo do grafo.  <a href="#a02437b5fecd8b90de24436068312d593">More...</a><br /></td></tr>
 <tr class="separator:a02437b5fecd8b90de24436068312d593"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3009a66958686ccb7e78b68e37c3c423"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a3009a66958686ccb7e78b68e37c3c423">rearrange</a> ()</td></tr>
+<tr class="memitem:a3009a66958686ccb7e78b68e37c3c423"><td class="memItemLeft" align="right" valign="top"><a id="a3009a66958686ccb7e78b68e37c3c423"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a3009a66958686ccb7e78b68e37c3c423">rearrange</a> ()</td></tr>
+<tr class="memdesc:a3009a66958686ccb7e78b68e37c3c423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que actualiza a visualização do grafo. <br /></td></tr>
 <tr class="separator:a3009a66958686ccb7e78b68e37c3c423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a89d0abe75f41feededc49497cc514342"><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a89d0abe75f41feededc49497cc514342">port</a> = 7772</td></tr>
+<tr class="memitem:a89d0abe75f41feededc49497cc514342"><td class="memItemLeft" align="right" valign="top"><a id="a89d0abe75f41feededc49497cc514342"></a>
+static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_viewer.html#a89d0abe75f41feededc49497cc514342">port</a> = 7772</td></tr>
+<tr class="memdesc:a89d0abe75f41feededc49497cc514342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável que guarda a próxima porta que o programa vai usar. O valor inicial é 7772. <br /></td></tr>
 <tr class="separator:a89d0abe75f41feededc49497cc514342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Classe que guarda o grafo e o representa. Todas as suas funções retornam um booleano a indicar se a sua execução decorreu ou não com sucesso. </p>
+<div class="textblock"><p>Standard Class to hold the Window generated to vizualize the Network. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8adc614f4fc290a3efcec7d7ceb1c58a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8adc614f4fc290a3efcec7d7ceb1c58a">&sect;&nbsp;</a></span>GraphViewer() <span class="overload">[1/2]</span></h2>
@@ -165,7 +199,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Construtor que cria um novo grafo e atribui automaticamente a porta. Exemplo: <a class="el" href="class_graph_viewer.html">GraphViewer</a> *gv = new <a class="el" href="class_graph_viewer.html">GraphViewer(600, 600, true)</a>; instancia um grafo 600x600, onde a posição dos nós é determinada automaticamente.</p>
+
+<p>Construtor que cria um novo grafo e atribui automaticamente a porta. </p>
+<p>Exemplo: <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a> *gv = new <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer(600, 600, true)</a>; instancia um grafo 600x600, onde a posição dos nós é determinada automaticamente.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>Inteiro que representa a lagura da área do grafo. </td></tr>
@@ -214,8 +250,10 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação.</p>
-<p>Exemplo: <a class="el" href="class_graph_viewer.html">GraphViewer</a> *gv = new <a class="el" href="class_graph_viewer.html">GraphViewer(600, 600, false, 3000)</a>; instancia um grafo 600x600, onde a posição dos nós é determinada pelo utilizador (usando a versão de addNode onde se pode especificar as coordenadas), sendo que a porta a usar para a comunicação é a 3000.</p>
+
+<p>Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação. </p>
+<p>Exemplo: <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a> *gv = new <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer(600, 600, false, 3000)</a>; instancia um grafo 600x600, onde a posição dos nós é determinada pelo utilizador</p>
+<p>(usando a versão de addNode onde se pode especificar as coordenadas), sendo que a porta a usar para a comunicação é a 3000.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>Inteiro que representa a lagura da área do grafo. </td></tr>
@@ -266,7 +304,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Acrescenta uma aresta à representação do grafo. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;addEdge(0, 1, 2, EdgeType::UNDIRECTED); adiciona uma aresta não-dirigida com ID 0 que liga os nós com os IDs 1 e 2</p>
+
+<p>Acrescenta uma aresta à representação do grafo. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;addEdge(0, 1, 2, EdgeType::UNDIRECTED); adiciona uma aresta não-dirigida com ID 0 que liga os nós com os IDs 1 e 2</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta. </td></tr>
@@ -310,7 +350,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a> com isDynamic = false: gv-&gt;addNode(0, 1, 2); adiciona um nó com ID 0 na posição (x, y) = (1, 2)</p>
+
+<p>Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a> com isDynamic = false: gv-&gt;addNode(0, 1, 2); adiciona um nó com ID 0 na posição (x, y) = (1, 2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó. </td></tr>
@@ -337,31 +379,16 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Acrescenta um nó à representação do grafo, numa posição ao critério do programa. Só pode ser usado se o grafo for dinâmico, ou seja, se as posições de todos os nós forem atribuídas automaticamente. Caso contrário, não adiciona o nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a> com isDynamic = true: gv-&gt;addNode(0); adiciona um nó com ID 0</p>
+
+<p>Acrescenta um nó à representação do grafo, numa posição ao critério do programa. </p>
+<p>Só pode ser usado se o grafo for dinâmico, ou seja, se as posições de todos os nós forem atribuídas automaticamente. Caso contrário, não adiciona o nó.</p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a> com isDynamic = true: gv-&gt;addNode(0); adiciona um nó com ID 0</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a85990c1eaac7feed3950960d4bd2fd4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85990c1eaac7feed3950960d4bd2fd4c">&sect;&nbsp;</a></span>closeWindow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool GraphViewer::closeWindow </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Fecha a janela a ser utilizada para visualização. </p>
 
 </div>
 </div>
@@ -390,7 +417,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que cria a janela para visualização. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;createWindow(600, 600); abre uma janela 600x600 onde mostra o grafo.</p>
+
+<p>Função que cria a janela para visualização. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;createWindow(600, 600); abre uma janela 600x600 onde mostra o grafo.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>Largura da janela a criar. </td></tr>
@@ -416,7 +445,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define a cor global das arestas. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineEdgeColor(GRAY); modifica a cor por defeito das arestas para cinzento</p>
+
+<p>Função que define a cor global das arestas. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineEdgeColor(GRAY); modifica a cor por defeito das arestas para cinzento</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color</td><td>Nova cor das arestas, utilizar as constantes definidas no <a class="el" href="graphviewer_8h_source.html">graphviewer.h</a> para conveniência. </td></tr>
@@ -441,7 +472,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define se as arestas do grafo serão desenhadas como curvas ou retas. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineEdgeCurved(false); faz com que as arestas sejam desenhadas como retas</p>
+
+<p>Função que define se as arestas do grafo serão desenhadas como curvas ou retas. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineEdgeCurved(false); faz com que as arestas sejam desenhadas como retas</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">curved</td><td>Booleano que representa se as arestas serão curvas (true) ou retas (false), sendo o valor por defeito é true. </td></tr>
@@ -466,7 +499,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define globalmente se as arestas são desenhadas, ou não, a tracejado. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineEdgeDashed(true); faz com que por defeito as arestas sejam desenhadas a tracejado</p>
+
+<p>Função que define globalmente se as arestas são desenhadas, ou não, a tracejado. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineEdgeDashed(true); faz com que por defeito as arestas sejam desenhadas a tracejado</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dashed</td><td>Booleano que representa se as arestas vão estar, ou não, todas a tracejado (o valor por defeito é false). </td></tr>
@@ -491,7 +526,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define a cor global dos nós. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineVertexColor(RED); modifica a cor por defeito dos nós para vermelho</p>
+
+<p>Função que define a cor global dos nós. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineVertexColor(RED); modifica a cor por defeito dos nós para vermelho</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color</td><td>Nova cor dos nós, utilizar as constantes definidas no <a class="el" href="graphviewer_8h_source.html">graphviewer.h</a> para conveniência. </td></tr>
@@ -516,7 +553,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define um ícone para um nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineVertexIcon("icon.gif"); faz com que por defeito os nós, quando desenhados, não sejam um círculo, mas sim a imagem icon.gif</p>
+
+<p>Função que define um ícone para um nó. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineVertexIcon("icon.gif"); faz com que por defeito os nós, quando desenhados, não sejam um círculo, mas sim a imagem icon.gif</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filepath</td><td>Caminho do ficheiro a utilizar como novo ícone do nó. </td></tr>
@@ -541,31 +580,15 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o tamanho global dos nós. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;defineVertexSize(20); modifica o tamanho por defeito dos nós para 20</p>
+
+<p>Função que define o tamanho global dos nós. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;defineVertexSize(20); modifica o tamanho por defeito dos nós para 20</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>Nova cor dos nós, utilizar as constantes definidas no <a class="el" href="graphviewer_8h_source.html">graphviewer.h</a> para conveniência. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a3009a66958686ccb7e78b68e37c3c423"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3009a66958686ccb7e78b68e37c3c423">&sect;&nbsp;</a></span>rearrange()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool GraphViewer::rearrange </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Função que actualiza a visualização do grafo. </p>
 
 </div>
 </div>
@@ -584,7 +607,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Remove uma aresta da representação do grafo. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;removeEdge(0) remove a aresta com ID 0</p>
+
+<p>Remove uma aresta da representação do grafo. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;removeEdge(0) remove a aresta com ID 0</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta a remover. </td></tr>
@@ -609,7 +634,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Remove um nó da representação do grafo e todas as arestas ligadas a este. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;removeNode(0) remove o nó com ID 0</p>
+
+<p>Remove um nó da representação do grafo e todas as arestas ligadas a este. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;removeNode(0) remove o nó com ID 0</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó a a remover. </td></tr>
@@ -634,7 +661,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que altera a imagem de fundo do grafo. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setBackGround("fundo.png"); faz com que o fundo da janela seja a imagem fundo.png, em vez de cinzento</p>
+
+<p>Função que altera a imagem de fundo do grafo. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setBackGround("fundo.png"); faz com que o fundo da janela seja a imagem fundo.png, em vez de cinzento</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Caminho para o ficheiro com a imagem. </td></tr>
@@ -669,7 +698,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define a cor de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeColor(0, BLUE); modifica a cor da aresta com ID 0 para azul</p>
+
+<p>Função que define a cor de uma aresta. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeColor(0, BLUE); modifica a cor da aresta com ID 0 para azul</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta com a cor a alterar. </td></tr>
@@ -705,7 +736,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define se uma aresta é desenhada, ou não, a tracejado. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeDashed(0, false); faz com que a aresta com ID 0 seja desenhada a traço contínuo</p>
+
+<p>Função que define se uma aresta é desenhada, ou não, a tracejado. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeDashed(0, false); faz com que a aresta com ID 0 seja desenhada a traço contínuo</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta com a cor a alterar. </td></tr>
@@ -741,7 +774,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f: valor_do_fluxo, precedido pelo peso e seguido por texto definido pelo utilizador. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeFlow(0, 20); modifica o fluxo da aresta com ID 0 para 20</p>
+
+<p>Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f: valor_do_fluxo, precedido pelo peso e seguido por texto definido pelo utilizador. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeFlow(0, 20); modifica o fluxo da aresta com ID 0 para 20</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta a modificar. </td></tr>
@@ -777,7 +812,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o texto de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeLabel(0, "Isto é uma aresta"); adiciona o texto "Isto é uma aresta" à aresta com ID 0</p>
+
+<p>Função que define o texto de uma aresta. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeLabel(0, "Isto é uma aresta"); adiciona o texto "Isto é uma aresta" à aresta com ID 0</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta com o texto a alterar. </td></tr>
@@ -813,7 +850,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define a espessura de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeThickness(0, 20); modifica a espessura da aresta com ID 0 para 20</p>
+
+<p>Função que define a espessura de uma aresta. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeThickness(0, 20); modifica a espessura da aresta com ID 0 para 20</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta com a espessura a alterar. </td></tr>
@@ -849,7 +888,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w: valor_do_peso, seguido de qualquer outro texto associado à aresta. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setEdgeWeight(0, 20); modifica o peso da aresta com ID 0 para 20</p>
+
+<p>Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w: valor_do_peso, seguido de qualquer outro texto associado à aresta. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setEdgeWeight(0, 20); modifica o peso da aresta com ID 0 para 20</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único da aresta a modificar. </td></tr>
@@ -885,7 +926,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define a cor de um nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setVertexColor(0, GREEN); modifica a cor do nó com ID 0 para verde</p>
+
+<p>Função que define a cor de um nó. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setVertexColor(0, GREEN); modifica a cor do nó com ID 0 para verde</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó com a cor a alterar. </td></tr>
@@ -921,7 +964,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define um ícone para um nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setVertexIcon(0, "icon.png"); faz com que o nó, quando desenhado, não seja um círculo, mas sim a imagem icon.png</p>
+
+<p>Função que define um ícone para um nó. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setVertexIcon(0, "icon.png"); faz com que o nó, quando desenhado, não seja um círculo, mas sim a imagem icon.png</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó com o ícone a alterar. </td></tr>
@@ -957,7 +1002,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o texto de um nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setVertexLabel(0, "Isto é um nó"); adiciona o texto "Isto é um nó" ao nó com ID 0</p>
+
+<p>Função que define o texto de um nó. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setVertexLabel(0, "Isto é um nó"); adiciona o texto "Isto é um nó" ao nó com ID 0</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó com o texto a alterar. </td></tr>
@@ -993,7 +1040,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função que define o tamanho de um nó. Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html">GraphViewer</a>: gv-&gt;setVertexSize(0, 10); modifica o tamanho do nó com ID 0 para 40</p>
+
+<p>Função que define o tamanho de um nó. </p>
+<p>Exemplo, para um apontador gv onde foi instanciada a classe <a class="el" href="class_graph_viewer.html" title="Standard Class to hold the Window generated to vizualize the Network. ">GraphViewer</a>: gv-&gt;setVertexSize(0, 10); modifica o tamanho do nó com ID 0 para 40</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Identificador único do nó com o tamanho a alterar. </td></tr>
@@ -1001,30 +1050,6 @@ Static Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a89d0abe75f41feededc49497cc514342"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89d0abe75f41feededc49497cc514342">&sect;&nbsp;</a></span>port</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">short GraphViewer::port = 7772</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Variável que guarda a próxima porta que o programa vai usar. O valor inicial é 7772. </p>
 
 </div>
 </div>

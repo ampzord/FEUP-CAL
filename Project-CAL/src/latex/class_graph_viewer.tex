@@ -2,74 +2,82 @@
 \label{class_graph_viewer}\index{Graph\+Viewer@{Graph\+Viewer}}
 
 
+Standard Class to hold the Window generated to vizualize the Network.  
+
+
+
+
 {\ttfamily \#include $<$graphviewer.\+h$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_graph_viewer_a8adc614f4fc290a3efcec7d7ceb1c58a}{Graph\+Viewer} (int width, int height, bool dynamic)
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor que cria um novo grafo e atribui automaticamente a porta. \end{DoxyCompactList}\item 
 \hyperlink{class_graph_viewer_ad9d7b1d8b4ba8ef18517eae0e68568a2}{Graph\+Viewer} (int width, int height, bool dynamic, int port\+\_\+n)
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ae5247dc66449dcd21fc5d531bbbaddfa}{create\+Window} (int width, int height)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que cria a janela para visualização. \end{DoxyCompactList}\item 
+\hypertarget{class_graph_viewer_a85990c1eaac7feed3950960d4bd2fd4c}{}\label{class_graph_viewer_a85990c1eaac7feed3950960d4bd2fd4c} 
 bool \hyperlink{class_graph_viewer_a85990c1eaac7feed3950960d4bd2fd4c}{close\+Window} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Fecha a janela a ser utilizada para visualização. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a5421e86ac76433876309236ba96e70a2}{add\+Node} (int id, int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ab9be856eb5f45284719a3bb119ec01ea}{add\+Node} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Acrescenta um nó à representação do grafo, numa posição ao critério do programa. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_aad0c1448c37f744209ffb671f1bd0015}{add\+Edge} (int id, int v1, int v2, int edge\+Type)
-\item 
+\begin{DoxyCompactList}\small\item\em Acrescenta uma aresta à representação do grafo. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a0c418639bb911eb827cabf895915f775}{remove\+Node} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Remove um nó da representação do grafo e todas as arestas ligadas a este. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a9a8ee68c7c12b373affbe4069dd95d72}{remove\+Edge} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Remove uma aresta da representação do grafo. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ac25d7d007022fda16799808ba136e909}{set\+Vertex\+Label} (int id, string label)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o texto de um nó. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a447cca0064e785654c2105602c2961ca}{set\+Edge\+Label} (int id, string label)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o texto de uma aresta. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a07ccc96707efae4aa5f3ced3dca015af}{set\+Edge\+Color} (int id, string color)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define a cor de uma aresta. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a1698f1c6b3a8e7cabc7b7d7cf42fc7f0}{set\+Edge\+Dashed} (int id, bool dashed)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define se uma aresta é desenhada, ou não, a tracejado. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a8b542d7e09e81a45a74760c19233beb0}{set\+Vertex\+Color} (int id, string color)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define a cor de um nó. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ae930dfdfcdeb7a871eefb6028d74b9f9}{set\+Vertex\+Size} (int id, int size)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o tamanho de um nó. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a02d5f7393eab9a2d1b66719039597a64}{set\+Vertex\+Icon} (int id, string filepath)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define um ícone para um nó. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a07f598272fe3515455eab13be749604a}{set\+Edge\+Thickness} (int id, int thickness)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define a espessura de uma aresta. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ac211de009a0afe2e6d44f4f8d030a2cc}{set\+Edge\+Weight} (int id, int weight)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w\+: valor\+\_\+do\+\_\+peso, seguido de qualquer outro texto associado à aresta. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a69eb065145063e4dea41961e92e35c8e}{set\+Edge\+Flow} (int id, int flow)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f\+: valor\+\_\+do\+\_\+fluxo, precedido pelo peso e seguido por texto definido pelo utilizador. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a08f362be0e682d91e7506dca8caae1b8}{define\+Edge\+Curved} (bool curved)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define se as arestas do grafo serão desenhadas como curvas ou retas. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a4102580b69826ba83251ef7bb262f8be}{define\+Edge\+Color} (string color)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define a cor global das arestas. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_af785279b5c204df0e274b20c36276fc3}{define\+Edge\+Dashed} (bool dashed)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define globalmente se as arestas são desenhadas, ou não, a tracejado. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a76de8676b7a93d72af514b84cdaa4d21}{define\+Vertex\+Color} (string color)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define a cor global dos nós. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_ac4b2a9fec74d38e64088aa79ca4b7d9b}{define\+Vertex\+Size} (int size)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define o tamanho global dos nós. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_af1adb6a361457187a820e01dcf0a34b7}{define\+Vertex\+Icon} (string filepath)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que define um ícone para um nó. \end{DoxyCompactList}\item 
 bool \hyperlink{class_graph_viewer_a02437b5fecd8b90de24436068312d593}{set\+Background} (string path)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que altera a imagem de fundo do grafo. \end{DoxyCompactList}\item 
+\hypertarget{class_graph_viewer_a3009a66958686ccb7e78b68e37c3c423}{}\label{class_graph_viewer_a3009a66958686ccb7e78b68e37c3c423} 
 bool \hyperlink{class_graph_viewer_a3009a66958686ccb7e78b68e37c3c423}{rearrange} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função que actualiza a visualização do grafo. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{class_graph_viewer_a89d0abe75f41feededc49497cc514342}{}\label{class_graph_viewer_a89d0abe75f41feededc49497cc514342} 
 static short \hyperlink{class_graph_viewer_a89d0abe75f41feededc49497cc514342}{port} = 7772
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variável que guarda a próxima porta que o programa vai usar. O valor inicial é 7772. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Classe que guarda o grafo e o representa. Todas as suas funções retornam um booleano a indicar se a sua execução decorreu ou não com sucesso. 
+Standard Class to hold the Window generated to vizualize the Network. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_graph_viewer_a8adc614f4fc290a3efcec7d7ceb1c58a}{}\label{class_graph_viewer_a8adc614f4fc290a3efcec7d7ceb1c58a} 
@@ -78,7 +86,11 @@ Classe que guarda o grafo e o representa. Todas as suas funções retornam um bo
 \subsubsection{\texorpdfstring{Graph\+Viewer()}{GraphViewer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Graph\+Viewer\+::\+Graph\+Viewer (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{bool}]{dynamic }\end{DoxyParamCaption})}
 
-Construtor que cria um novo grafo e atribui automaticamente a porta. Exemplo\+: \hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast$gv = new \hyperlink{class_graph_viewer}{Graph\+Viewer(600, 600, true)}; instancia um grafo 600x600, onde a posição dos nós é determinada automaticamente.
+
+
+Construtor que cria um novo grafo e atribui automaticamente a porta. 
+
+Exemplo\+: \hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast$gv = new \hyperlink{class_graph_viewer}{Graph\+Viewer(600, 600, true)}; instancia um grafo 600x600, onde a posição dos nós é determinada automaticamente.
 
 
 \begin{DoxyParams}{Parameters}
@@ -95,9 +107,13 @@ Construtor que cria um novo grafo e atribui automaticamente a porta. Exemplo\+: 
 \subsubsection{\texorpdfstring{Graph\+Viewer()}{GraphViewer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Graph\+Viewer\+::\+Graph\+Viewer (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{bool}]{dynamic,  }\item[{int}]{port\+\_\+n }\end{DoxyParamCaption})}
 
-Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação.
 
-Exemplo\+: \hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast$gv = new \hyperlink{class_graph_viewer}{Graph\+Viewer(600, 600, false, 3000)}; instancia um grafo 600x600, onde a posição dos nós é determinada pelo utilizador (usando a versão de add\+Node onde se pode especificar as coordenadas), sendo que a porta a usar para a comunicação é a 3000.
+
+Construtor que cria um novo grafo, utilizando uma porta especificada pelo utilizador para a ligação. 
+
+Exemplo\+: \hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast$gv = new \hyperlink{class_graph_viewer}{Graph\+Viewer(600, 600, false, 3000)}; instancia um grafo 600x600, onde a posição dos nós é determinada pelo utilizador
+
+(usando a versão de add\+Node onde se pode especificar as coordenadas), sendo que a porta a usar para a comunicação é a 3000.
 
 
 \begin{DoxyParams}{Parameters}
@@ -119,7 +135,11 @@ Exemplo\+: \hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast$gv = new \hyperli
 \subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{v1,  }\item[{int}]{v2,  }\item[{int}]{edge\+Type }\end{DoxyParamCaption})}
 
-Acrescenta uma aresta à representação do grafo. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$add\+Edge(0, 1, 2, Edge\+Type\+::\+U\+N\+D\+I\+R\+E\+C\+T\+E\+D); adiciona uma aresta não-\/dirigida com ID 0 que liga os nós com os I\+Ds 1 e 2
+
+
+Acrescenta uma aresta à representação do grafo. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$add\+Edge(0, 1, 2, Edge\+Type\+::\+U\+N\+D\+I\+R\+E\+C\+T\+E\+D); adiciona uma aresta não-\/dirigida com ID 0 que liga os nós com os I\+Ds 1 e 2
 
 
 \begin{DoxyParams}{Parameters}
@@ -138,7 +158,11 @@ Acrescenta uma aresta à representação do grafo. Exemplo, para um apontador gv
 \subsubsection{\texorpdfstring{add\+Node()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::add\+Node (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
 
-Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer} com is\+Dynamic = false\+: gv-\/$>$add\+Node(0, 1, 2); adiciona um nó com ID 0 na posição (x, y) = (1, 2)
+
+
+Acrescenta um nó à representação do grafo, numa posição específica, irrelevante se o grafo for dinâmico. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer} com is\+Dynamic = false\+: gv-\/$>$add\+Node(0, 1, 2); adiciona um nó com ID 0 na posição (x, y) = (1, 2)
 
 
 \begin{DoxyParams}{Parameters}
@@ -155,26 +179,30 @@ Acrescenta um nó à representação do grafo, numa posição específica, irrel
 \subsubsection{\texorpdfstring{add\+Node()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::add\+Node (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
 
-Acrescenta um nó à representação do grafo, numa posição ao critério do programa. Só pode ser usado se o grafo for dinâmico, ou seja, se as posições de todos os nós forem atribuídas automaticamente. Caso contrário, não adiciona o nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer} com is\+Dynamic = true\+: gv-\/$>$add\+Node(0); adiciona um nó com ID 0
+
+
+Acrescenta um nó à representação do grafo, numa posição ao critério do programa. 
+
+Só pode ser usado se o grafo for dinâmico, ou seja, se as posições de todos os nós forem atribuídas automaticamente. Caso contrário, não adiciona o nó.
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer} com is\+Dynamic = true\+: gv-\/$>$add\+Node(0); adiciona um nó com ID 0
 
 
 \begin{DoxyParams}{Parameters}
 {\em id} & Identificador único do nó. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_graph_viewer_a85990c1eaac7feed3950960d4bd2fd4c}{}\label{class_graph_viewer_a85990c1eaac7feed3950960d4bd2fd4c} 
-\index{Graph\+Viewer@{Graph\+Viewer}!close\+Window@{close\+Window}}
-\index{close\+Window@{close\+Window}!Graph\+Viewer@{Graph\+Viewer}}
-\subsubsection{\texorpdfstring{close\+Window()}{closeWindow()}}
-{\footnotesize\ttfamily bool Graph\+Viewer\+::close\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Fecha a janela a ser utilizada para visualização. \hypertarget{class_graph_viewer_ae5247dc66449dcd21fc5d531bbbaddfa}{}\label{class_graph_viewer_ae5247dc66449dcd21fc5d531bbbaddfa} 
+\hypertarget{class_graph_viewer_ae5247dc66449dcd21fc5d531bbbaddfa}{}\label{class_graph_viewer_ae5247dc66449dcd21fc5d531bbbaddfa} 
 \index{Graph\+Viewer@{Graph\+Viewer}!create\+Window@{create\+Window}}
 \index{create\+Window@{create\+Window}!Graph\+Viewer@{Graph\+Viewer}}
 \subsubsection{\texorpdfstring{create\+Window()}{createWindow()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::create\+Window (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
-Função que cria a janela para visualização. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$create\+Window(600, 600); abre uma janela 600x600 onde mostra o grafo.
+
+
+Função que cria a janela para visualização. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$create\+Window(600, 600); abre uma janela 600x600 onde mostra o grafo.
 
 
 \begin{DoxyParams}{Parameters}
@@ -189,7 +217,11 @@ Função que cria a janela para visualização. Exemplo, para um apontador gv on
 \subsubsection{\texorpdfstring{define\+Edge\+Color()}{defineEdgeColor()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Edge\+Color (\begin{DoxyParamCaption}\item[{string}]{color }\end{DoxyParamCaption})}
 
-Função que define a cor global das arestas. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Color(\+G\+R\+A\+Y); modifica a cor por defeito das arestas para cinzento
+
+
+Função que define a cor global das arestas. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Color(\+G\+R\+A\+Y); modifica a cor por defeito das arestas para cinzento
 
 
 \begin{DoxyParams}{Parameters}
@@ -202,7 +234,11 @@ Função que define a cor global das arestas. Exemplo, para um apontador gv onde
 \subsubsection{\texorpdfstring{define\+Edge\+Curved()}{defineEdgeCurved()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Edge\+Curved (\begin{DoxyParamCaption}\item[{bool}]{curved }\end{DoxyParamCaption})}
 
-Função que define se as arestas do grafo serão desenhadas como curvas ou retas. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Curved(false); faz com que as arestas sejam desenhadas como retas
+
+
+Função que define se as arestas do grafo serão desenhadas como curvas ou retas. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Curved(false); faz com que as arestas sejam desenhadas como retas
 
 
 \begin{DoxyParams}{Parameters}
@@ -215,7 +251,11 @@ Função que define se as arestas do grafo serão desenhadas como curvas ou reta
 \subsubsection{\texorpdfstring{define\+Edge\+Dashed()}{defineEdgeDashed()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Edge\+Dashed (\begin{DoxyParamCaption}\item[{bool}]{dashed }\end{DoxyParamCaption})}
 
-Função que define globalmente se as arestas são desenhadas, ou não, a tracejado. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Dashed(true); faz com que por defeito as arestas sejam desenhadas a tracejado
+
+
+Função que define globalmente se as arestas são desenhadas, ou não, a tracejado. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Edge\+Dashed(true); faz com que por defeito as arestas sejam desenhadas a tracejado
 
 
 \begin{DoxyParams}{Parameters}
@@ -228,7 +268,11 @@ Função que define globalmente se as arestas são desenhadas, ou não, a tracej
 \subsubsection{\texorpdfstring{define\+Vertex\+Color()}{defineVertexColor()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Vertex\+Color (\begin{DoxyParamCaption}\item[{string}]{color }\end{DoxyParamCaption})}
 
-Função que define a cor global dos nós. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Color(\+R\+E\+D); modifica a cor por defeito dos nós para vermelho
+
+
+Função que define a cor global dos nós. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Color(\+R\+E\+D); modifica a cor por defeito dos nós para vermelho
 
 
 \begin{DoxyParams}{Parameters}
@@ -241,7 +285,11 @@ Função que define a cor global dos nós. Exemplo, para um apontador gv onde fo
 \subsubsection{\texorpdfstring{define\+Vertex\+Icon()}{defineVertexIcon()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Vertex\+Icon (\begin{DoxyParamCaption}\item[{string}]{filepath }\end{DoxyParamCaption})}
 
-Função que define um ícone para um nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Icon(\char`\"{}icon.\+gif\char`\"{}); faz com que por defeito os nós, quando desenhados, não sejam um círculo, mas sim a imagem icon.\+gif
+
+
+Função que define um ícone para um nó. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Icon(\char`\"{}icon.\+gif\char`\"{}); faz com que por defeito os nós, quando desenhados, não sejam um círculo, mas sim a imagem icon.\+gif
 
 
 \begin{DoxyParams}{Parameters}
@@ -254,26 +302,28 @@ Função que define um ícone para um nó. Exemplo, para um apontador gv onde fo
 \subsubsection{\texorpdfstring{define\+Vertex\+Size()}{defineVertexSize()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::define\+Vertex\+Size (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
 
-Função que define o tamanho global dos nós. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Size(20); modifica o tamanho por defeito dos nós para 20
+
+
+Função que define o tamanho global dos nós. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$define\+Vertex\+Size(20); modifica o tamanho por defeito dos nós para 20
 
 
 \begin{DoxyParams}{Parameters}
 {\em size} & Nova cor dos nós, utilizar as constantes definidas no \hyperlink{graphviewer_8h_source}{graphviewer.\+h} para conveniência. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_graph_viewer_a3009a66958686ccb7e78b68e37c3c423}{}\label{class_graph_viewer_a3009a66958686ccb7e78b68e37c3c423} 
-\index{Graph\+Viewer@{Graph\+Viewer}!rearrange@{rearrange}}
-\index{rearrange@{rearrange}!Graph\+Viewer@{Graph\+Viewer}}
-\subsubsection{\texorpdfstring{rearrange()}{rearrange()}}
-{\footnotesize\ttfamily bool Graph\+Viewer\+::rearrange (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Função que actualiza a visualização do grafo. \hypertarget{class_graph_viewer_a9a8ee68c7c12b373affbe4069dd95d72}{}\label{class_graph_viewer_a9a8ee68c7c12b373affbe4069dd95d72} 
+\hypertarget{class_graph_viewer_a9a8ee68c7c12b373affbe4069dd95d72}{}\label{class_graph_viewer_a9a8ee68c7c12b373affbe4069dd95d72} 
 \index{Graph\+Viewer@{Graph\+Viewer}!remove\+Edge@{remove\+Edge}}
 \index{remove\+Edge@{remove\+Edge}!Graph\+Viewer@{Graph\+Viewer}}
 \subsubsection{\texorpdfstring{remove\+Edge()}{removeEdge()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::remove\+Edge (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
 
-Remove uma aresta da representação do grafo. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$remove\+Edge(0) remove a aresta com ID 0
+
+
+Remove uma aresta da representação do grafo. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$remove\+Edge(0) remove a aresta com ID 0
 
 
 \begin{DoxyParams}{Parameters}
@@ -286,7 +336,11 @@ Remove uma aresta da representação do grafo. Exemplo, para um apontador gv ond
 \subsubsection{\texorpdfstring{remove\+Node()}{removeNode()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::remove\+Node (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
 
-Remove um nó da representação do grafo e todas as arestas ligadas a este. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$remove\+Node(0) remove o nó com ID 0
+
+
+Remove um nó da representação do grafo e todas as arestas ligadas a este. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$remove\+Node(0) remove o nó com ID 0
 
 
 \begin{DoxyParams}{Parameters}
@@ -299,7 +353,11 @@ Remove um nó da representação do grafo e todas as arestas ligadas a este. Exe
 \subsubsection{\texorpdfstring{set\+Background()}{setBackground()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Background (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
-Função que altera a imagem de fundo do grafo. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Back\+Ground(\char`\"{}fundo.\+png\char`\"{}); faz com que o fundo da janela seja a imagem fundo.\+png, em vez de cinzento
+
+
+Função que altera a imagem de fundo do grafo. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Back\+Ground(\char`\"{}fundo.\+png\char`\"{}); faz com que o fundo da janela seja a imagem fundo.\+png, em vez de cinzento
 
 
 \begin{DoxyParams}{Parameters}
@@ -312,7 +370,11 @@ Função que altera a imagem de fundo do grafo. Exemplo, para um apontador gv on
 \subsubsection{\texorpdfstring{set\+Edge\+Color()}{setEdgeColor()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Color (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{color }\end{DoxyParamCaption})}
 
-Função que define a cor de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Color(0, B\+L\+U\+E); modifica a cor da aresta com ID 0 para azul
+
+
+Função que define a cor de uma aresta. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Color(0, B\+L\+U\+E); modifica a cor da aresta com ID 0 para azul
 
 
 \begin{DoxyParams}{Parameters}
@@ -327,7 +389,11 @@ Função que define a cor de uma aresta. Exemplo, para um apontador gv onde foi 
 \subsubsection{\texorpdfstring{set\+Edge\+Dashed()}{setEdgeDashed()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Dashed (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{bool}]{dashed }\end{DoxyParamCaption})}
 
-Função que define se uma aresta é desenhada, ou não, a tracejado. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Dashed(0, false); faz com que a aresta com ID 0 seja desenhada a traço contínuo
+
+
+Função que define se uma aresta é desenhada, ou não, a tracejado. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Dashed(0, false); faz com que a aresta com ID 0 seja desenhada a traço contínuo
 
 
 \begin{DoxyParams}{Parameters}
@@ -342,7 +408,11 @@ Função que define se uma aresta é desenhada, ou não, a tracejado. Exemplo, p
 \subsubsection{\texorpdfstring{set\+Edge\+Flow()}{setEdgeFlow()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Flow (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{flow }\end{DoxyParamCaption})}
 
-Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f\+: valor\+\_\+do\+\_\+fluxo, precedido pelo peso e seguido por texto definido pelo utilizador. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Flow(0, 20); modifica o fluxo da aresta com ID 0 para 20
+
+
+Função que define o fluxo de uma aresta na representação do grafo, a ser visualizado como f\+: valor\+\_\+do\+\_\+fluxo, precedido pelo peso e seguido por texto definido pelo utilizador. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Flow(0, 20); modifica o fluxo da aresta com ID 0 para 20
 
 
 \begin{DoxyParams}{Parameters}
@@ -357,7 +427,11 @@ Função que define o fluxo de uma aresta na representação do grafo, a ser vis
 \subsubsection{\texorpdfstring{set\+Edge\+Label()}{setEdgeLabel()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Label (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{label }\end{DoxyParamCaption})}
 
-Função que define o texto de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Label(0, \char`\"{}\+Isto é uma aresta\char`\"{}); adiciona o texto \char`\"{}\+Isto é uma aresta\char`\"{} à aresta com ID 0
+
+
+Função que define o texto de uma aresta. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Label(0, \char`\"{}\+Isto é uma aresta\char`\"{}); adiciona o texto \char`\"{}\+Isto é uma aresta\char`\"{} à aresta com ID 0
 
 
 \begin{DoxyParams}{Parameters}
@@ -372,7 +446,11 @@ Função que define o texto de uma aresta. Exemplo, para um apontador gv onde fo
 \subsubsection{\texorpdfstring{set\+Edge\+Thickness()}{setEdgeThickness()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Thickness (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{thickness }\end{DoxyParamCaption})}
 
-Função que define a espessura de uma aresta. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Thickness(0, 20); modifica a espessura da aresta com ID 0 para 20
+
+
+Função que define a espessura de uma aresta. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Thickness(0, 20); modifica a espessura da aresta com ID 0 para 20
 
 
 \begin{DoxyParams}{Parameters}
@@ -387,7 +465,11 @@ Função que define a espessura de uma aresta. Exemplo, para um apontador gv ond
 \subsubsection{\texorpdfstring{set\+Edge\+Weight()}{setEdgeWeight()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Edge\+Weight (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{weight }\end{DoxyParamCaption})}
 
-Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w\+: valor\+\_\+do\+\_\+peso, seguido de qualquer outro texto associado à aresta. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Weight(0, 20); modifica o peso da aresta com ID 0 para 20
+
+
+Função que define o peso de uma aresta na representação do grafo, a ser visualizado como w\+: valor\+\_\+do\+\_\+peso, seguido de qualquer outro texto associado à aresta. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Edge\+Weight(0, 20); modifica o peso da aresta com ID 0 para 20
 
 
 \begin{DoxyParams}{Parameters}
@@ -402,7 +484,11 @@ Função que define o peso de uma aresta na representação do grafo, a ser visu
 \subsubsection{\texorpdfstring{set\+Vertex\+Color()}{setVertexColor()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Vertex\+Color (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{color }\end{DoxyParamCaption})}
 
-Função que define a cor de um nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Color(0, G\+R\+E\+E\+N); modifica a cor do nó com ID 0 para verde
+
+
+Função que define a cor de um nó. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Color(0, G\+R\+E\+E\+N); modifica a cor do nó com ID 0 para verde
 
 
 \begin{DoxyParams}{Parameters}
@@ -417,7 +503,11 @@ Função que define a cor de um nó. Exemplo, para um apontador gv onde foi inst
 \subsubsection{\texorpdfstring{set\+Vertex\+Icon()}{setVertexIcon()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Vertex\+Icon (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{filepath }\end{DoxyParamCaption})}
 
-Função que define um ícone para um nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Icon(0, \char`\"{}icon.\+png\char`\"{}); faz com que o nó, quando desenhado, não seja um círculo, mas sim a imagem icon.\+png
+
+
+Função que define um ícone para um nó. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Icon(0, \char`\"{}icon.\+png\char`\"{}); faz com que o nó, quando desenhado, não seja um círculo, mas sim a imagem icon.\+png
 
 
 \begin{DoxyParams}{Parameters}
@@ -432,7 +522,11 @@ Função que define um ícone para um nó. Exemplo, para um apontador gv onde fo
 \subsubsection{\texorpdfstring{set\+Vertex\+Label()}{setVertexLabel()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Vertex\+Label (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{label }\end{DoxyParamCaption})}
 
-Função que define o texto de um nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Label(0, \char`\"{}\+Isto é um nó\char`\"{}); adiciona o texto \char`\"{}\+Isto é um nó\char`\"{} ao nó com ID 0
+
+
+Função que define o texto de um nó. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Label(0, \char`\"{}\+Isto é um nó\char`\"{}); adiciona o texto \char`\"{}\+Isto é um nó\char`\"{} ao nó com ID 0
 
 
 \begin{DoxyParams}{Parameters}
@@ -447,7 +541,11 @@ Função que define o texto de um nó. Exemplo, para um apontador gv onde foi in
 \subsubsection{\texorpdfstring{set\+Vertex\+Size()}{setVertexSize()}}
 {\footnotesize\ttfamily bool Graph\+Viewer\+::set\+Vertex\+Size (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{size }\end{DoxyParamCaption})}
 
-Função que define o tamanho de um nó. Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Size(0, 10); modifica o tamanho do nó com ID 0 para 40
+
+
+Função que define o tamanho de um nó. 
+
+Exemplo, para um apontador gv onde foi instanciada a classe \hyperlink{class_graph_viewer}{Graph\+Viewer}\+: gv-\/$>$set\+Vertex\+Size(0, 10); modifica o tamanho do nó com ID 0 para 40
 
 
 \begin{DoxyParams}{Parameters}
@@ -457,15 +555,6 @@ Função que define o tamanho de um nó. Exemplo, para um apontador gv onde foi 
 \hline
 \end{DoxyParams}
 
-
-\subsection{Member Data Documentation}
-\hypertarget{class_graph_viewer_a89d0abe75f41feededc49497cc514342}{}\label{class_graph_viewer_a89d0abe75f41feededc49497cc514342} 
-\index{Graph\+Viewer@{Graph\+Viewer}!port@{port}}
-\index{port@{port}!Graph\+Viewer@{Graph\+Viewer}}
-\subsubsection{\texorpdfstring{port}{port}}
-{\footnotesize\ttfamily short Graph\+Viewer\+::port = 7772\hspace{0.3cm}{\ttfamily [static]}}
-
-Variável que guarda a próxima porta que o programa vai usar. O valor inicial é 7772. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

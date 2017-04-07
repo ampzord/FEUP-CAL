@@ -66,6 +66,11 @@ $(function() {
 <div class="title">Graph&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Standard Class to hold the Network's <a class="el" href="class_graph.html" title="Standard Class to hold the Network&#39;s Graph. ">Graph</a>.  
+ <a href="class_graph.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_graph_8h_source.html">Graph.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -93,9 +98,9 @@ vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bfs</b> 
 <tr class="memitem:a675559f8cddfe43bc416023ad9f28cfa"><td class="memItemLeft" align="right" valign="top"><a id="a675559f8cddfe43bc416023ad9f28cfa"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>maxNewChildren</b> (<a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *v, T &amp;inf) const</td></tr>
 <tr class="separator:a675559f8cddfe43bc416023ad9f28cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a135e8f915af85904abca9eafaa4f13ce"><td class="memItemLeft" align="right" valign="top"><a id="a135e8f915af85904abca9eafaa4f13ce"></a>
-vector&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getVertexSet</b> () const</td></tr>
-<tr class="separator:a135e8f915af85904abca9eafaa4f13ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923b43995f81ad9319bbc81a1e433e64"><td class="memItemLeft" align="right" valign="top"><a id="a923b43995f81ad9319bbc81a1e433e64"></a>
+vector&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getVertexSet</b> () const</td></tr>
+<tr class="separator:a923b43995f81ad9319bbc81a1e433e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="memItemLeft" align="right" valign="top"><a id="a0853eac15cdf0f06d63f4b8a7820ec71"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumVertex</b> () const</td></tr>
 <tr class="separator:a0853eac15cdf0f06d63f4b8a7820ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +152,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>getfloydWarshallPathA
 <tr class="memitem:acf75f2fa28fb5ce2e512faf76f2e5a76"><td class="memItemLeft" align="right" valign="top"><a id="acf75f2fa28fb5ce2e512faf76f2e5a76"></a>
 map&lt; int, vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sortPaths</b> (bool normal)</td></tr>
 <tr class="separator:acf75f2fa28fb5ce2e512faf76f2e5a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a13738437333d9addd562bccf90c123"><td class="memItemLeft" align="right" valign="top"><a id="a3a13738437333d9addd562bccf90c123"></a>
+vector&lt; pair&lt; int, vector&lt; int &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sortPathsSingle</b> (bool normal)</td></tr>
+<tr class="separator:a3a13738437333d9addd562bccf90c123"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8830def3714a0add8c6bef8b262a7ea7"><td class="memItemLeft" align="right" valign="top"><a id="a8830def3714a0add8c6bef8b262a7ea7"></a>
 vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPossiblePath</b> (vector&lt; int &gt; clients)</td></tr>
 <tr class="separator:a8830def3714a0add8c6bef8b262a7ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,12 +179,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>getfloydWarshallPathI
 <tr class="memitem:a46a2760c361bc1be61fe09baf3f1e7e4"><td class="memItemLeft" align="right" valign="top"><a id="a46a2760c361bc1be61fe09baf3f1e7e4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearClientsServed</b> (vector&lt; int &gt; clients)</td></tr>
 <tr class="separator:a46a2760c361bc1be61fe09baf3f1e7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0af63fd35a05b37333bfce94d25c54c"><td class="memItemLeft" align="right" valign="top"><a id="ab0af63fd35a05b37333bfce94d25c54c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeMostDistantClient</b> (int supermarket, vector&lt; int &gt; &amp;clients, typename map&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt;::iterator it, typename map&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt;::iterator ite)</td></tr>
-<tr class="separator:ab0af63fd35a05b37333bfce94d25c54c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cf95c5b65175f792a338a1fc305388f"><td class="memItemLeft" align="right" valign="top"><a id="a1cf95c5b65175f792a338a1fc305388f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>rearrangeMap</b> (map&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt; supermarkets, typename map&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt;::iterator it)</td></tr>
-<tr class="separator:a1cf95c5b65175f792a338a1fc305388f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66eacb93463220b68d78c4c72ac334ae"><td class="memItemLeft" align="right" valign="top"><a id="a66eacb93463220b68d78c4c72ac334ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>removeMostDistantClient</b> (int supermarket, vector&lt; int &gt; &amp;clients, typename vector&lt; pair&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt; &gt;::iterator it, typename vector&lt; pair&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt; &gt;::iterator ite)</td></tr>
+<tr class="separator:a66eacb93463220b68d78c4c72ac334ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d85759a1be487ddf83d19bcff1d32e6"><td class="memItemLeft" align="right" valign="top"><a id="a1d85759a1be487ddf83d19bcff1d32e6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>removeMostDistantClient2</b> (int supermarket, vector&lt; int &gt; &amp;clients)</td></tr>
+<tr class="separator:a1d85759a1be487ddf83d19bcff1d32e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddd35dbd53ec1ea2b1b47ec9da10af9"><td class="memItemLeft" align="right" valign="top"><a id="a4ddd35dbd53ec1ea2b1b47ec9da10af9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>rearrangeMap</b> (vector&lt; pair&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt; &gt; supermarkets, typename vector&lt; pair&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; T &gt; *, int &gt; &gt;::iterator it)</td></tr>
+<tr class="separator:a4ddd35dbd53ec1ea2b1b47ec9da10af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae059b5069ac2d98c2a4ed3eb7ad802ca"><td class="memItemLeft" align="right" valign="top"><a id="ae059b5069ac2d98c2a4ed3eb7ad802ca"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>firstShortDist</b> (int supermarket1, vector&lt; int &gt;::iterator it, vector&lt; int &gt;::iterator ite, int supermarket2, vector&lt; int &gt;::iterator it2, vector&lt; int &gt;::iterator ite2)</td></tr>
 <tr class="separator:ae059b5069ac2d98c2a4ed3eb7ad802ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,7 +204,12 @@ Friends</h2></td></tr>
 struct&#160;</td><td class="memItemRight" valign="bottom"><b>SortSet&lt; T &gt;</b></td></tr>
 <tr class="separator:aae20d19edfbecdecc77d246d85b7f1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T&gt;<br />
+class Graph&lt; T &gt;</h3>
+
+<p>Standard Class to hold the Network's <a class="el" href="class_graph.html" title="Standard Class to hold the Network&#39;s Graph. ">Graph</a>. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_graph_8h_source.html">Graph.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -2,8 +2,9 @@
 #define _EDGETYPE_
 
 /**
- * Classe que enumera os tipos de arestas. Usar EdgeType.UNDIRECTED para uma aresta sem direcção, ou
- * EdgeType.DIRECTED para uma aresta dirigida.
+ * \brief Class to hold Direction information of an edge.
+ * \details EdgeType.UNDIRECTED for an undirected edge.
+ * \details EdgeType.DIRECTED for a directed edge.
  */
 class EdgeType {
  public: 

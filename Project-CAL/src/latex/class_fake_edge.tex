@@ -1,0 +1,82 @@
+\hypertarget{class_fake_edge}{}\section{Fake\+Edge Class Reference}
+\label{class_fake_edge}\index{Fake\+Edge@{Fake\+Edge}}
+
+
+a class to hold edge information such as it\textquotesingle{}s ID, start node and end node.  
+
+
+
+
+{\ttfamily \#include $<$Fake\+Edge.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_fake_edge_a6a68d323de9a406e367dc02e4e20c926}{Fake\+Edge} (unsigned long long edge\+Id, unsigned long long v1\+Id, unsigned long long v2\+Id)
+\begin{DoxyCompactList}\small\item\em Builds an edge. \end{DoxyCompactList}\item 
+\hypertarget{class_fake_edge_a609a3f812106bd7e4afc07b83197defa}{}\label{class_fake_edge_a609a3f812106bd7e4afc07b83197defa} 
+virtual \hyperlink{class_fake_edge_a609a3f812106bd7e4afc07b83197defa}{$\sim$\+Fake\+Edge} ()
+\begin{DoxyCompactList}\small\item\em Destroys a \hyperlink{class_fake_edge}{Fake\+Edge}. \end{DoxyCompactList}\item 
+\hypertarget{class_fake_edge_a0c723f87e55530833392f737851e4770}{}\label{class_fake_edge_a0c723f87e55530833392f737851e4770} 
+unsigned long long \hyperlink{class_fake_edge_a0c723f87e55530833392f737851e4770}{get\+Edge\+Id} () const
+\begin{DoxyCompactList}\small\item\em Returns edge ID. \end{DoxyCompactList}\item 
+\hypertarget{class_fake_edge_ab2b7d430c5f9f6d75d78a390c7112fa6}{}\label{class_fake_edge_ab2b7d430c5f9f6d75d78a390c7112fa6} 
+unsigned long long \hyperlink{class_fake_edge_ab2b7d430c5f9f6d75d78a390c7112fa6}{get\+V1\+Id} () const
+\begin{DoxyCompactList}\small\item\em Returns ID of origin source node. \end{DoxyCompactList}\item 
+\hypertarget{class_fake_edge_adcf7d88217f1b4b55842da1b23fb4f82}{}\label{class_fake_edge_adcf7d88217f1b4b55842da1b23fb4f82} 
+unsigned long long \hyperlink{class_fake_edge_adcf7d88217f1b4b55842da1b23fb4f82}{get\+V2\+Id} () const
+\begin{DoxyCompactList}\small\item\em Returns ID of destiny node. \end{DoxyCompactList}\item 
+bool \hyperlink{class_fake_edge_afce4358d8d47e71b5fb4cbae870b0610}{is\+Two\+Way} () const
+\begin{DoxyCompactList}\small\item\em Returns information about the street. \end{DoxyCompactList}\item 
+\hypertarget{class_fake_edge_a449009fb7340583ec0aeefdc77ce2303}{}\label{class_fake_edge_a449009fb7340583ec0aeefdc77ce2303} 
+void \hyperlink{class_fake_edge_a449009fb7340583ec0aeefdc77ce2303}{set\+Two\+Way} (bool two\+Way)
+\begin{DoxyCompactList}\small\item\em Method to change a roads way. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a class to hold edge information such as it\textquotesingle{}s ID, start node and end node. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_fake_edge_a6a68d323de9a406e367dc02e4e20c926}{}\label{class_fake_edge_a6a68d323de9a406e367dc02e4e20c926} 
+\index{Fake\+Edge@{Fake\+Edge}!Fake\+Edge@{Fake\+Edge}}
+\index{Fake\+Edge@{Fake\+Edge}!Fake\+Edge@{Fake\+Edge}}
+\subsubsection{\texorpdfstring{Fake\+Edge()}{FakeEdge()}}
+{\footnotesize\ttfamily Fake\+Edge\+::\+Fake\+Edge (\begin{DoxyParamCaption}\item[{unsigned long long}]{edge\+Id,  }\item[{unsigned long long}]{v1\+Id,  }\item[{unsigned long long}]{v2\+Id }\end{DoxyParamCaption})}
+
+
+
+Builds an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+Id} & ID of edge. \\
+\hline
+{\em v1\+Id} & ID of source node. \\
+\hline
+{\em v2\+Id} & ID of destiny node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_fake_edge_afce4358d8d47e71b5fb4cbae870b0610}{}\label{class_fake_edge_afce4358d8d47e71b5fb4cbae870b0610} 
+\index{Fake\+Edge@{Fake\+Edge}!is\+Two\+Way@{is\+Two\+Way}}
+\index{is\+Two\+Way@{is\+Two\+Way}!Fake\+Edge@{Fake\+Edge}}
+\subsubsection{\texorpdfstring{is\+Two\+Way()}{isTwoWay()}}
+{\footnotesize\ttfamily bool Fake\+Edge\+::is\+Two\+Way (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns information about the street. 
+
+\begin{DoxyReturn}{Returns}
+True if road is a two way street. 
+
+False if road is only one way street. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fake\+Edge.\+h\item 
+Fake\+Edge.\+cpp\end{DoxyCompactItemize}

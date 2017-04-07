@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['node',['Node',['../class_node.html',1,'']]]
+  ['sortset',['SortSet',['../struct_sort_set.html',1,'']]],
+  ['supermarketnetwork',['SupermarketNetwork',['../class_supermarket_network.html',1,'']]]
 ];

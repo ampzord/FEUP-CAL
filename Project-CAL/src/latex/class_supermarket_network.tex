@@ -1,48 +1,60 @@
 \hypertarget{class_supermarket_network}{}\section{Supermarket\+Network Class Reference}
 \label{class_supermarket_network}\index{Supermarket\+Network@{Supermarket\+Network}}
+
+
+Class to hold information about a Supermarket\textquotesingle{}s Network.  
+
+
+
+
+{\ttfamily \#include $<$Supermarket\+Network.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_supermarket_network_afb289463b6137986f5ad6c26075c2f54}{Supermarket\+Network} (std\+::string name)
-\begin{DoxyCompactList}\small\item\em Construtor da classe \hyperlink{class_supermarket_network}{Supermarket\+Network}. \end{DoxyCompactList}\item 
-\hypertarget{class_supermarket_network_a76c7b262538c10d01359216f8ff46e64}{}\label{class_supermarket_network_a76c7b262538c10d01359216f8ff46e64} 
-void {\bfseries manage} ()
-\item 
-\hypertarget{class_supermarket_network_a53bf7deb2d814fee494fc1ecd3f4f717}{}\label{class_supermarket_network_a53bf7deb2d814fee494fc1ecd3f4f717} 
-void {\bfseries add\+Supermarket} (std\+::string name)
-\item 
-\hypertarget{class_supermarket_network_aa53f0731d4f8cc038023845f5868950b}{}\label{class_supermarket_network_aa53f0731d4f8cc038023845f5868950b} 
-bool {\bfseries handle\+Request} ()
-\item 
-\hypertarget{class_supermarket_network_a507279ae82a117d0c9f22b71c6dcf8f7}{}\label{class_supermarket_network_a507279ae82a117d0c9f22b71c6dcf8f7} 
-void {\bfseries perform\+Operation} (std\+::string operation)
-\item 
-\hypertarget{class_supermarket_network_ab52e7c9ef050179a9e2fc42c97f4e9fa}{}\label{class_supermarket_network_ab52e7c9ef050179a9e2fc42c97f4e9fa} 
-void {\bfseries load\+Markets} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor of class \hyperlink{class_supermarket_network}{Supermarket\+Network}. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a5e78cc11db3abd4fda6101277f9ba113}{}\label{class_supermarket_network_a5e78cc11db3abd4fda6101277f9ba113} 
 void \hyperlink{class_supermarket_network_a5e78cc11db3abd4fda6101277f9ba113}{load\+Nodes\+Random} ()
-\begin{DoxyCompactList}\small\item\em Faz load dos nodes em txt, adicionando-\/lhes um Random Type. \end{DoxyCompactList}\item 
-\hypertarget{class_supermarket_network_a5a5c406883108159717f380f95354038}{}\label{class_supermarket_network_a5a5c406883108159717f380f95354038} 
-void \hyperlink{class_supermarket_network_a5a5c406883108159717f380f95354038}{load\+Node\+Information} ()
-\begin{DoxyCompactList}\small\item\em Load nodes from nodes.\+txt to program. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Loads nodes from text file giving them a random type. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_aafdd6da018ee4e8b04a1ede7f24dc5a8}{}\label{class_supermarket_network_aafdd6da018ee4e8b04a1ede7f24dc5a8} 
 void \hyperlink{class_supermarket_network_aafdd6da018ee4e8b04a1ede7f24dc5a8}{load\+Street\+Information} ()
-\begin{DoxyCompactList}\small\item\em Faz load das Ruas em txt atualizando o atributo Two\+Ways de cada uma. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Loads street information from text file. \end{DoxyCompactList}\item 
 \hypertarget{class_supermarket_network_ada2b7550c41f37122396adfa66f96031}{}\label{class_supermarket_network_ada2b7550c41f37122396adfa66f96031} 
-void {\bfseries load\+Edge\+Information} ()
-\item 
-void \hyperlink{class_supermarket_network_a85fedd294648aa9c4e25110ee0467f3d}{load\+Fake\+Edges} ()
-\begin{DoxyCompactList}\small\item\em Faz load das edges em txt e adiciona-\/as ao vector de edges. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_network_ada2b7550c41f37122396adfa66f96031}{load\+Edge\+Information} ()
+\begin{DoxyCompactList}\small\item\em Loads edge information from text file. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a81785ce5abea96016bcc06958a2eed8e}{}\label{class_supermarket_network_a81785ce5abea96016bcc06958a2eed8e} 
 void \hyperlink{class_supermarket_network_a81785ce5abea96016bcc06958a2eed8e}{paint\+Loaded} ()
-\begin{DoxyCompactList}\small\item\em Insere no Grafo os nós e edges e pinta-\/os tambem no Graph\+Viewr. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Inserts on graph the nodes and edges along as giving them their current color on graphviewer. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a5d7c2badb6cb2f4ded2942e861912a78}{}\label{class_supermarket_network_a5d7c2badb6cb2f4ded2942e861912a78} 
 int \hyperlink{class_supermarket_network_a5d7c2badb6cb2f4ded2942e861912a78}{get\+Edge\+Pos\+By\+Id} (unsigned long long id)
-\begin{DoxyCompactList}\small\item\em Retorna a posicao de uma edge no vector atraves do seu Id. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the position of an edge on a vector by it\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_add014a6408078bfbf46832892858a936}{}\label{class_supermarket_network_add014a6408078bfbf46832892858a936} 
 bool \hyperlink{class_supermarket_network_add014a6408078bfbf46832892858a936}{is\+Edge\+Pos\+By\+Id} (unsigned long long id)
-\begin{DoxyCompactList}\small\item\em Verifica se existe alguma edge com o Id forncido. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks if there exists already any edge with the ID given. \end{DoxyCompactList}\item 
 void \hyperlink{class_supermarket_network_a013ba8bf6d961cc2fefa0fa09bf8a2e7}{print\+Results} (map$<$ int, vector$<$ int $>$ $>$ res)
-\begin{DoxyCompactList}\small\item\em Escreve no ficheiro os resultado da aplicacao dos algoritmos. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Writes on file the results of application of the algorithms. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_network_adb6dd660ec70427802da4e18f96d725d}{print\+Results} (vector$<$ pair$<$ int, vector$<$ int $>$ $>$ $>$ res)
+\begin{DoxyCompactList}\small\item\em Writes on file the results of application of the algorithms. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704}{}\label{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704} 
 double \hyperlink{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704}{distance\+Between2\+Nodes} (double lat1, double lat2, double long1, double long2)
-\begin{DoxyCompactList}\small\item\em Calcula a distância entre dois nos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculates the distance between 2 nodes. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a7391fed455ac1959445987a301ed8002}{}\label{class_supermarket_network_a7391fed455ac1959445987a301ed8002} 
+void \hyperlink{class_supermarket_network_a7391fed455ac1959445987a301ed8002}{main\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Main Menu with interface. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a8f26a5537e646d71c58b6910975a99cf}{}\label{class_supermarket_network_a8f26a5537e646d71c58b6910975a99cf} 
+void \hyperlink{class_supermarket_network_a8f26a5537e646d71c58b6910975a99cf}{choose\+Algorithm\+From\+Open\+Street\+Maps\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Gives option to user to choose between several algorithms. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a2a8df3eab5b698385a7dfad9b0d57d5a}{}\label{class_supermarket_network_a2a8df3eab5b698385a7dfad9b0d57d5a} 
+void \hyperlink{class_supermarket_network_a2a8df3eab5b698385a7dfad9b0d57d5a}{load\+Information\+Open\+Street\+Maps\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Loads all information from text files simultaneously. \end{DoxyCompactList}\item 
+\hypertarget{class_supermarket_network_a7e244200330ef7f5542beff1a353c877}{}\label{class_supermarket_network_a7e244200330ef7f5542beff1a353c877} 
+void \hyperlink{class_supermarket_network_a7e244200330ef7f5542beff1a353c877}{run\+Time} ()
+\begin{DoxyCompactList}\small\item\em Calculates the time each algorithm takes and saves it to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Class to hold information about a Supermarket\textquotesingle{}s Network. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_supermarket_network_afb289463b6137986f5ad6c26075c2f54}{}\label{class_supermarket_network_afb289463b6137986f5ad6c26075c2f54} 
@@ -53,126 +65,37 @@ double \hyperlink{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704}{d
 
 
 
-Construtor da classe \hyperlink{class_supermarket_network}{Supermarket\+Network}. 
+Constructor of class \hyperlink{class_supermarket_network}{Supermarket\+Network}. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & nome do objeto \hyperlink{class_supermarket_network}{Supermarket\+Network} \\
+{\em name} & name of the Supermarket \\
 \hline
 \end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704}{}\label{class_supermarket_network_afa07b2bec1aaac617a5072ad4178c704} 
-\index{Supermarket\+Network@{Supermarket\+Network}!distance\+Between2\+Nodes@{distance\+Between2\+Nodes}}
-\index{distance\+Between2\+Nodes@{distance\+Between2\+Nodes}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{distance\+Between2\+Nodes()}{distanceBetween2Nodes()}}
-{\footnotesize\ttfamily double Supermarket\+Network\+::distance\+Between2\+Nodes (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{lat2,  }\item[{double}]{long1,  }\item[{double}]{long2 }\end{DoxyParamCaption})}
-
-
-
-Calcula a distância entre dois nos. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em lat1} & Latitude do no de origem. \\
-\hline
-{\em lat2} & Latitude do no de destino. \\
-\hline
-{\em long1} & Longitude do no de origem. \\
-\hline
-{\em long2} & Longitude do no de destino. \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_supermarket_network_a5d7c2badb6cb2f4ded2942e861912a78}{}\label{class_supermarket_network_a5d7c2badb6cb2f4ded2942e861912a78} 
-\index{Supermarket\+Network@{Supermarket\+Network}!get\+Edge\+Pos\+By\+Id@{get\+Edge\+Pos\+By\+Id}}
-\index{get\+Edge\+Pos\+By\+Id@{get\+Edge\+Pos\+By\+Id}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{get\+Edge\+Pos\+By\+Id()}{getEdgePosById()}}
-{\footnotesize\ttfamily int Supermarket\+Network\+::get\+Edge\+Pos\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned long long}]{id }\end{DoxyParamCaption})}
-
-
-
-Retorna a posicao de uma edge no vector atraves do seu Id. 
-
-Usado para localizar Ruas lidas e sincronizadas com edges. 
-\begin{DoxyParams}{Parameters}
-{\em id} & Id da Rua a encontrar. \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_supermarket_network_add014a6408078bfbf46832892858a936}{}\label{class_supermarket_network_add014a6408078bfbf46832892858a936} 
-\index{Supermarket\+Network@{Supermarket\+Network}!is\+Edge\+Pos\+By\+Id@{is\+Edge\+Pos\+By\+Id}}
-\index{is\+Edge\+Pos\+By\+Id@{is\+Edge\+Pos\+By\+Id}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{is\+Edge\+Pos\+By\+Id()}{isEdgePosById()}}
-{\footnotesize\ttfamily bool Supermarket\+Network\+::is\+Edge\+Pos\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned long long}]{id }\end{DoxyParamCaption})}
-
-
-
-Verifica se existe alguma edge com o Id forncido. 
-
-Usado para verificar a existencia de Ruas lidas no vector edges. 
-\begin{DoxyParams}{Parameters}
-{\em id} & Id da Rua a verificar \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_supermarket_network_a85fedd294648aa9c4e25110ee0467f3d}{}\label{class_supermarket_network_a85fedd294648aa9c4e25110ee0467f3d} 
-\index{Supermarket\+Network@{Supermarket\+Network}!load\+Fake\+Edges@{load\+Fake\+Edges}}
-\index{load\+Fake\+Edges@{load\+Fake\+Edges}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{load\+Fake\+Edges()}{loadFakeEdges()}}
-{\footnotesize\ttfamily void Supermarket\+Network\+::load\+Fake\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Faz load das edges em txt e adiciona-\/as ao vector de edges. 
-
-Para cada edge em txt cria objeto Fake\+Edge com parametros lidos.
-
-edges.\+txt \hypertarget{class_supermarket_network_a5e78cc11db3abd4fda6101277f9ba113}{}\label{class_supermarket_network_a5e78cc11db3abd4fda6101277f9ba113} 
-\index{Supermarket\+Network@{Supermarket\+Network}!load\+Nodes\+Random@{load\+Nodes\+Random}}
-\index{load\+Nodes\+Random@{load\+Nodes\+Random}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{load\+Nodes\+Random()}{loadNodesRandom()}}
-{\footnotesize\ttfamily void Supermarket\+Network\+::load\+Nodes\+Random (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Faz load dos nodes em txt, adicionando-\/lhes um Random Type. 
-
-Para cada node em txt é criado um objeto \hyperlink{class_node}{Node} e inserido em nodes\mbox{[}\mbox{]}.
-
-O Random Type usado serve para criar Markets, Users e Default Points. \hypertarget{class_supermarket_network_aafdd6da018ee4e8b04a1ede7f24dc5a8}{}\label{class_supermarket_network_aafdd6da018ee4e8b04a1ede7f24dc5a8} 
-\index{Supermarket\+Network@{Supermarket\+Network}!load\+Street\+Information@{load\+Street\+Information}}
-\index{load\+Street\+Information@{load\+Street\+Information}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{load\+Street\+Information()}{loadStreetInformation()}}
-{\footnotesize\ttfamily void Supermarket\+Network\+::load\+Street\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Faz load das Ruas em txt atualizando o atributo Two\+Ways de cada uma. 
-
-Para cada Rua em txt,\char`\"{}\+True\char`\"{} ou \char`\"{}\+False\char`\"{} definem o atributo de cada objeto.
-
-True torna possivel a Rua ter 2 sentidos.
-
-False garante que a Rua so tem um sentido. \hypertarget{class_supermarket_network_a81785ce5abea96016bcc06958a2eed8e}{}\label{class_supermarket_network_a81785ce5abea96016bcc06958a2eed8e} 
-\index{Supermarket\+Network@{Supermarket\+Network}!paint\+Loaded@{paint\+Loaded}}
-\index{paint\+Loaded@{paint\+Loaded}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{paint\+Loaded()}{paintLoaded()}}
-{\footnotesize\ttfamily void Supermarket\+Network\+::paint\+Loaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Insere no Grafo os nós e edges e pinta-\/os tambem no Graph\+Viewr. 
-
-Os nos e edges encontram-\/se nos vectores atributo nodes\mbox{[}\mbox{]} e edges\mbox{[}\mbox{]}. \hypertarget{class_supermarket_network_a013ba8bf6d961cc2fefa0fa09bf8a2e7}{}\label{class_supermarket_network_a013ba8bf6d961cc2fefa0fa09bf8a2e7} 
+\hypertarget{class_supermarket_network_a013ba8bf6d961cc2fefa0fa09bf8a2e7}{}\label{class_supermarket_network_a013ba8bf6d961cc2fefa0fa09bf8a2e7} 
 \index{Supermarket\+Network@{Supermarket\+Network}!print\+Results@{print\+Results}}
 \index{print\+Results@{print\+Results}!Supermarket\+Network@{Supermarket\+Network}}
-\subsubsection{\texorpdfstring{print\+Results()}{printResults()}}
+\subsubsection{\texorpdfstring{print\+Results()}{printResults()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Supermarket\+Network\+::print\+Results (\begin{DoxyParamCaption}\item[{map$<$ int, vector$<$ int $>$ $>$}]{res }\end{DoxyParamCaption})}
 
 
 
-Escreve no ficheiro os resultado da aplicacao dos algoritmos. 
+Writes on file the results of application of the algorithms. 
 
-results.\+txt 
+argument is map$<$int, vector$<$int$>$ $>$ \hypertarget{class_supermarket_network_adb6dd660ec70427802da4e18f96d725d}{}\label{class_supermarket_network_adb6dd660ec70427802da4e18f96d725d} 
+\index{Supermarket\+Network@{Supermarket\+Network}!print\+Results@{print\+Results}}
+\index{print\+Results@{print\+Results}!Supermarket\+Network@{Supermarket\+Network}}
+\subsubsection{\texorpdfstring{print\+Results()}{printResults()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Supermarket\+Network\+::print\+Results (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, vector$<$ int $>$ $>$ $>$}]{res }\end{DoxyParamCaption})}
+
+
+
+Writes on file the results of application of the algorithms. 
+
+argument is vector$<$pair$<$int, vector$<$int$>$ $>$ $>$ 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

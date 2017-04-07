@@ -1,5 +1,14 @@
 \hypertarget{class_graph}{}\section{Graph$<$ T $>$ Class Template Reference}
 \label{class_graph}\index{Graph$<$ T $>$@{Graph$<$ T $>$}}
+
+
+Standard Class to hold the Network\textquotesingle{}s \hyperlink{class_graph}{Graph}.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,8 +36,8 @@ vector$<$ T $>$ {\bfseries bfs} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast
 \hypertarget{class_graph_a675559f8cddfe43bc416023ad9f28cfa}{}\label{class_graph_a675559f8cddfe43bc416023ad9f28cfa} 
 int {\bfseries max\+New\+Children} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$v, T \&inf) const
 \item 
-\hypertarget{class_graph_a135e8f915af85904abca9eafaa4f13ce}{}\label{class_graph_a135e8f915af85904abca9eafaa4f13ce} 
-vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$$>$ {\bfseries get\+Vertex\+Set} () const
+\hypertarget{class_graph_a923b43995f81ad9319bbc81a1e433e64}{}\label{class_graph_a923b43995f81ad9319bbc81a1e433e64} 
+vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ $>$ {\bfseries get\+Vertex\+Set} () const
 \item 
 \hypertarget{class_graph_a0853eac15cdf0f06d63f4b8a7820ec71}{}\label{class_graph_a0853eac15cdf0f06d63f4b8a7820ec71} 
 int {\bfseries get\+Num\+Vertex} () const
@@ -81,6 +90,9 @@ void {\bfseries getfloyd\+Warshall\+Path\+Aux} (int index1, int index2, vector$<
 \hypertarget{class_graph_acf75f2fa28fb5ce2e512faf76f2e5a76}{}\label{class_graph_acf75f2fa28fb5ce2e512faf76f2e5a76} 
 map$<$ int, vector$<$ int $>$ $>$ {\bfseries sort\+Paths} (bool normal)
 \item 
+\hypertarget{class_graph_a3a13738437333d9addd562bccf90c123}{}\label{class_graph_a3a13738437333d9addd562bccf90c123} 
+vector$<$ pair$<$ int, vector$<$ int $>$ $>$ $>$ {\bfseries sort\+Paths\+Single} (bool normal)
+\item 
 \hypertarget{class_graph_a8830def3714a0add8c6bef8b262a7ea7}{}\label{class_graph_a8830def3714a0add8c6bef8b262a7ea7} 
 vector$<$ int $>$ {\bfseries get\+Possible\+Path} (vector$<$ int $>$ clients)
 \item 
@@ -105,11 +117,14 @@ void {\bfseries getfloyd\+Warshall\+Path\+Int\+Aux} (int index1, int index2, vec
 \hypertarget{class_graph_a46a2760c361bc1be61fe09baf3f1e7e4}{}\label{class_graph_a46a2760c361bc1be61fe09baf3f1e7e4} 
 void {\bfseries clear\+Clients\+Served} (vector$<$ int $>$ clients)
 \item 
-\hypertarget{class_graph_ab0af63fd35a05b37333bfce94d25c54c}{}\label{class_graph_ab0af63fd35a05b37333bfce94d25c54c} 
-void {\bfseries remove\+Most\+Distant\+Client} (int supermarket, vector$<$ int $>$ \&clients, typename map$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$\+::iterator it, typename map$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$\+::iterator ite)
+\hypertarget{class_graph_a66eacb93463220b68d78c4c72ac334ae}{}\label{class_graph_a66eacb93463220b68d78c4c72ac334ae} 
+void {\bfseries remove\+Most\+Distant\+Client} (int supermarket, vector$<$ int $>$ \&clients, typename vector$<$ pair$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$ $>$\+::iterator it, typename vector$<$ pair$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$ $>$\+::iterator ite)
 \item 
-\hypertarget{class_graph_a1cf95c5b65175f792a338a1fc305388f}{}\label{class_graph_a1cf95c5b65175f792a338a1fc305388f} 
-bool {\bfseries rearrange\+Map} (map$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$ supermarkets, typename map$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$\+::iterator it)
+\hypertarget{class_graph_a1d85759a1be487ddf83d19bcff1d32e6}{}\label{class_graph_a1d85759a1be487ddf83d19bcff1d32e6} 
+int {\bfseries remove\+Most\+Distant\+Client2} (int supermarket, vector$<$ int $>$ \&clients)
+\item 
+\hypertarget{class_graph_a4ddd35dbd53ec1ea2b1b47ec9da10af9}{}\label{class_graph_a4ddd35dbd53ec1ea2b1b47ec9da10af9} 
+bool {\bfseries rearrange\+Map} (vector$<$ pair$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$ $>$ supermarkets, typename vector$<$ pair$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$, int $>$ $>$\+::iterator it)
 \item 
 \hypertarget{class_graph_ae059b5069ac2d98c2a4ed3eb7ad802ca}{}\label{class_graph_ae059b5069ac2d98c2a4ed3eb7ad802ca} 
 bool {\bfseries first\+Short\+Dist} (int supermarket1, vector$<$ int $>$\+::iterator it, vector$<$ int $>$\+::iterator ite, int supermarket2, vector$<$ int $>$\+::iterator it2, vector$<$ int $>$\+::iterator ite2)
@@ -127,6 +142,12 @@ void {\bfseries cut\+Nodes} (\hyperlink{class_graph_viewer}{Graph\+Viewer} $\ast
 struct {\bfseries Sort\+Set$<$ T $>$}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Graph$<$ T $>$}
+
+Standard Class to hold the Network\textquotesingle{}s \hyperlink{class_graph}{Graph}. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

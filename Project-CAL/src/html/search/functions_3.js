@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fakeedge',['FakeEdge',['../classstd_1_1_fake_edge.html#abf77e55a537357f0aba59c7d71451559',1,'std::FakeEdge']]]
+  ['fakeedge',['FakeEdge',['../class_fake_edge.html#a6a68d323de9a406e367dc02e4e20c926',1,'FakeEdge']]]
 ];

@@ -19,17 +19,27 @@
 
 using namespace std;
 
+/** \brief Class used to handle Clienter-Server connection. */
 class Connection {
- public:
-  Connection(short port);
+public:
+	/** brief Builds a connection, with the given conection port.
+	 * \param port Port used for the connection.
+	 */
+	Connection(short port);
 
-  bool sendMsg(string msg);
-  string readLine();
- private: 
+	/** \brief Sends a message to the given socket's port.
+	 * \param port Socket's Port to send te message.
+	 */
+	bool sendMsg(string msg);
+
+	/** \brief Read a message from the given Socket's Port.
+	 */
+	string readLine();
+private:
 #ifdef linux
-  int sock;
+	int sock;
 #else
-  SOCKET sock;
+	SOCKET sock;
 #endif
 };
 
