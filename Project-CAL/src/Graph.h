@@ -1126,8 +1126,6 @@ bool Graph<T>::rearrangeMap(vector<pair<Vertex<T>*, int> > supermarkets,
 			}
 		}
 
-		cout << "D10" << endl;
-
 		count++;
 	}
 
