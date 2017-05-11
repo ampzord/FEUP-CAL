@@ -3,14 +3,16 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
+#include <string>
+#include <iostream>
 
 using namespace std;
 
 SupermarketNetwork::SupermarketNetwork(std::string name) {
 	this->name = name;
-	this->gv = new GraphViewer(1000, 600, true);
+	this->gv = new GraphViewer(1280, 720, true);
 
-	gv->createWindow(1000, 600);
+	gv->createWindow(1280, 720);
 
 	gv->defineVertexColor("blue");
 
@@ -324,7 +326,7 @@ void SupermarketNetwork::mainMenu() {
 		case 1:
 			loadInformationOpenStreetMapsGraph();
 			paintLoaded();
-			chooseAlgorithmFromOpenStreetMapsGraph();
+			chooseOption();
 			break;
 		case 0:
 			exit(0);
@@ -335,21 +337,32 @@ void SupermarketNetwork::mainMenu() {
 	}
 }
 
-void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
+void getUserInput(string &input) {
+	cout << "Name of street/supermarket :" << endl;
+	if (!(cin >> input)) {
+		cin.clear();
+		cin.ignore(10000,'\n');
+	}
+}
+
+void SupermarketNetwork::chooseOption() {
 
 	int opt = -1;
+	cout << endl;
 
 	do {
-		cout << "Choose algorithm you want to use:" << endl << endl;
+		cout << "Choose an option:" << endl << endl;
 		cout << "1 - Single Market Approach with extremities." << endl;
 		cout << "2 - Multiple Markets Approach with extremities." << endl;
 		cout << "3 - Single Market Approach with shortest path." << endl;
 		cout << "4 - Multiple Markets Approach with shortest path." << endl;
+		cout << "5 - Find exact name of street/supermarket." << endl;
+		cout << "6 - Find approximated name of street/supermarket." << endl;
 		cout << "0 - Go Back." << endl;
 		cin.clear();
 		cin >> opt;
 
-	} while (opt < 0 || opt > 4);
+	} while (opt < 0 || opt > 6);
 
 	switch (opt) {
 	case 1:
@@ -375,6 +388,27 @@ void SupermarketNetwork::chooseAlgorithmFromOpenStreetMapsGraph() {
 		map<int, vector<int> > res4 = fake_graph.sortPaths(false);
 		printResults(res4);
 		break;
+	}
+	case 5 :
+	{
+			//input
+			string userInput;
+			getUserInput(userInput);
+			cout << "Input:" << userInput << endl;
+
+			//search
+			//result
+			break;
+	}
+	case 6 :
+	{
+			//input
+			string userInput;
+			getUserInput(userInput);
+			cout << "Input:" << userInput << endl;
+			//search
+			//result
+			break;
 	}
 	case 0:
 	{

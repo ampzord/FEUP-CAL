@@ -67,8 +67,8 @@ public:
 	/** \brief Main Menu with interface. */
 	void mainMenu();
 
-	/**\brief Gives option to user to choose between several algorithms. */
-	void chooseAlgorithmFromOpenStreetMapsGraph();
+	/**\brief Gives option to user to choose between several algorithms or names of streets/supermarkets. */
+	void chooseOption();
 
 	/** \brief Loads all information from text files simultaneously. */
 	void loadInformationOpenStreetMapsGraph();
