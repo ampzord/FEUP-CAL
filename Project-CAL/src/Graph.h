@@ -1468,4 +1468,16 @@ void Graph<T>::cutNodes(GraphViewer* gv) {
 	}
 }
 
+template<class T>
+void Graph<T>::exactSearch(vector<string> roads, string market) {
+
+
+}
+
+template<class T>
+void Graph<T>::approximateSearch(vector<string> roads, string market) {
+
+
+}
+
 #endif /* GRAPH_H_ */
