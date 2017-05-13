@@ -1,5 +1,7 @@
 #include "FakeEdge.h"
 
+using namespace std;
+
 FakeEdge::FakeEdge(unsigned long long edgeId, unsigned long long v1Id,
 		unsigned long long v2Id) {
 
@@ -30,4 +32,14 @@ bool FakeEdge::isTwoWay() const {
 
 void FakeEdge::setTwoWay(bool twoWay) {
 	this->twoWay = twoWay;
+}
+
+void FakeEdge::setName(string nam)
+{
+	this->name = nam;
+}
+
+string FakeEdge::getName() const
+{
+	return name;
 }

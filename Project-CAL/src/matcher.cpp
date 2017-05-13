@@ -1,12 +1,5 @@
-/*
- * matcher.cpp
- */
-#include <string>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <fstream>
-#include <sstream>
+#include "matcher.h"
+
 using namespace std;
 
 void pre_kmp(string pattern, vector<int> & prefix)
@@ -38,7 +31,6 @@ int kmp(string text, string pattern)
 		if (pattern[q+1]==text[i])
 			q++;
 		if (q==m-1) {
-			cout <<"pattern occurs with shift" << i-m+1 << endl;
 			num++;
 			q=prefix[q];
 		}

@@ -1,17 +1,17 @@
 0;Rua Dom Manuel da Silva Martins;True
 1;;True
 2;Rua Manuel Faro Sarmento;True
-3;Rua Adélia Ferreira dos Santos Carvalho;True
+3;Rua Adalia Ferreira dos Santos Carvalho;True
 4;;True
 5;;True
-6;Rua Ângela Adelaide Calheiro Carvalho Menezes;True
-7;Rua Adélia Ferreira dos Santos Carvalho;True
-8;Avenida de António Santos Leite;True
-9;Avenida João Paulo II;True
-10;;True
-11;;True
-12;;True
-13;;True
-14;;True
-15;;True
-16;;True
+6;Rua Angela Adelaide Calheiro Carvalho Menezes;True
+7;Rua Adalia Ferreira dos Santos Carvalho;True
+8;Avenida de Antonio Santos Leite;True
+9;Avenida Joao Paulo II;True
+10;Via Comendador Valentim dos Santos Dinis;True
+11;Rua das Agras;True
+12;Rua Campo da Bola Senhor da Santa Cruz;True
+13;Rua do Castanheiral;True
+14;Rua Ferreira de Castro;True
+15;Avenida Senhor da Santa Cruz;True
+16;Rua Marcela;True

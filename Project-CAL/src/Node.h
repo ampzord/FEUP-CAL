@@ -2,6 +2,7 @@
 #define PROJECT_CAL_SRC_NODE_H_
 
 #include <string>
+#include <cstdlib>
 
 /** \brief class Node that stores nodeID, latitude and longitude in degrees and radians. */
 
@@ -11,6 +12,7 @@ private:
 	float latitude_in_degrees, longitude_in_degrees,
 		longitude_in_radians, latitude_in_radians;
 	std::string type;
+	std::string name;
 
 public:
 
@@ -50,6 +52,8 @@ public:
 
 	/** \brief Returns type of node ("Market", "User", "Default"). */
 	const std::string& getType() const;
+
+	std::string getName() const;
 };
 
 #endif /* PROJECT_CAL_SRC_NODE_H_ */

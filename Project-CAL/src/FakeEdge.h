@@ -1,12 +1,15 @@
 #ifndef PROJECT_CAL_SRC_FAKEEDGE_H_
 #define PROJECT_CAL_SRC_FAKEEDGE_H_
 
+#include <string>
+
 /** \brief a class to hold edge information such as it's ID, start node and end node. */
 
 class FakeEdge {
 private:
 	unsigned long long edgeId, v1Id, v2Id;
 	bool twoWay;
+	std::string name;
 public:
 
 	/** \brief Builds an edge.
@@ -34,6 +37,10 @@ public:
 
 	/** \brief Method to change a roads way.  */
 	void setTwoWay(bool twoWay);
+
+	void setName(std::string nam);
+
+	std::string getName() const;
 
 };
 

@@ -25,7 +25,7 @@ void SupermarketNetwork::paintLoaded() {
 
 	for (size_t i = 0; i < nodes.size(); i++) {
 		bool res = fake_graph.addVertex(nodes[i], nodes[i].getType(),
-				nodes[i].getNodeId());
+				nodes[i].getNodeId(), nodes[i].getName());
 		if (res)
 			gv->addNode(nodes[i].getNodeId());
 		else {
@@ -39,7 +39,7 @@ void SupermarketNetwork::paintLoaded() {
 
 			str << nodes[i].getNodeId();
 
-			gv->setVertexLabel(nodes[i].getNodeId(), str.str());
+			gv->setVertexLabel(nodes[i].getNodeId(), "");
 		}
 		if (nodes[i].getType() == "Market") {
 			gv->setVertexColor(nodes[i].getNodeId(), "green");
@@ -48,7 +48,7 @@ void SupermarketNetwork::paintLoaded() {
 
 			str << nodes[i].getNodeId();
 
-			gv->setVertexLabel(nodes[i].getNodeId(), str.str());
+			gv->setVertexLabel(nodes[i].getNodeId(), nodes[i].getName());
 		}
 	}
 
@@ -72,12 +72,12 @@ void SupermarketNetwork::paintLoaded() {
 
 			if (edges[i].isTwoWay()) {
 				res1 = fake_graph.addEdge(edges[i].getV1Id(),
-						edges[i].getV2Id(), distance);
+						edges[i].getV2Id(), distance, edges[i].getName());
 				res2 = fake_graph.addEdge(edges[i].getV2Id(),
-						edges[i].getV1Id(), distance);
+						edges[i].getV1Id(), distance, edges[i].getName());
 			} else {
 				res1 = fake_graph.addEdge(edges[i].getV1Id(),
-						edges[i].getV2Id(), distance);
+						edges[i].getV2Id(), distance, edges[i].getName());
 				res2 = false;
 			}
 			if (res1 && res2) {
@@ -92,7 +92,7 @@ void SupermarketNetwork::paintLoaded() {
 
 			str << distance;
 
-			gv->setEdgeLabel(edges[i].getEdgeId(), str.str());
+			gv->setEdgeLabel(edges[i].getEdgeId(), edges[i].getName());
 		}
 	}
 
@@ -184,6 +184,7 @@ void SupermarketNetwork::loadStreetInformation() {
 		if (isEdgePosById(roadID)) {
 			pos = getEdgePosById(roadID);
 			edges[pos].setTwoWay(isTwoWays);
+			edges[pos].setName(roadName);
 		}
 
 	}
@@ -392,9 +393,32 @@ void SupermarketNetwork::chooseOption() {
 	case 5 :
 	{
 			//input
-			string userInput;
-			getUserInput(userInput);
-			cout << "Input:" << userInput << endl;
+			int size;
+			cout << "How many roads:" << endl;
+
+			cin >> size;
+
+			vector<string> roads;
+
+			getchar();
+
+			for(int i = 0; i < size; i++)
+			{
+				string road;
+
+				cout << "Road number " << i + 1 << " name:"<< endl;
+
+				getline(cin,road);
+				roads.push_back(road);
+			}
+
+			cout << "Market name:" << endl;
+
+			string market;
+
+			getline(cin, market);
+
+			cout << fake_graph.exactSearch(roads, market) << endl;
 
 			//search
 			//result
@@ -403,9 +427,9 @@ void SupermarketNetwork::chooseOption() {
 	case 6 :
 	{
 			//input
-			string userInput;
-			getUserInput(userInput);
-			cout << "Input:" << userInput << endl;
+			//string userInput;
+			//getUserInput(userInput);
+			//cout << "Input:" << userInput << endl;
 			//search
 			//result
 			break;

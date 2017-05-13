@@ -12,6 +12,9 @@
 #include <map>
 #include <set>
 #include <algorithm>
+
+#include "matcher.h"
+
 using namespace std;
 
 template<class T> class Edge;
@@ -65,13 +68,14 @@ class Vertex {
 	double time;
 	double weight;
 	bool served;
+	string name;
 
 public:
 
-	Vertex(T in, string typ, unsigned long long nodeId);
+	Vertex(T in, string typ, unsigned long long nodeId, string nam);
 	friend class Graph<T> ;
 
-	void addEdge(Vertex<T> *dest, double w);
+	void addEdge(Vertex<T> *dest, double w, string nam);
 	bool removeEdgeTo(Vertex<T> *d);
 
 	T getInfo() const;
@@ -115,9 +119,9 @@ bool Vertex<T>::operator<(const Vertex<T> vertex) {
 
 //atualizado pelo exercício 5
 template<class T>
-Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId) :
+Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId, string nam) :
 		info(in), visited(false), processing(false), indegree(0), dist(0), type(
-				typ), clients(0), id(nodeId), served(false) {
+				typ), clients(0), id(nodeId), served(false), name("") {
 	path = NULL;
 	time = 0;
 	weight = 0;
@@ -128,12 +132,13 @@ Vertex<T>::Vertex(T in, string typ, unsigned long long nodeId) :
 
 	if (typ == "Market") {
 		weight = rand() % 20 + 11;
+		name = nam;
 	}
 }
 
 template<class T>
-void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
-	Edge<T> edgeD(dest, w);
+void Vertex<T>::addEdge(Vertex<T> *dest, double w, string nam) {
+	Edge<T> edgeD(dest, w, nam);
 	adj.push_back(edgeD);
 }
 
@@ -170,15 +175,17 @@ class Edge {
 	double weight;
 	double speed;
 	double time;
+	string name;
+	string district;
 public:
-	Edge(Vertex<T> *d, double w);
+	Edge(Vertex<T> *d, double w, string nam);
 	friend class Graph<T> ;
 	friend class Vertex<T> ;
 };
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, double w) :
-		dest(d), weight(w), speed(SPEED_TRUCK) {
+Edge<T>::Edge(Vertex<T> *d, double w, string nam) :
+		dest(d), weight(w), speed(SPEED_TRUCK), name(nam) {
 	time = weight / speed;
 }
 
@@ -206,9 +213,9 @@ class Graph {
 	friend struct SortSet<T> ;
 
 public:
-	bool addVertex(const T &in, string type, unsigned long long nodeId);
-	bool addEdge(const T &sourc, const T &dest, double w);
-	bool addEdge(const int src, const int dst, double w);
+	bool addVertex(const T &in, string type, unsigned long long nodeId, string nam);
+	bool addEdge(const T &sourc, const T &dest, double w, string nam);
+	bool addEdge(const int src, const int dst, double w, string nam);
 	bool removeVertex(const T &in);
 	bool removeEdge(const T &sourc, const T &dest);
 	vector<T> dfs() const;
@@ -257,6 +264,8 @@ public:
 			vector<int>::iterator it2, vector<int>::iterator ite2);
 	void clearServed(vector<int> nodes);
 	void cutNodes(GraphViewer* gv);
+	bool exactSearch(vector<string> roads, string market);
+	void approximateSearch(vector<string> roads, string market);
 };
 
 template<class T>
@@ -281,13 +290,13 @@ bool Graph<T>::isDAG() {
 }
 
 template<class T>
-bool Graph<T>::addVertex(const T &in, string type, unsigned long long nodeId) {
+bool Graph<T>::addVertex(const T &in, string type, unsigned long long nodeId, string nam) {
 	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
 	for (; it != ite; it++)
 		if ((*it)->info == in)
 			return false;
-	Vertex<T> *v1 = new Vertex<T>(in, type, nodeId);
+	Vertex<T> *v1 = new Vertex<T>(in, type, nodeId, nam);
 	vertexSet.push_back(v1);
 	return true;
 }
@@ -319,7 +328,7 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template<class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(const T &sourc, const T &dest, double w, string nam) {
 	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
 	int found = 0;
@@ -338,13 +347,13 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 	if (found != 2)
 		return false;
 	vD->indegree++;
-	vS->addEdge(vD, w);
+	vS->addEdge(vD, w, nam);
 
 	return true;
 }
 
 template<class T>
-bool Graph<T>::addEdge(const int src, const int dst, double w) {
+bool Graph<T>::addEdge(const int src, const int dst, double w, string nam) {
 
 	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
@@ -364,7 +373,7 @@ bool Graph<T>::addEdge(const int src, const int dst, double w) {
 	if (found != 2)
 		return false;
 	vD->indegree++;
-	vS->addEdge(vD, w);
+	vS->addEdge(vD, w, nam);
 
 	return true;
 }
@@ -1354,7 +1363,7 @@ Edge<T> Graph<T>::getEdge(int src, int dst) {
 		}
 	}
 
-	return Edge<T>(NULL, 0);
+	return Edge<T>(NULL, 0, "");
 }
 
 template<class T>
@@ -1469,9 +1478,126 @@ void Graph<T>::cutNodes(GraphViewer* gv) {
 }
 
 template<class T>
-void Graph<T>::exactSearch(vector<string> roads, string market) {
+bool Graph<T>::exactSearch(vector<string> roads, string market) {
 
+	if(roads.size() == 1)
+	{
+		return false;
+	}
 
+	typename vector<Vertex<T>*>::iterator its = vertexSet.begin();
+	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
+
+	map<Vertex<T>*, int> m;
+
+	for (; its != ite; its++) {
+		for(int i = 0; i < (*its)->adj.size(); i++)
+		{
+			for(int j = 0; j < roads.size(); j++)
+			{
+				if(kmp((*its)->adj[i].name, roads[j]))
+				{
+					m.insert(typename std::map<Vertex<T>*, int>::value_type(*its,i));
+				}
+			}
+		}
+	}
+
+	Vertex<T>* tmp = NULL;
+
+	if(m.size() == 0)
+	{
+		return false;
+	}
+
+	typename map<Vertex<T>*, int>::iterator it = m.begin();
+	typename map<Vertex<T>*, int>::iterator it2 = m.begin();
+
+	it2++;
+
+	while(it2 != m.end()) {
+
+		if(it->first->adj[it->second].name == it2->first->adj[it2->second].name)
+		{
+			it++;
+			it2++;
+			continue;
+		}
+
+		if(tmp == NULL)
+		{
+			if(it->first->id == it2->first->id)
+			{
+				tmp = it->first;
+			}
+
+			if(it->first->id == it2->first->adj[it2->second].dest->id)
+			{
+				tmp = it->first;
+			}
+
+			if(it2->first->id == it->first->adj[it->second].dest->id)
+			{
+				tmp = it2->first;
+			}
+
+			if(it->first->adj[it->second].dest->id == it2->first->adj[it2->second].dest->id)
+			{
+				tmp = it->first->adj[it->second].dest;
+			}
+
+			if(tmp == NULL)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if(it->first->id == it2->first->id && it->first->id == tmp->id)
+			{
+				tmp = it->first;
+				it++;
+				it2++;
+				continue;
+			}
+
+			if(it->first->id == it2->first->adj[it2->second].dest->id && it->first->id == tmp->id)
+			{
+				tmp = it->first;
+				it++;
+				it2++;
+				continue;
+			}
+
+			if(it2->first->id == it->first->adj[it->second].dest->id && it2->first->id == tmp->id)
+			{
+				tmp = it2->first;
+				it++;
+				it2++;
+				continue;
+			}
+
+			if(it->first->adj[it->second].dest->id == it2->first->adj[it2->second].dest->id && it->first->adj[it->second].dest->id == tmp->id)
+			{
+				tmp = it->first->adj[it->second].dest;
+				it++;
+				it2++;
+				continue;
+			}
+
+			return false;
+		}
+
+		it++;
+		it2++;
+	}
+
+	if(tmp != NULL && tmp->type == "Market" && kmp(tmp->name, market))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 template<class T>

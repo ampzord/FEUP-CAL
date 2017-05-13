@@ -10,6 +10,23 @@ Node::Node(unsigned long long node_id, string type, float latitude_in_degrees, f
 	this->longitude_in_degrees = longitude_in_degrees;
 	this->longitude_in_radians = longitude_in_radians;
 	this->latitude_in_radians = latitude_in_radians;
+
+	int r = rand() % 3;
+
+	if(r == 0)
+	{
+		this->name = "Pingo Doce";
+	}
+
+	if(r == 1)
+	{
+		this->name = "Continente";
+	}
+
+	if(r == 2)
+	{
+		this->name = "Lidl";
+	}
 }
 
 Node::~Node() {}
@@ -40,4 +57,9 @@ unsigned long long Node::getNodeId() const {
 
 const string& Node::getType() const {
 	return type;
+}
+
+string Node::getName() const
+{
+	return name;
 }
