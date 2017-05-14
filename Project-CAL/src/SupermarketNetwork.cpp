@@ -418,7 +418,16 @@ void SupermarketNetwork::chooseOption() {
 
 			getline(cin, market);
 
-			cout << fake_graph.exactSearch(roads, market) << endl;
+			bool res5 = fake_graph.exactSearch(roads, market);
+
+			if(res5)
+			{
+				cout << "Found" << endl;
+			}
+			else
+			{
+				cout << "Not found" << endl;
+			}
 
 			//search
 			//result
@@ -426,10 +435,44 @@ void SupermarketNetwork::chooseOption() {
 	}
 	case 6 :
 	{
-			//input
-			//string userInput;
-			//getUserInput(userInput);
-			//cout << "Input:" << userInput << endl;
+			int size;
+			cout << "How many roads:" << endl;
+
+			cin >> size;
+
+			vector<string> roads;
+
+			getchar();
+
+			for(int i = 0; i < size; i++)
+			{
+				string road;
+
+				cout << "Road number " << i + 1 << " name:"<< endl;
+
+				getline(cin,road);
+				roads.push_back(road);
+			}
+
+			cout << "Market name:" << endl;
+
+			string market;
+
+			getline(cin, market);
+
+			vector<vector<pair<string, int> > > res6 = fake_graph.approximateSearch(roads, market);
+
+			for(int i = 0; i < res6.size(); i++)
+			{
+				cout << "Roads near market " << market << " ordered by similarity with the road " << roads[i] << endl;
+				for(int j = 0; j < res6[i].size(); j++)
+				{
+					cout << res6[i][j].first << " | " << res6[i][j].second << endl;
+				}
+
+				cout << endl;
+			}
+
 			//search
 			//result
 			break;

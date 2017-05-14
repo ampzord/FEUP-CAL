@@ -105,4 +105,7 @@ float numApproximateStringMatching(string filename,string toSearch)
 	return res;
 }
 
+bool sortFunc2(pair<string, int> a, pair<string, int> b) {
+	return a.second < b.second;
+}
 

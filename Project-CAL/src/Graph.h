@@ -265,7 +265,7 @@ public:
 	void clearServed(vector<int> nodes);
 	void cutNodes(GraphViewer* gv);
 	bool exactSearch(vector<string> roads, string market);
-	void approximateSearch(vector<string> roads, string market);
+	vector<vector<pair<string, int> > > approximateSearch(vector<string> roads, string market);
 };
 
 template<class T>
@@ -1601,9 +1601,47 @@ bool Graph<T>::exactSearch(vector<string> roads, string market) {
 }
 
 template<class T>
-void Graph<T>::approximateSearch(vector<string> roads, string market) {
+vector<vector<pair<string, int> > > Graph<T>::approximateSearch(vector<string> roads, string market) {
 
+	vector<vector<pair<string, int> > > res(roads.size());
 
+	typename vector<Vertex<T>*>::iterator its = vertexSet.begin();
+	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
+
+	for (; its != ite; its++) {
+		if((*its)->type == "Market" && (*its)->name == market)
+		{
+			for(int i = 0; i < (*its)->adj.size(); i++)
+			{
+				for(int j = 0; j < roads.size(); j++)
+				{
+					int dist = editDistance(roads[j], (*its)->adj[i].name);
+					res[j].push_back(pair<string, int>((*its)->adj[i].name,dist));
+				}
+			}
+		}
+		else
+		{
+			for(int i = 0; i < (*its)->adj.size(); i++)
+			{
+				if((*its)->adj[i].dest->name == market)
+				{
+					for(int j = 0; j < roads.size(); j++)
+					{
+						int dist = editDistance(roads[j], (*its)->adj[i].name);
+						res[j].push_back(pair<string, int>((*its)->adj[i].name,dist));
+					}
+				}
+			}
+		}
+	}
+
+	for(int i = 0; i < res.size(); i++)
+	{
+		sort(res[i].begin(), res[i].end(), sortFunc2);
+	}
+
+	return res;
 }
 
 #endif /* GRAPH_H_ */
