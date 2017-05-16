@@ -5,6 +5,7 @@
 #include <ctime>
 #include <string>
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -282,8 +283,8 @@ double SupermarketNetwork::distanceBetween2Nodes(double lat1, double lat2,
 	double deltaLong = (long2 - long1) * PI / 180;
 
 	double a = sin(deltaLat / 2) * sin(deltaLat / 2)
-																																					+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
-																																					* sin(deltaLong / 2);
+																																									+ cos(lat1_rad) * cos(lat2_rad) * sin(deltaLong / 2)
+																																									* sin(deltaLong / 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
 	return R * c;
@@ -346,6 +347,22 @@ void getUserInput(string &input) {
 	}
 }
 
+int GetMilliCount()
+{
+	timeb tb;
+	ftime( &tb );
+	int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
+	return nCount;
+}
+
+int GetMilliSpan(int nTimeStart)
+{
+	int nSpan = GetMilliCount() - nTimeStart;
+	if (nSpan < 0)
+		nSpan += 0x100000 * 1000;
+	return nSpan;
+}
+
 void SupermarketNetwork::chooseOption() {
 
 	int opt = -1;
@@ -392,90 +409,100 @@ void SupermarketNetwork::chooseOption() {
 	}
 	case 5 :
 	{
-			//input
-			int size;
-			cout << "How many roads:" << endl;
+		//input
+		int size;
+		cout << "How many roads:" << endl;
 
-			cin >> size;
+		cin >> size;
 
-			vector<string> roads;
+		vector<string> roads;
 
-			getchar();
+		getchar();
 
-			for(int i = 0; i < size; i++)
-			{
-				string road;
+		for(int i = 0; i < size; i++)
+		{
+			string road;
 
-				cout << "Road number " << i + 1 << " name:"<< endl;
+			cout << "Road number " << i + 1 << " name:"<< endl;
 
-				getline(cin,road);
-				roads.push_back(road);
-			}
+			getline(cin,road);
+			roads.push_back(road);
+		}
 
-			cout << "Market name:" << endl;
+		cout << "Market name:" << endl;
 
-			string market;
+		string market;
 
-			getline(cin, market);
+		getline(cin, market);
+		auto begin = std::chrono::high_resolution_clock::now();
+		//int nTimeStart = GetMilliCount();
+		bool res5 = fake_graph.exactSearch(roads, market);
+		//int nTimeElapsed = GetMilliSpan( nTimeStart );
+		auto end = std::chrono::high_resolution_clock::now();
+		std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << "ns" << std::endl;
 
-			bool res5 = fake_graph.exactSearch(roads, market);
+		if(res5)
+		{
+			//cout << "\nFound with " << nTimeElapsed << " milliseconds" << endl << endl;
+		}
+		else
+		{
+			//cout << "\nNot Found " << nTimeElapsed << " milliseconds" << endl << endl;
+		}
 
-			if(res5)
-			{
-				cout << "Found" << endl;
-			}
-			else
-			{
-				cout << "Not found" << endl;
-			}
-
-			//search
-			//result
-			break;
+		break;
 	}
 	case 6 :
 	{
-			int size;
-			cout << "How many roads:" << endl;
+		int size;
+		cout << "How many roads:" << endl;
 
-			cin >> size;
+		cin >> size;
 
-			vector<string> roads;
+		vector<string> roads;
 
-			getchar();
+		getchar();
 
-			for(int i = 0; i < size; i++)
+		for(int i = 0; i < size; i++)
+		{
+			string road;
+
+			cout << "Road number " << i + 1 << " name:"<< endl;
+
+			getline(cin,road);
+			roads.push_back(road);
+		}
+
+		cout << "Market name:" << endl;
+
+		string market;
+
+		getline(cin, market);
+
+
+
+
+		auto begin = std::chrono::high_resolution_clock::now();
+		//int nTimeStart = GetMilliCount();
+		vector<vector<pair<string, int> > > res6 = fake_graph.approximateSearch(roads, market);
+		//int nTimeElapsed = GetMilliSpan( nTimeStart );
+		auto end = std::chrono::high_resolution_clock::now();
+
+		//cout << "\nTime measured : " << nTimeElapsed << endl << endl;
+		std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << "ns" << std::endl;
+
+		for(int i = 0; i < res6.size(); i++)
+		{
+			cout << "Roads near market " << market << " ordered by similarity with the road " << roads[i] << endl;
+			for(int j = 0; j < res6[i].size(); j++)
 			{
-				string road;
-
-				cout << "Road number " << i + 1 << " name:"<< endl;
-
-				getline(cin,road);
-				roads.push_back(road);
+				cout << res6[i][j].first << " | " << res6[i][j].second << endl;
 			}
 
-			cout << "Market name:" << endl;
+			cout << endl;
+		}
 
-			string market;
-
-			getline(cin, market);
-
-			vector<vector<pair<string, int> > > res6 = fake_graph.approximateSearch(roads, market);
-
-			for(int i = 0; i < res6.size(); i++)
-			{
-				cout << "Roads near market " << market << " ordered by similarity with the road " << roads[i] << endl;
-				for(int j = 0; j < res6[i].size(); j++)
-				{
-					cout << res6[i][j].first << " | " << res6[i][j].second << endl;
-				}
-
-				cout << endl;
-			}
-
-			//search
-			//result
-			break;
+		break;
 	}
 	case 0:
 	{
@@ -495,21 +522,6 @@ void SupermarketNetwork::loadInformationOpenStreetMapsGraph() {
 	loadStreetInformation();
 }
 
-int GetMilliCount()
-{
-	timeb tb;
-	ftime( &tb );
-	int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
-	return nCount;
-}
-
-int GetMilliSpan(int nTimeStart)
-{
-	int nSpan = GetMilliCount() - nTimeStart;
-	if (nSpan < 0)
-		nSpan += 0x100000 * 1000;
-	return nSpan;
-}
 
 void SupermarketNetwork::runTime() {
 	ofstream myfile("Project-CAL/input/time.txt");
