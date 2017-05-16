@@ -1495,6 +1495,11 @@ bool Graph<T>::exactSearch(vector<string> roads, string market) {
 		{
 			for(int j = 0; j < roads.size(); j++)
 			{
+				if(roads[j].length() == 0)
+				{
+					continue;
+				}
+
 				if(kmp((*its)->adj[i].name, roads[j]))
 				{
 					m.insert(typename std::map<Vertex<T>*, int>::value_type(*its,i));

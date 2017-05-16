@@ -150,7 +150,7 @@ void SupermarketNetwork::printResults(vector<pair<int, vector<int> > > res) {
 
 void SupermarketNetwork::loadStreetInformation() {
 
-	std::ifstream input_file("Project-CAL/input/streets6.txt");
+	std::ifstream input_file("Project-CAL/input/streets1.txt");
 
 	if (!input_file) {
 		std::cerr << "Unable to open file streets.txt";
@@ -193,7 +193,7 @@ void SupermarketNetwork::loadStreetInformation() {
 }
 
 void SupermarketNetwork::loadEdgeInformation() {
-	std::ifstream input_file("Project-CAL/input/edges6.txt");
+	std::ifstream input_file("Project-CAL/input/edges1.txt");
 
 	if (!input_file) {
 		std::cerr << "Unable to open file edges.txt";
@@ -224,7 +224,7 @@ void SupermarketNetwork::loadEdgeInformation() {
 }
 
 void SupermarketNetwork::loadNodesRandom() {
-	std::ifstream input_file("Project-CAL/input/nodes6.txt");
+	std::ifstream input_file("Project-CAL/input/nodes1.txt");
 	srand(time(NULL));
 	int rand_type;
 
