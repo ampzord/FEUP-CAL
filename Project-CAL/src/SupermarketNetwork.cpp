@@ -482,14 +482,14 @@ void SupermarketNetwork::chooseOption() {
 
 
 
-		auto begin = std::chrono::high_resolution_clock::now();
+		auto begin2 = std::chrono::high_resolution_clock::now();
 		//int nTimeStart = GetMilliCount();
 		vector<vector<pair<string, int> > > res6 = fake_graph.approximateSearch(roads, market);
 		//int nTimeElapsed = GetMilliSpan( nTimeStart );
-		auto end = std::chrono::high_resolution_clock::now();
+		auto end2 = std::chrono::high_resolution_clock::now();
 
 		//cout << "\nTime measured : " << nTimeElapsed << endl << endl;
-		std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << "ns" << std::endl;
+		std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end2-begin2).count() << "ns" << std::endl;
 
 		for(int i = 0; i < res6.size(); i++)
 		{
